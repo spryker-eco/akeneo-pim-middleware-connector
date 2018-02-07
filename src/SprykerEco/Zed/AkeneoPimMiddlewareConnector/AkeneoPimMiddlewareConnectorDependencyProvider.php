@@ -20,7 +20,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideCommunicationLayerDependencies(Container $container)
     {
         $container[self::SERVICE_AKENEO_PIM] = function (Container $container) {
             return new AkeneoPimMiddlewareConnectorToAkeneoPimBridge($container->getLocator()->akeneoPim()->service());
