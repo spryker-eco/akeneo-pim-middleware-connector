@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Transl
 
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface;
 
-class TranslatorFunctionFactory
+class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
 {
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface

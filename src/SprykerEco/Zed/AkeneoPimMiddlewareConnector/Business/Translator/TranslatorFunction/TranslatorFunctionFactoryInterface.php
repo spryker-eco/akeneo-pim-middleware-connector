@@ -7,6 +7,10 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
 
-class TranslatorFunctionFactoryInterface
+interface TranslatorFunctionFactoryInterface
 {
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface
+     */
+    public function createAddAttributeOptionsTranslatorFunction();
 }
