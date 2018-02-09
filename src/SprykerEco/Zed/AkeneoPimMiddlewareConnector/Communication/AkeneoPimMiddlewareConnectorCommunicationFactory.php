@@ -9,7 +9,10 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication;
 
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorDependencyProvider;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactory;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactoryInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactory;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactoryInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
@@ -18,15 +21,24 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
 
 /**
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistance\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
  */
 class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunicationFactory
 {
     /**
      * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactoryInterface
      */
-    public function createTranslatorFunctionFactory()
+    public function createTranslatorFunctionFactory(): TranslatorFunctionFactoryInterface
     {
         return new TranslatorFunctionFactory($this->getAkeneoPimService());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactoryInterface
+     */
+    public function createStreamFactory(): StreamFactoryInterface
+    {
+        return new StreamFactory($this->getAkeneoPimService(), $this->getQueryContainer());
     }
 
     /**

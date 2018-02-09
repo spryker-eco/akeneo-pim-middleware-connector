@@ -4,6 +4,8 @@
   "require": {
     "php": ">=7.1",
     "spryker/kernel": "^3.0.0",
+    "spryker/locale": "^3.0.0",
+    "spryker/tax": "^5.0.0",
     "spryker-eco/akeneo-pim": "dev-feature/ECO-1078-service-layer",
     "spryker-middleware/process": "dev-dev"
   },

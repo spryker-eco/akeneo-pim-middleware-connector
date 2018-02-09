@@ -14,7 +14,7 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface
      */
-    private $akeneoPimService;
+    protected $akeneoPimService;
 
     /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface $akeneoPimService
