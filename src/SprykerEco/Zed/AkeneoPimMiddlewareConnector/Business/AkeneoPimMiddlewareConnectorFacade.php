@@ -125,4 +125,28 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
             ->createAttributeMapPreparationMap()
             ->getMapperConfig();
     }
+
+    /**
+     * @param array $payload
+     *
+     * @return array
+     */
+    public function mapLocalePayload(array $payload): array
+    {
+        return $this->getFactory()
+            ->createLocaleMapper()
+            ->map($payload);
+    }
+
+    /**
+     * @param array $payload
+     *
+     * @return array
+     */
+    public function mapTaxSetPayload(array $payload): array
+    {
+        return $this->getFactory()
+            ->createTaxSetMapper()
+            ->map($payload);
+    }
 }

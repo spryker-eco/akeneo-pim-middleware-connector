@@ -66,4 +66,18 @@ interface AkeneoPimMiddlewareConnectorFacadeInterface
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
      */
     public function getProductModelPreparationTranslatorConfig(): TranslatorConfigTransfer;
+
+    /**
+     * @param array $payload
+     *
+     * @return array
+     */
+    public function mapLocalePayload(array $payload): array;
+
+    /**
+     * @param array $payload
+     *
+     * @return array
+     */
+    public function mapTaxSetPayload(array $payload): array;
 }

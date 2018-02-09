@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service;
 
-class AkeneoPimMiddlewareConnectorToAkeneoPimBridge implements AkeneoPimMiddlewareConnectorToAkeneoPimInterface
+class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
 {
     /**
      * @var \SprykerEco\Service\AkeneoPim\AkeneoPimServiceInterface

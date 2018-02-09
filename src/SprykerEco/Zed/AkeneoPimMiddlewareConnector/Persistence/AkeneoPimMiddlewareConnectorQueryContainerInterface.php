@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistance;
+namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence;
 
 interface AkeneoPimMiddlewareConnectorQueryContainerInterface
 {

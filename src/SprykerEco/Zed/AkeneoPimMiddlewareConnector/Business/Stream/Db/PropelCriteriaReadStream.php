@@ -70,6 +70,7 @@ class PropelCriteriaReadStream implements StreamInterface, ReadStreamInterface
     public function close(): bool
     {
         unset($this->iterator);
+        return true;
     }
 
     /**

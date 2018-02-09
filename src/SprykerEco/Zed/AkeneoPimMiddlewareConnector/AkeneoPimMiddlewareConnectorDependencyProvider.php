@@ -23,6 +23,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configurati
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductModelPreparationConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductPreparationConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\TaxSetMapImportConfigurationPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\LocaleMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductModelImportMapperStagePlugin;
@@ -35,14 +36,19 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\Loca
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\ProductAkeneoApiStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\ProductModelAkeneoApiStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\TaxSetStreamPlugin;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimBridge;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TaxSetMapperStagePlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeBridge;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Log\MiddlewareLoggerConfigPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonStreamPlugin;
 
 class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDependencyProvider
 {
     const SERVICE_AKENEO_PIM = 'SERVICE_AKENEO_PIM';
+    const FACADE_PROCESS = 'FACADE_PROCESS';
 
     const AKENEO_PIM_MIDDLEWARE_PROCESSES = 'AKENEO_PIM_MIDDLEWARE_PROCESSES';
     const AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG = 'AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG';
@@ -118,9 +124,14 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     public function provideCommunicationLayerDependencies(Container $container)
     {
         $container[static::SERVICE_AKENEO_PIM] = function (Container $container) {
-            return new AkeneoPimMiddlewareConnectorToAkeneoPimBridge($container->getLocator()->akeneoPim()->service());
+            return new AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge($container->getLocator()->akeneoPim()->service());
         };
 
+        $container[static::FACADE_PROCESS] = function (Container $container) {
+            return new AkeneoPimMiddlewareConnectorToProcessFacadeBridge($container->getLocator()->process()->facade());
+        };
+
+        $container = $this->addDefaultLoggerConfigPlugin($container);
         $container = $this->addAkeneoPimProcesses($container);
         $container = $this->addAttributeImportProcessPlugins($container);
         $container = $this->addAttributeMapProcessPlugins($container);
@@ -232,6 +243,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new AttributeAkeneoApiStreamPlugin();
         };
         $container[static::ATTRIBUTE_MAP_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::ATTRIBUTE_MAP_ITERATOR_PLUGIN] = function () {
@@ -240,9 +252,11 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
         $container[static::ATTRIBUTE_MAP_STAGE_PLUGINS] = function () {
             return [
+                new JsonReaderStagePlugin(),
                 new AttributeMapPreparationMapperStagePlugin(),
                 new AttributeMapTranslationStagePlugin(),
                 new AttributeMapMapperStagePlugin(),
+                new JsonWriterStagePlugin(),
             ];
         };
 
@@ -303,6 +317,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new LocaleStreamPlugin();
         };
         $container[static::LOCALE_MAP_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::LOCALE_MAP_IMPORT_ITERATOR_PLUGIN] = function () {
@@ -310,7 +325,11 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         };
 
         $container[static::LOCALE_MAP_IMPORT_STAGE_PLUGINS] = function () {
-            return [];
+            return [
+                new JsonReaderStagePlugin(),
+                new LocaleMapperStagePlugin(),
+                new JsonWriterStagePlugin(),
+            ];
         };
 
         $container[static::LOCALE_MAP_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
@@ -370,6 +389,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new JsonStreamPlugin();
         };
         $container[static::PRODUCT_MODEL_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::PRODUCT_MODEL_IMPORT_ITERATOR_PLUGIN] = function () {
@@ -405,6 +425,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new ProductAkeneoApiStreamPlugin();
         };
         $container[static::PRODUCT_PREPARATION_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::PRODUCT_PREPARATION_ITERATOR_PLUGIN] = function () {
@@ -413,7 +434,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
         $container[static::PRODUCT_PREPARATION_STAGE_PLUGINS] = function () {
             return [
+                new JsonReaderStagePlugin(),
                 new ProductPreparationTranslationStagePlugin(),
+                new JsonWriterStagePlugin(),
             ];
         };
 
@@ -439,6 +462,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new ProductModelAkeneoApiStreamPlugin();
         };
         $container[static::PRODUCT_MODEL_PREPARATION_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::PRODUCT_MODEL_PREPARATION_ITERATOR_PLUGIN] = function () {
@@ -447,7 +471,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
         $container[static::PRODUCT_MODEL_PREPARATION_STAGE_PLUGINS] = function () {
             return [
+                new JsonReaderStagePlugin(),
                 new ProductModelPreparationTranslationStagePlugin(),
+                new JsonWriterStagePlugin(),
             ];
         };
 
@@ -473,6 +499,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new TaxSetStreamPlugin();
         };
         $container[static::TAX_SET_MAP_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::TAX_SET_MAP_IMPORT_ITERATOR_PLUGIN] = function () {
@@ -480,7 +507,11 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         };
 
         $container[static::TAX_SET_MAP_IMPORT_STAGE_PLUGINS] = function () {
-            return [];
+            return [
+                new JsonReaderStagePlugin(),
+                new TaxSetMapperStagePlugin(),
+                new JsonWriterStagePlugin(),
+            ];
         };
 
         $container[static::TAX_SET_MAP_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {

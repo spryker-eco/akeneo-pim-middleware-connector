@@ -7,12 +7,14 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction;
 
+use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface;
 
 /**
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
  */
-class AddAttributeOptionsTranslatorFunctionPlugin implements TranslatorFunctionPluginInterface
+class AddAttributeOptionsTranslatorFunctionPlugin extends AbstractPlugin implements TranslatorFunctionPluginInterface
 {
     const NAME = 'AddAttributeOptions';
 

@@ -12,28 +12,28 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\CategoryA
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductModelAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Db\PropelCriteriaReadStream;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistance\AkeneoPimMiddlewareConnectorQueryContainerInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface;
 use SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface;
 
 class StreamFactory implements StreamFactoryInterface
 {
     /**
-     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      */
     protected $akeneoPimService;
 
     /**
-     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistance\AkeneoPimMiddlewareConnectorQueryContainerInterface
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface
      */
     protected $queryContainer;
 
     /**
-     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface $akeneoPimService
-     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistance\AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer
      */
     public function __construct(
-        AkeneoPimMiddlewareConnectorToAkeneoPimInterface $akeneoPimService,
+        AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService,
         AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer
     ) {
         $this->akeneoPimService = $akeneoPimService;

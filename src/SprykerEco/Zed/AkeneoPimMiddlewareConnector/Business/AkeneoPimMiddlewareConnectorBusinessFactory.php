@@ -8,11 +8,15 @@
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\LocaleMapper;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\LocaleMapperInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\AttributeMapImportMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\AttributeMapPreparationMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\CategoryImportMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\ProductImportMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\ProductModelImportMap;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\TaxSetMapper;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\TaxSetMapperInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\AttributeMapDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\CategoryImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductImportDictionary;
@@ -24,6 +28,7 @@ use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInter
 
 /**
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
  */
 class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactory
 {
@@ -113,5 +118,21 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     public function createAttributeMapDictionary(): DictionaryInterface
     {
         return new AttributeMapDictionary();
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\LocaleMapperInterface
+     */
+    public function createLocaleMapper(): LocaleMapperInterface
+    {
+        return new LocaleMapper();
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\TaxSetMapperInterface
+     */
+    public function createTaxSetMapper(): TaxSetMapperInterface
+    {
+        return new TaxSetMapper();
     }
 }

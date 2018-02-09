@@ -7,15 +7,14 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo;
 
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
 use SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface;
 use SprykerMiddleware\Shared\Process\Stream\StreamInterface;
-use SprykerMiddleware\Zed\Process\Business\Exception\MethodNotSupportedException;
 
 abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStreamInterface
 {
     /**
-     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      */
     protected $akeneoPimService;
 
@@ -25,9 +24,9 @@ abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStrea
     protected $cursor;
 
     /**
-     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface $akeneoPimService
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
      */
-    public function __construct(AkeneoPimMiddlewareConnectorToAkeneoPimInterface $akeneoPimService)
+    public function __construct(AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService)
     {
         $this->akeneoPimService = $akeneoPimService;
     }
@@ -64,19 +63,18 @@ abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStrea
     public function close(): bool
     {
         unset($this->cursor);
+        return true;
     }
 
     /**
      * @param int $offset
      * @param int $whence
      *
-     * @throws \SprykerMiddleware\Zed\Process\Business\Exception\MethodNotSupportedException
-     *
      * @return int
      */
     public function seek(int $offset, int $whence): int
     {
-        throw new MethodNotSupportedException();
+        return -1;
     }
 
     /**

@@ -7,19 +7,20 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
 
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
+use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface;
 
 class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
 {
     /**
-     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      */
     protected $akeneoPimService;
 
     /**
-     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimInterface $akeneoPimService
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
      */
-    public function __construct(AkeneoPimMiddlewareConnectorToAkeneoPimInterface $akeneoPimService)
+    public function __construct(AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService)
     {
         $this->akeneoPimService = $akeneoPimService;
     }
@@ -30,5 +31,15 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
     public function createAddAttributeOptionsTranslatorFunction()
     {
         return new AddAttributeOptions($this->akeneoPimService);
+    }
+
+    /**
+     * @param string $translatorFunctionClassName
+     *
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface
+     */
+    public function createTranslatorFunction(string $translatorFunctionClassName): TranslatorFunctionInterface
+    {
+        return new $translatorFunctionClassName();
     }
 }

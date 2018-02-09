@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service;
 
-interface AkeneoPimMiddlewareConnectorToAkeneoPimInterface
+interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
 {
     /**
      * @param int $pageSize

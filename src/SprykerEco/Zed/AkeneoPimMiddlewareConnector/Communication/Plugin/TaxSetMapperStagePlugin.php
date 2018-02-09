@@ -7,27 +7,17 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin;
 
-use Generated\Shared\Transfer\MapperConfigTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface;
 use SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface;
-use SprykerMiddleware\Zed\Process\Dependency\Plugin\MapperStagePluginInterface;
+use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
 
 /**
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
  */
-class AttributeMapPreparationMapperStagePlugin extends AbstractPlugin implements MapperStagePluginInterface
+class TaxSetMapperStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\MapperConfigTransfer
-     */
-    public function getMapperConfig(): MapperConfigTransfer
-    {
-        return $this->getFacade()
-            ->getAttributeMapPreparationMapperConfig();
-    }
-
     /**
      * @param mixed $payload
      * @param \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface $inStream
@@ -38,8 +28,7 @@ class AttributeMapPreparationMapperStagePlugin extends AbstractPlugin implements
      */
     public function process($payload, ReadStreamInterface $inStream, WriteStreamInterface $outStream, $originalPayload)
     {
-        return $this->getFactory()
-            ->getProcessFacade()
-            ->map($payload, $this->getMapperConfig());
+        return $this->getFacade()
+            ->mapTaxSetPayload($payload);
     }
 }
