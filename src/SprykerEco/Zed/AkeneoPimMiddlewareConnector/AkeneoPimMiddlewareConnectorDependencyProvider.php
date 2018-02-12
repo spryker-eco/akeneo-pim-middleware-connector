@@ -211,6 +211,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new AttributeAkeneoApiStreamPlugin();
         };
         $container[static::ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::ATTRIBUTE_IMPORT_ITERATOR_PLUGIN] = function () {
@@ -218,7 +219,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         };
 
         $container[static::ATTRIBUTE_IMPORT_STAGE_PLUGINS] = function () {
-            return [];
+            return [
+                new JsonReaderStagePlugin(),
+            ];
         };
 
         $container[static::ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
@@ -282,6 +285,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new CategoryAkeneoApiStreamPlugin();
         };
         $container[static::CATEGORY_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::CATEGORY_IMPORT_ITERATOR_PLUGIN] = function () {
@@ -290,6 +294,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
         $container[static::CATEGORY_IMPORT_STAGE_PLUGINS] = function () {
             return [
+                new JsonReaderStagePlugin(),
                 new CategoryImportTranslationStagePlugin(),
                 new CategoryMapperStagePlugin(),
             ];
@@ -354,6 +359,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new JsonStreamPlugin();
         };
         $container[static::PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
         };
 
         $container[static::PRODUCT_IMPORT_ITERATOR_PLUGIN] = function () {
@@ -362,6 +368,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
         $container[static::PRODUCT_IMPORT_STAGE_PLUGINS] = function () {
             return [
+                new JsonReaderStagePlugin(),
                 new ProductImportTranslationStagePlugin(),
                 new ProductMapperStagePlugin(),
             ];
@@ -398,6 +405,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
         $container[static::PRODUCT_MODEL_IMPORT_STAGE_PLUGINS] = function () {
             return [
+                new JsonReaderStagePlugin(),
                 new ProductModelImportTranslationStagePlugin(),
                 new ProductModelImportMapperStagePlugin(),
             ];
