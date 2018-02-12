@@ -77,7 +77,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
      */
     public function createProductModelImportDictionary(): DictionaryInterface
     {
-        return new ProductModelImportDictionary();
+        return new ProductModelImportDictionary($this->getConfig());
     }
 
     /**
@@ -85,7 +85,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
      */
     public function createProductImportDictionary(): DictionaryInterface
     {
-        return new ProductImportDictionary();
+        return new ProductImportDictionary($this->getConfig());
     }
 
     /**
@@ -109,7 +109,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
      */
     public function createCategoryImportDictionary(): DictionaryInterface
     {
-        return new CategoryImportDictionary();
+        return new CategoryImportDictionary($this->getConfig());
     }
 
     /**
@@ -117,7 +117,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
      */
     public function createAttributeMapDictionary(): DictionaryInterface
     {
-        return new AttributeMapDictionary();
+        return new AttributeMapDictionary($this->getConfig());
     }
 
     /**

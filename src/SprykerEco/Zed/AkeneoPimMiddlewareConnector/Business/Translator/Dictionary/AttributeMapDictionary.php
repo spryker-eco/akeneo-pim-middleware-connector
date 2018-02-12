@@ -7,10 +7,34 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary;
 
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig;
 use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary;
 
 class AttributeMapDictionary extends AbstractDictionary
 {
+    /**
+     * @var array
+     */
+    protected static $localeMap;
+
+    /**
+     * @var array
+     */
+    protected static $superAttributeMap;
+
+    /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig
+     */
+    private $config;
+
+    /**
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig $config
+     */
+    public function __construct(AkeneoPimMiddlewareConnectorConfig $config)
+    {
+        $this->config = $config;
+    }
+
     /**
      * @return array
      */
@@ -29,7 +53,7 @@ class AttributeMapDictionary extends AbstractDictionary
                 [
                     'AddAttributeOptions',
                     'options' => [
-                        'pageSize' => 100, //@todo maybe hand on injected value from config?
+                        'pageSize' => 100,
                     ],
                 ],
             ],
@@ -45,17 +69,17 @@ class AttributeMapDictionary extends AbstractDictionary
         ];
     }
 
-    //@todo repeated method
-
     /**
      * @return array
      */
     protected function getLocaleMap(): array
     {
-        //@todo inject path from configuration
-        $content = file_get_contents(APPLICATION_ROOT_DIR . '/data/import/maps/locale_map.json');
+        if (static::$localeMap === null) {
+            $content = file_get_contents($this->config->getLocaleMapFilePath());
+            static::$localeMap = json_decode($content, true);
+        }
 
-        return json_decode($content, true);
+        return static::$localeMap;
     }
 
     /**
@@ -63,9 +87,11 @@ class AttributeMapDictionary extends AbstractDictionary
      */
     protected function getSuperAttributeMap(): array
     {
-        //@todo inject path from configuration
-        $content = file_get_contents(APPLICATION_ROOT_DIR . '/data/import/maps/super_attribute_map.json');
+        if (static::$superAttributeMap === null) {
+            $content = file_get_contents($this->config->getSuperAttributeMapFilePath());
+            static::$superAttributeMap = json_decode($content, true);
+        }
 
-        return json_decode($content, true);
+        return static::$superAttributeMap;
     }
 }

@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary;
 
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig;
 use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary;
 
 class ProductModelImportDictionary extends AbstractDictionary
@@ -20,6 +21,19 @@ class ProductModelImportDictionary extends AbstractDictionary
      * @var array
      */
     protected static $attributeMap;
+
+    /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig
+     */
+    private $config;
+
+    /**
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig $config
+     */
+    public function __construct(AkeneoPimMiddlewareConnectorConfig $config)
+    {
+        $this->config = $config;
+    }
 
     /**
      * @return array
@@ -104,30 +118,26 @@ class ProductModelImportDictionary extends AbstractDictionary
         ];
     }
 
-    //@todo repeated method
     /**
      * @return array
      */
     protected function getLocaleMap(): array
     {
-        //@todo inject path from configuration
         if (static::$localeMap === null) {
-            $content = file_get_contents(APPLICATION_ROOT_DIR . '/data/import/maps/locale_map.json');
+            $content = file_get_contents($this->config->getLocaleMapFilePath());
             static::$localeMap = json_decode($content, true);
         }
 
         return static::$localeMap;
     }
 
-    //@todo repeated method
     /**
      * @return array
      */
     protected function getAttributeMap(): array
     {
-        //@todo inject path from configuration
         if (static::$attributeMap === null) {
-            $content = file_get_contents(APPLICATION_ROOT_DIR . '/data/import/maps/attribute_map.json');
+            $content = file_get_contents($this->config->getAttributeMapFilePath());
             static::$attributeMap = json_decode($content, true);
         }
 
