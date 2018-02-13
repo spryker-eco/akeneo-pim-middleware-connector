@@ -24,4 +24,13 @@ class AkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements Conf
         return $this->getFactory()
             ->getAkeneoPimProcesses();
     }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     */
+    public function getTranslatorFunctionPlugins(): array
+    {
+        return $this->getFactory()
+            ->getAkeneoPimTranslatorFunctions();
+    }
 }

@@ -50,6 +50,14 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     */
+    public function getAkeneoPimTranslatorFunctions(): array
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS);
+    }
+
+    /**
      * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeInterface
      */
     public function getProcessFacade()
