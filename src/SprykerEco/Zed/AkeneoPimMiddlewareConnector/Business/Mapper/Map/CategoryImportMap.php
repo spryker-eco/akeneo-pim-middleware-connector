@@ -20,7 +20,17 @@ class CategoryImportMap extends AbstractMap
         return [
             'category_key' => 'code',
             'parent_category_key' => 'parent',
-            'localized_attributes' => 'labels',
+            'localizedAttributes' => 'labels',
+            'locales' => 'labels',
+            'is_root' => function (array $item) {
+                return empty($item['parent']);
+            },
+            'is_main' => function (array $item) {
+                return true;
+            },
+            'fk_category_template' => function (array $item) {
+                return null;
+            },
         ];
     }
 

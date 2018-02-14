@@ -35,4 +35,12 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     {
         return $this->get(AkeneoPimMiddlewareConnectorConstants::SUPER_ATTRIBUTE_MAP_FILE_PATH);
     }
+
+    /**
+     * @return int
+     */
+    public function getDefaultFkCategoryTemplate(): int
+    {
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_FK_CATEGORY_TEMPLATE);
+    }
 }

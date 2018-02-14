@@ -36,7 +36,7 @@ class CategoryImportDictionary extends AbstractDictionary
     public function getDictionary(): array
     {
         return [
-            'labels' => [
+            'localizedAttributes' => [
                 'LabelsToLocalizedAttributeNames',
                 [
                     'LocaleKeysToIds',
@@ -45,12 +45,23 @@ class CategoryImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-            'code' => [
+            'locales' => [
+                [
+                    'LabelsToLocaleIds',
+                    'options' => [
+                        'map' => $this->getLocaleMap(),
+                    ],
+                ],
+            ],
+            'category_key' => [
                 'AkeneoToSprykerCategoryCode',
             ],
-            'parent' => [
+            'parent_category_key' => [
                 'AkeneoToSprykerCategoryCode',
             ],
+            'fk_category_template' => function ($value, $key, $payload) {
+                return $this->config->getDefaultFkCategoryTemplate();
+            },
         ];
     }
 

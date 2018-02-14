@@ -11,10 +11,14 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\Attribute
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\CategoryAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductModelAkeneoApiReadStream;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\CategoryWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Db\PropelCriteriaReadStream;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Json\JsonObjectWriteStream;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface;
 use SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface;
+use SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface;
 
 class StreamFactory implements StreamFactoryInterface
 {
@@ -29,15 +33,23 @@ class StreamFactory implements StreamFactoryInterface
     protected $queryContainer;
 
     /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected $categoryImporterPlugin;
+
+    /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $categoryImporterPlugin
      */
     public function __construct(
         AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService,
-        AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer
+        AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer,
+        DataImporterPluginInterface $categoryImporterPlugin
     ) {
         $this->akeneoPimService = $akeneoPimService;
         $this->queryContainer = $queryContainer;
+        $this->categoryImporterPlugin = $categoryImporterPlugin;
     }
 
     /**
@@ -86,5 +98,23 @@ class StreamFactory implements StreamFactoryInterface
     public function createLocaleReadStream(): ReadStreamInterface
     {
         return new PropelCriteriaReadStream($this->queryContainer->createSpyLocaleQuery());
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createJsonObjectWriteStream(string $path): WriteStreamInterface
+    {
+        return new JsonObjectWriteStream($path);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createCategoryWriteStream(): WriteStreamInterface
+    {
+        return new CategoryWriteStream($this->categoryImporterPlugin);
     }
 }

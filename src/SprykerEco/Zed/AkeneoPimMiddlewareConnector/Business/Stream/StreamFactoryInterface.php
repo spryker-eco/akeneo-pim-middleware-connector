@@ -8,6 +8,7 @@
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream;
 
 use SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface;
+use SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface;
 
 interface StreamFactoryInterface
 {
@@ -40,4 +41,16 @@ interface StreamFactoryInterface
      * @return \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface
      */
     public function createLocaleReadStream(): ReadStreamInterface;
+
+    /**
+     * @param string $path
+     *
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createJsonObjectWriteStream(string $path);
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createCategoryWriteStream(): WriteStreamInterface;
 }

@@ -38,7 +38,11 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
      */
     public function createStreamFactory(): StreamFactoryInterface
     {
-        return new StreamFactory($this->getAkeneoPimService(), $this->getQueryContainer());
+        return new StreamFactory(
+            $this->getAkeneoPimService(),
+            $this->getQueryContainer(),
+            $this->getCategoryImporterPlugin()
+        );
     }
 
     /**
@@ -511,5 +515,13 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     public function getTaxSetMapImportOutputStreamPlugin(): OutputStreamPluginInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::TAX_SET_MAP_IMPORT_OUTPUT_STREAM_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected function getCategoryImporterPlugin()
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_CATEGORY_IMPORTER_PLUGIN);
     }
 }
