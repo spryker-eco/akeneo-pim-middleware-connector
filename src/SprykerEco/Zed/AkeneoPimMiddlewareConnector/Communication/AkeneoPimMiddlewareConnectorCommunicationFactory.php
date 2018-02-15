@@ -41,7 +41,10 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
         return new StreamFactory(
             $this->getAkeneoPimService(),
             $this->getQueryContainer(),
-            $this->getCategoryImporterPlugin()
+            $this->getCategoryImporterPlugin(),
+            $this->getAttributeImporterPlugin(),
+            $this->getProductAbstractImporterPlugin(),
+            $this->getProductConcreteImporterPlugin()
         );
     }
 
@@ -523,5 +526,29 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     protected function getCategoryImporterPlugin()
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_CATEGORY_IMPORTER_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected function getAttributeImporterPlugin()
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_ATTRIBUTE_IMPORTER_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected function getProductAbstractImporterPlugin()
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected function getProductConcreteImporterPlugin()
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_PRODUCT_CONCRETE_IMPORTER_PLUGIN);
     }
 }

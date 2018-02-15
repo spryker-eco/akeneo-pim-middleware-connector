@@ -52,15 +52,8 @@ class ProductImportDictionary extends AbstractDictionary
                         ],
                     ],
                 ],
-                [
-                    'UnderScoreHiddenAttributes',
-                    'options' => [
-                        'map' => $this->getAttributeMap(),
-                    ],
-                ],
                 'ValuesToAttributes',
                 'ValuesToLocalizedAttributes',
-                'CountryAvailabilityToIsActivePerLocale',
             ],
 
             'values.localizedAttributes' => [
@@ -89,24 +82,6 @@ class ProductImportDictionary extends AbstractDictionary
                 ],
             ],
             'values.price' => 'PriceSelector',
-            'values.bild_information' => [
-                'ImageDataToImageList',
-                [
-                    'LocaleKeysToIds',
-                    'options' => [
-                        'map' => $this->getLocaleMap(),
-                    ],
-                ],
-            ],
-            'values.picto_informationen' => [
-                'ImageDataToImageList',
-                [
-                    'LocaleKeysToIds',
-                    'options' => [
-                        'map' => $this->getLocaleMap(),
-                    ],
-                ],
-            ],
             'values.localizedAttributes.*' => [
                 [
                     'ExcludeKeysAssociativeFilter',

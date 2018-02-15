@@ -43,4 +43,12 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     {
         return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_FK_CATEGORY_TEMPLATE);
     }
+
+    /**
+     * @return string
+     */
+    public function getDefaultTaxSet(): string
+    {
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_TAX_SET);
+    }
 }

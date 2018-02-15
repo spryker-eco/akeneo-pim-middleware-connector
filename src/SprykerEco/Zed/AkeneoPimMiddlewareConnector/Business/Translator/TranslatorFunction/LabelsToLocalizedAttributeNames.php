@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_NAME = 'name';//@todo all these should go to config interface
+    const KEY_NAME = 'name';
 
     /**
      * @param mixed $value
@@ -22,9 +22,10 @@ class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction impleme
      */
     public function translate($value, array $payload)
     {
-        return array_map(function ($value) {
+        $key = isset($this->options['key']) ? $this->options['key'] : static::KEY_NAME;
+        return array_map(function ($value) use ($key) {
             return [
-                static::KEY_NAME => $value,
+                $key => $value,
             ];
         }, $value);
     }

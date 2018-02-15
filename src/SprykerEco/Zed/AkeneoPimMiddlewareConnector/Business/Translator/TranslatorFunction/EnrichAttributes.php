@@ -10,69 +10,6 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Transl
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\AbstractTranslatorFunction;
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface;
 
-/**
- * EnrichAttributes replaces attribute option identifiers with option values.
- *
- * Attribute data can have several formats:
- *
- *    Format 1. pim_catalog_simpleselect
- *              localizable: no
- *
- *    "ausfuehrung_ladeflaechen": [
- *        {
- *            "locale": null,
- *            "scope": null,
- *            "data": "mit_querkeilen"
- *        }
- *    ]
- *
- *    Format 2. pim_catalog_simpleselect
- *              localizable: yes
- *
- *    "tax_set": [
- *        {
- *            "locale": "de_AT",
- *            "scope": null,
- *            "data": "standard"
- *        },
- *        {
- *            "locale": "de_CH",
- *            "scope": null,
- *            "data": "standard"
- *        },
- *        ...
- *    ]
- *
- *    Format 3. pim_catalog_multiselect
- *            localizable: no
- *
- *    "farbe": [
- *        {
- *            "locale": null,
- *            "scope": null,
- *            "data": [
- *                "2_x_obere_ptfe_abdeckung_2_x_schweipapyrusweiss_ral_9018",
- *                "70299__aluminiumfarbe"
- *            ]
- *        }
- *    ]
- *
- *    The idea is to convert all formats to the unified structure:
- *
- *    "attribute_code": [
- *        {
- *            "locale": "de_AT",
- *            "scope": null,
- *            "data": "value1"
- *        },
- *        {
- *            "locale": "de_CH",
- *            "scope": null,
- *            "data": "value2"
- *        },
- *        ...
- *    ]
- */
 class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
     const KEY_OPTIONS = 'options';

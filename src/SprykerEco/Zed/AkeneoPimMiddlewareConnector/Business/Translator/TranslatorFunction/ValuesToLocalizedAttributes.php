@@ -17,6 +17,10 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
     const KEY_LOCALE = 'locale';
     const KEY_DATA = 'data';
 
+    const KEY_TITLE = 'title';
+    const KEY_NAME = 'name';
+    const KEY_DESCRIPTION = 'description';
+
     const KEYS_LOCALE = [
         'de_DE',
         'de_AT',
@@ -113,7 +117,10 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
         if (!array_key_exists($locale, $localizedAttributes)) {
             $localizedAttributes[$locale] = [];
         }
-
+        if ($key === static::KEY_TITLE) {
+            $localizedAttributes[$locale][static::KEY_NAME] = $value;
+            return $localizedAttributes;
+        }
         $localizedAttributes[$locale][$key] = $value;
 
         return $localizedAttributes;

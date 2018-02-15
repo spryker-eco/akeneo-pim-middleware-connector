@@ -41,6 +41,14 @@ class ProductModelImportDictionary extends AbstractDictionary
     public function getDictionary(): array
     {
         return [
+            'categories' => [
+                [
+                    'ArrayToString',
+                    'options' => [
+                        'glue' => ',',
+                    ],
+                ],
+            ],
             'values.*' => 'MeasureUnitToInt',
             'values' => [
                 [
@@ -52,15 +60,8 @@ class ProductModelImportDictionary extends AbstractDictionary
                         ],
                     ],
                 ],
-                [
-                    'UnderScoreHiddenAttributes',
-                    'options' => [
-                        'map' => $this->getAttributeMap(),
-                    ],
-                ],
                 'ValuesToAttributes',
                 'ValuesToLocalizedAttributes',
-                'CountryAvailabilityToIsActivePerLocale',
             ],
             'values.localizedAttributes' => [
                 [
@@ -73,6 +74,7 @@ class ProductModelImportDictionary extends AbstractDictionary
                     'MoveLocalizedAttributesToAttributes',
                     'options' => [
                         'blacklist' => [
+                            'name',
                             'title',
                             'product_description',
                             'meta_keywords',
@@ -86,24 +88,16 @@ class ProductModelImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-            'values.bild_information' => [
-                'ImageDataToImageList',
-                [
-                    'LocaleKeysToIds',
-                    'options' => [
-                        'map' => $this->getLocaleMap(),
-                    ],
-                ],
-            ],
-            'values.picto_informationen' => [
-                'ImageDataToImageList',
-                [
-                    'LocaleKeysToIds',
-                    'options' => [
-                        'map' => $this->getLocaleMap(),
-                    ],
-                ],
-            ],
+            'values.localizedAttributes.*' => function ($inputValue) {
+                //add required attributes that does not exists
+                $attributes = ['name', 'description', 'meta_title', 'meta_description', 'meta_keywords'];
+                foreach ($attributes as $attribute) {
+                    if (!isset($inputValue[$attribute])) {
+                        $inputValue[$attribute] = '';
+                    }
+                }
+                return $inputValue;
+            },
             'values.attributes' => [
                 [
                     'ExcludeKeysAssociativeFilter',

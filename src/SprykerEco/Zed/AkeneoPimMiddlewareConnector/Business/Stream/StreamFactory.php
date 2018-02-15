@@ -11,7 +11,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\Attribute
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\CategoryAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductModelAkeneoApiReadStream;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\CategoryWriteStream;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\DataImportWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Db\PropelCriteriaReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Json\JsonObjectWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface;
@@ -38,18 +38,42 @@ class StreamFactory implements StreamFactoryInterface
     protected $categoryImporterPlugin;
 
     /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected $attributeImporterPlugin;
+
+    /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected $productAbstractImporterPlugin;
+
+    /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected $productConcreteImporterPlugin;
+
+    /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $categoryImporterPlugin
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $attributeImporterPlugin
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $productAbstractImporterPlugin
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $productConcreteImporterPlugin
      */
     public function __construct(
         AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService,
         AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer,
-        DataImporterPluginInterface $categoryImporterPlugin
+        DataImporterPluginInterface $categoryImporterPlugin,
+        DataImporterPluginInterface $attributeImporterPlugin,
+        DataImporterPluginInterface $productAbstractImporterPlugin,
+        DataImporterPluginInterface $productConcreteImporterPlugin
     ) {
         $this->akeneoPimService = $akeneoPimService;
         $this->queryContainer = $queryContainer;
         $this->categoryImporterPlugin = $categoryImporterPlugin;
+        $this->attributeImporterPlugin = $attributeImporterPlugin;
+        $this->productConcreteImporterPlugin = $productConcreteImporterPlugin;
+        $this->productAbstractImporterPlugin = $productAbstractImporterPlugin;
     }
 
     /**
@@ -115,6 +139,30 @@ class StreamFactory implements StreamFactoryInterface
      */
     public function createCategoryWriteStream(): WriteStreamInterface
     {
-        return new CategoryWriteStream($this->categoryImporterPlugin);
+        return new DataImportWriteStream($this->categoryImporterPlugin);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createProductAbstractWriteStream(): WriteStreamInterface
+    {
+        return new DataImportWriteStream($this->productAbstractImporterPlugin);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createProductConcreteWriteStream(): WriteStreamInterface
+    {
+        return new DataImportWriteStream($this->productConcreteImporterPlugin);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createAttributeWriteStream(): WriteStreamInterface
+    {
+        return new DataImportWriteStream($this->attributeImporterPlugin);
     }
 }

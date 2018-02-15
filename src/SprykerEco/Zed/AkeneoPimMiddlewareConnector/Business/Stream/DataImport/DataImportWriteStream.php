@@ -11,7 +11,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPl
 use SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface;
 use SprykerMiddleware\Zed\Process\Business\Exception\MethodNotSupportedException;
 
-class CategoryWriteStream implements WriteStreamInterface
+class DataImportWriteStream implements WriteStreamInterface
 {
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface

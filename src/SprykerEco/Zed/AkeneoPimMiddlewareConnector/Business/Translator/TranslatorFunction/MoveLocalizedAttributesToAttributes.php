@@ -30,7 +30,11 @@ class MoveLocalizedAttributesToAttributes extends AbstractTranslatorFunction imp
      */
     public function translate($value, array $payload): array
     {
+
         foreach ($value as $localeId => $scopedAttributes) {
+            if (!isset($value[$localeId][static::KEY_ATTRIBUTES])) {
+                $value[$localeId][static::KEY_ATTRIBUTES] = [];
+            }
             foreach ($scopedAttributes as $attributeKey => $attribute) {
                 if (in_array($attributeKey, $this->options[static::ATTRIBUTE_BLACKLIST])) {
                     continue;

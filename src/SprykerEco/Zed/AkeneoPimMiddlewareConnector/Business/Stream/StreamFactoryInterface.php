@@ -53,4 +53,19 @@ interface StreamFactoryInterface
      * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
      */
     public function createCategoryWriteStream(): WriteStreamInterface;
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createAttributeWriteStream(): WriteStreamInterface;
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createProductAbstractWriteStream(): WriteStreamInterface;
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createProductConcreteWriteStream(): WriteStreamInterface;
 }

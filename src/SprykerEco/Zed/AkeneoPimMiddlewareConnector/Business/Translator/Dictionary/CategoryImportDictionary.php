@@ -53,12 +53,6 @@ class CategoryImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-            'category_key' => [
-                'AkeneoToSprykerCategoryCode',
-            ],
-            'parent_category_key' => [
-                'AkeneoToSprykerCategoryCode',
-            ],
             'fk_category_template' => function ($value, $key, $payload) {
                 return $this->config->getDefaultFkCategoryTemplate();
             },

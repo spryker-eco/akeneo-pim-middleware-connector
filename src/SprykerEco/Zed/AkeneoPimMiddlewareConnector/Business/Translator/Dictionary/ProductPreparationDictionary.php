@@ -16,19 +16,6 @@ class ProductPreparationDictionary extends AbstractDictionary
      */
     public function getDictionary(): array
     {
-        return [
-            'identifier' => [
-                [
-                    'ValidateSku',
-                    'options' => [
-                        'pattern_blacklist' => [
-                            'TEST_.+',
-                            'M.+',
-                            'SP.+',
-                        ],
-                    ],
-                ],
-            ],
-        ];
+        return [];
     }
 }

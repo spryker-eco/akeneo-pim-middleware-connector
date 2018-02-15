@@ -18,7 +18,17 @@ class AttributeMapImportMap extends AbstractMap
     public function getMap(): array
     {
         return [
-            'code' => 'code',
+            'attribute_key' => 'code',
+            'key' => 'code',
+            'allow_input' => function () {
+                return false;
+            },
+            'is_multiple' => function () {
+                return false;
+            },
+            'input_type' => function () {
+                return 'text';
+            },
             'type' => 'type',
             'group' => 'group',
             'options' => 'options',
