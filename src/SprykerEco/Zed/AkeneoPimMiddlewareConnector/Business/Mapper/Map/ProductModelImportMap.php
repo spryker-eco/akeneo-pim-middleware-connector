@@ -63,6 +63,9 @@ class ProductModelImportMap extends AbstractMap
             'color_code' => function ($item) {
                 return '';
             },
+            'stores' => function ($item) {
+                return $this->config->getDefaultStoresForProducts();
+            },
         ];
     }
 

@@ -25,20 +25,16 @@ class ProductImportMap extends AbstractMap
             'picto_images' => 'values.picto_informationen',
             'attributes' => [
                 'values.attributes',
-//                'except' => [
-//                    'variation_parent_product',
-//                ],
             ],
             'localizedAttributes' => [
                 'values.localizedAttributes',
-//                'itemExcept' => [
-//                    'price',
-//                    'bild_information',
-//                ],
             ],
             'relations.others' => 'associations.PACK.product_models',
             'relations.x_sell' => 'associations.X_SELL.product_models',
             'relations.addon' => 'associations.SUBSTITUTION.product_models',
+            'is_searchable' => function () {
+                return true;
+            },
         ];
     }
 

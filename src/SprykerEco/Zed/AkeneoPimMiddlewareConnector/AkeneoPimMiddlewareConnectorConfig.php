@@ -51,4 +51,20 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     {
         return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_TAX_SET);
     }
+
+    /**
+     * @return array
+     */
+    public function getLocalesForImport(): array
+    {
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::LOCALES_FOR_IMPORT);
+    }
+
+    /**
+     * @return array
+     */
+    public function getDefaultStoresForProducts(): array
+    {
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_STORES_FOR_PRODUCTS);
+    }
 }

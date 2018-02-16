@@ -21,13 +21,10 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
     const KEY_NAME = 'name';
     const KEY_DESCRIPTION = 'description';
 
-    const KEYS_LOCALE = [
-        'de_DE',
-        'de_AT',
-        'de_CH',
-        'fr_FR',
-        'fr_CH',
-    ];
+    /**
+     * @var array
+     */
+    protected $requiredOptions = ['locales'];
 
     /**
      * @param mixed $value
@@ -95,7 +92,7 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
      */
     protected function hasLocaleKey($keys): bool
     {
-        foreach (static::KEYS_LOCALE as $locale) {
+        foreach ($this->getLocales() as $locale) {
             if (in_array($locale, $keys, true)) {
                 return true;
             }
@@ -124,5 +121,13 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
         $localizedAttributes[$locale][$key] = $value;
 
         return $localizedAttributes;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getLocales()
+    {
+        return $this->options['locales'];
     }
 }

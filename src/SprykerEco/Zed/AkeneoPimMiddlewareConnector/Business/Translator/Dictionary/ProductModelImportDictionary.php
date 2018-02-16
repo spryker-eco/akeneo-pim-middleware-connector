@@ -60,8 +60,18 @@ class ProductModelImportDictionary extends AbstractDictionary
                         ],
                     ],
                 ],
-                'ValuesToAttributes',
-                'ValuesToLocalizedAttributes',
+                [
+                    'ValuesToAttributes',
+                    'options' => [
+                        'locales' => $this->config->getLocalesForImport(),
+                    ],
+                ],
+                [
+                    'ValuesToLocalizedAttributes',
+                    'options' => [
+                        'locales' => $this->config->getLocalesForImport(),
+                    ],
+                ],
             ],
             'values.localizedAttributes' => [
                 [

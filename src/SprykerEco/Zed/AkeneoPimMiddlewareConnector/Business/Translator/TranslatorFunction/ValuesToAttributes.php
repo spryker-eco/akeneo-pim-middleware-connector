@@ -17,13 +17,10 @@ class ValuesToAttributes extends AbstractTranslatorFunction implements Translato
     const KEY_LOCALE = 'locale';
     const KEY_DATA = 'data';
 
-    const KEYS_LOCALE = [
-        'de_DE',
-        'de_AT',
-        'de_CH',
-        'fr_FR',
-        'fr_CH',
-    ];
+    /**
+     * @var array
+     */
+    protected $requiredOptions = ['locales'];
 
     /**
      * @param mixed $value
@@ -83,12 +80,20 @@ class ValuesToAttributes extends AbstractTranslatorFunction implements Translato
      */
     protected function hasLocaleKey($keys): bool
     {
-        foreach (static::KEYS_LOCALE as $locale) {
+        foreach ($this->getLocales() as $locale) {
             if (in_array($locale, $keys, true)) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getLocales()
+    {
+        return $this->options['locales'];
     }
 }

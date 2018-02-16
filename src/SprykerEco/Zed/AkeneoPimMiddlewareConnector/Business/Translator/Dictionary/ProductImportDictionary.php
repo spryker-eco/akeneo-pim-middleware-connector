@@ -52,8 +52,18 @@ class ProductImportDictionary extends AbstractDictionary
                         ],
                     ],
                 ],
-                'ValuesToAttributes',
-                'ValuesToLocalizedAttributes',
+                [
+                    'ValuesToAttributes',
+                    'options' => [
+                        'locales' => $this->config->getLocalesForImport(),
+                    ],
+                ],
+                [
+                    'ValuesToLocalizedAttributes',
+                    'options' => [
+                        'locales' => $this->config->getLocalesForImport(),
+                    ],
+                ],
             ],
 
             'values.localizedAttributes' => [
@@ -67,6 +77,7 @@ class ProductImportDictionary extends AbstractDictionary
                     'MoveLocalizedAttributesToAttributes',
                     'options' => [
                         'blacklist' => [
+                            'name',
                             'title',
                             'product_description',
                             'tax_set',
@@ -94,6 +105,19 @@ class ProductImportDictionary extends AbstractDictionary
                         ],
                     ],
                 ],
+                function ($inputValue) {
+                    //add required attributes that does not exists
+                    $attributes = ['name', 'description', 'meta_title', 'meta_description', 'meta_keywords'];
+                    foreach ($attributes as $attribute) {
+                        if (!isset($inputValue[$attribute])) {
+                            $inputValue[$attribute] = '';
+                        }
+                        if (!isset($inputValue['is_searchable'])) {
+                            $inputValue['is_searchable'] = true;
+                        }
+                    }
+                    return $inputValue;
+                },
             ],
             'values.attributes' => [
                 [
