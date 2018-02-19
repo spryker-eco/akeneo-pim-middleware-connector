@@ -17,7 +17,7 @@ class LocaleKeysToIdsTranslatorFunctionPlugin extends AbstractGenericTranslatorF
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
@@ -25,7 +25,7 @@ class LocaleKeysToIdsTranslatorFunctionPlugin extends AbstractGenericTranslatorF
     /**
      * @return string
      */
-    public function getTranslatorFunctionClassName()
+    public function getTranslatorFunctionClassName(): string
     {
         return LocaleKeysToIds::class;
     }

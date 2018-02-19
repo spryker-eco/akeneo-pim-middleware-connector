@@ -36,9 +36,9 @@ class AddAttributeOptions extends AbstractTranslatorFunction implements Translat
      * @param mixed $value
      * @param array $payload
      *
-     * @return mixed
+     * @return array
      */
-    public function translate($value, array $payload)
+    public function translate($value, array $payload): array
     {
         if (!in_array($value['type'], static::ATTRIBUTE_TYPES_WITH_OPTIONS)) {
             return [];

@@ -7,15 +7,17 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence;
 
+use Propel\Runtime\ActiveQuery\ModelCriteria;
+
 interface AkeneoPimMiddlewareConnectorQueryContainerInterface
 {
     /**
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */
-    public function createSpyTaxSetQuery();
+    public function createSpyTaxSetQuery(): ModelCriteria;
 
     /**
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */
-    public function createSpyLocaleQuery();
+    public function createSpyLocaleQuery(): ModelCriteria;
 }

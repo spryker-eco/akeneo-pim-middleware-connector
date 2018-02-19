@@ -57,16 +57,6 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer;
-     */
-    public function getProductPreparationTranslatorConfig(): TranslatorConfigTransfer
-    {
-        return $this->getFactory()
-            ->createProductPreparationDictionary()
-            ->getTranslatorConfig();
-    }
-
-    /**
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
     public function getProductModelImportMapperConfig(): MapperConfigTransfer
@@ -83,16 +73,6 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     {
         return $this->getFactory()
             ->createProductModelImportDictionary()
-            ->getTranslatorConfig();
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer;
-     */
-    public function getProductModelPreparationTranslatorConfig(): TranslatorConfigTransfer
-    {
-        return $this->getFactory()
-            ->createProductModelPreparationDictionary()
             ->getTranslatorConfig();
     }
 

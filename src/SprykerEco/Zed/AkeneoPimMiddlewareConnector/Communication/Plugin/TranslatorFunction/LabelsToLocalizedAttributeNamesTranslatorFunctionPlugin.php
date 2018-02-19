@@ -17,7 +17,7 @@ class LabelsToLocalizedAttributeNamesTranslatorFunctionPlugin extends AbstractGe
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
@@ -25,7 +25,7 @@ class LabelsToLocalizedAttributeNamesTranslatorFunctionPlugin extends AbstractGe
     /**
      * @return string
      */
-    public function getTranslatorFunctionClassName()
+    public function getTranslatorFunctionClassName(): string
     {
         return LabelsToLocalizedAttributeNames::class;
     }

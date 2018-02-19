@@ -14,7 +14,7 @@ interface TranslatorFunctionFactoryInterface
     /**
      * @return \SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface
      */
-    public function createAddAttributeOptionsTranslatorFunction();
+    public function createAddAttributeOptionsTranslatorFunction(): TranslatorFunctionInterface;
 
     /**
      * @param string $translatorFunctionClassName

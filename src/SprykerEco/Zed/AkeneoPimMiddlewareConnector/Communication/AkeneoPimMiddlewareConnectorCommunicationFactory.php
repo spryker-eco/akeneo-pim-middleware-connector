@@ -13,6 +13,8 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactoryInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactoryInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
@@ -67,7 +69,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     /**
      * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeInterface
      */
-    public function getProcessFacade()
+    public function getProcessFacade(): AkeneoPimMiddlewareConnectorToProcessFacadeInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::FACADE_PROCESS);
     }
@@ -523,7 +525,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     /**
      * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
      */
-    protected function getCategoryImporterPlugin()
+    protected function getCategoryImporterPlugin(): DataImporterPluginInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_CATEGORY_IMPORTER_PLUGIN);
     }
@@ -531,7 +533,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     /**
      * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
      */
-    protected function getAttributeImporterPlugin()
+    protected function getAttributeImporterPlugin(): DataImporterPluginInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_ATTRIBUTE_IMPORTER_PLUGIN);
     }
@@ -539,7 +541,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     /**
      * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
      */
-    protected function getProductAbstractImporterPlugin()
+    protected function getProductAbstractImporterPlugin(): DataImporterPluginInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN);
     }

@@ -26,7 +26,7 @@ class ValuesToAttributes extends AbstractTranslatorFunction implements Translato
      * @param mixed $value
      * @param array $payload
      *
-     * @return mixed
+     * @return array
      */
     public function translate($value, array $payload): array
     {
@@ -92,7 +92,7 @@ class ValuesToAttributes extends AbstractTranslatorFunction implements Translato
     /**
      * @return array
      */
-    protected function getLocales()
+    protected function getLocales(): array
     {
         return $this->options['locales'];
     }

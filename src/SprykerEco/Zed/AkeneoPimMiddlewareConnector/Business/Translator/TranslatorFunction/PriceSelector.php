@@ -41,7 +41,7 @@ class PriceSelector extends AbstractTranslatorFunction implements TranslatorFunc
      *
      * @throws \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Exception\MissingPriceException
      *
-     * @return mixed
+     * @return array
      */
     public function translate($value, array $payload): array
     {

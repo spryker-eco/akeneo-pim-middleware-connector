@@ -21,8 +21,6 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\A
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\CategoryImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductModelImportDictionary;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductModelPreparationDictionary;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductPreparationDictionary;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface;
 
@@ -86,22 +84,6 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     public function createProductImportDictionary(): DictionaryInterface
     {
         return new ProductImportDictionary($this->getConfig());
-    }
-
-    /**
-     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
-     */
-    public function createProductModelPreparationDictionary(): DictionaryInterface
-    {
-        return new ProductModelPreparationDictionary();
-    }
-
-    /**
-     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
-     */
-    public function createProductPreparationDictionary(): DictionaryInterface
-    {
-        return new ProductPreparationDictionary();
     }
 
     /**

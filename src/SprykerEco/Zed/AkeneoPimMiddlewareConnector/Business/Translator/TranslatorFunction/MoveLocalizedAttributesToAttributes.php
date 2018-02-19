@@ -26,7 +26,7 @@ class MoveLocalizedAttributesToAttributes extends AbstractTranslatorFunction imp
      * @param mixed $value
      * @param array $payload
      *
-     * @return mixed
+     * @return array
      */
     public function translate($value, array $payload): array
     {

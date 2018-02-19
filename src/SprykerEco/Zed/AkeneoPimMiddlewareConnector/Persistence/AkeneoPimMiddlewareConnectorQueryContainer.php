@@ -11,6 +11,7 @@ use Orm\Zed\Locale\Persistence\Map\SpyLocaleTableMap;
 use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\Tax\Persistence\Map\SpyTaxSetTableMap;
 use Orm\Zed\Tax\Persistence\SpyTaxSetQuery;
+use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
 class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer implements AkeneoPimMiddlewareConnectorQueryContainerInterface
@@ -18,7 +19,7 @@ class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer 
     /**
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */
-    public function createSpyTaxSetQuery()
+    public function createSpyTaxSetQuery(): ModelCriteria
     {
         return SpyTaxSetQuery::create()
             ->select([
@@ -30,7 +31,7 @@ class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer 
     /**
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */
-    public function createSpyLocaleQuery()
+    public function createSpyLocaleQuery(): ModelCriteria
     {
         return SpyLocaleQuery::create()
             ->select([

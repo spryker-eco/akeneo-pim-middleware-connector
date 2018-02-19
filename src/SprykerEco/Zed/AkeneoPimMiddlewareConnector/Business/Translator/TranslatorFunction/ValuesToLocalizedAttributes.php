@@ -30,7 +30,7 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
      * @param mixed $value
      * @param array $payload
      *
-     * @return mixed
+     * @return array
      */
     public function translate($value, array $payload): array
     {
@@ -126,7 +126,7 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
     /**
      * @return array
      */
-    protected function getLocales()
+    protected function getLocales(): array
     {
         return $this->options['locales'];
     }

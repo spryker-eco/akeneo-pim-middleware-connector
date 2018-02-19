@@ -28,7 +28,7 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
     /**
      * @return \SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface
      */
-    public function createAddAttributeOptionsTranslatorFunction()
+    public function createAddAttributeOptionsTranslatorFunction(): TranslatorFunctionInterface
     {
         return new AddAttributeOptions($this->akeneoPimService);
     }

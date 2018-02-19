@@ -66,19 +66,16 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
                     continue 2;
                 }
 
-                // Skip attribute if no data provided
                 if (count($attributeData) === 0) {
                     continue;
                 }
 
                 if ($isAttributeLocalizable) {
                     $options = $this->getOptions($attributeKey, $attributeData);
-                    // Replace option id with option value
                     $attributeValue[static::KEY_DATA] = $options[$locale];
                     continue;
                 }
                 
-                // Fully override attribute value with output structure, @see class header
                 $value[$attributeKey] = $this->getAttributeValue($attributeKey, $attributeData);
             }
         }
@@ -150,7 +147,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
      *
      * @return string
      */
-    protected function getOptions(string $attributeKey, string $optionKey)
+    protected function getOptions(string $attributeKey, string $optionKey): string
     {
         if (!array_key_exists($optionKey, static::$attributeOptionMap[$attributeKey])) {
             return $optionKey;

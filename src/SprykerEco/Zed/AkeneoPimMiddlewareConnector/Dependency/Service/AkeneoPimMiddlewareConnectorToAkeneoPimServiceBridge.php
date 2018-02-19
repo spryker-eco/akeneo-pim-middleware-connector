@@ -7,6 +7,8 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service;
 
+use SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface;
+
 class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
 {
     /**
@@ -28,7 +30,7 @@ class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimM
      *
      * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllProducts($pageSize = 10, array $queryParameters = [])
+    public function getAllProducts($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
     {
         return $this->akeneoPimService
             ->getAllProducts($pageSize, $queryParameters);
@@ -40,7 +42,7 @@ class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimM
      *
      * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllCategories($pageSize = 10, array $queryParameters = [])
+    public function getAllCategories($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
     {
         return $this->akeneoPimService
             ->getAllCategories($pageSize, $queryParameters);
@@ -52,7 +54,7 @@ class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimM
      *
      * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllAttributes($pageSize = 10, array $queryParameters = [])
+    public function getAllAttributes($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
     {
         return $this->akeneoPimService
             ->getAllAttributes($pageSize, $queryParameters);
@@ -65,7 +67,7 @@ class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimM
      *
      * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllAttributeOptions($attributeCode, $pageSize = 10, array $queryParameters = [])
+    public function getAllAttributeOptions($attributeCode, $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
     {
         return $this->akeneoPimService
             ->getAllAttributeOptions($attributeCode, $pageSize, $queryParameters);
@@ -77,7 +79,7 @@ class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimM
      *
      * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllProductModels($pageSize = 10, array $queryParameters = [])
+    public function getAllProductModels($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
     {
         return $this->akeneoPimService
             ->getAllProductModels($pageSize, $queryParameters);

@@ -32,7 +32,7 @@ abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStrea
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function read(): array
     {
@@ -40,7 +40,7 @@ abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStrea
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function get(): array
     {

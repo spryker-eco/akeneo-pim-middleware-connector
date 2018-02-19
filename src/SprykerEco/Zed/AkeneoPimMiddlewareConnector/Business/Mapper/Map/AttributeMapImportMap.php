@@ -32,7 +32,6 @@ class AttributeMapImportMap extends AbstractMap
             'type' => 'type',
             'group' => 'group',
             'options' => 'options',
-//            'metric_family' => 'metric_family',
             'is_super' => 'is_super',
             'localizedAttributes' => 'labels',
             'localizable' => 'localizable',

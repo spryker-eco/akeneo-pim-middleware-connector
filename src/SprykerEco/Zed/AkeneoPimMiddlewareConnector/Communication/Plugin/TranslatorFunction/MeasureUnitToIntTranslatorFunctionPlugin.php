@@ -17,7 +17,7 @@ class MeasureUnitToIntTranslatorFunctionPlugin extends AbstractGenericTranslator
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
@@ -25,7 +25,7 @@ class MeasureUnitToIntTranslatorFunctionPlugin extends AbstractGenericTranslator
     /**
      * @return string
      */
-    public function getTranslatorFunctionClassName()
+    public function getTranslatorFunctionClassName(): string
     {
         return MeasureUnitToInt::class;
     }
