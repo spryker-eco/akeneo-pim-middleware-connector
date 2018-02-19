@@ -53,7 +53,7 @@ class CategoryImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-            'fk_category_template' => function ($value, $key, $payload) {
+            'fk_category_template' => function ($value, $payload) {
                 return $this->config->getDefaultFkCategoryTemplate();
             },
         ];

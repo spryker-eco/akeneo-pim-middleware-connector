@@ -98,16 +98,20 @@ class ProductModelImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-            'values.localizedAttributes.*' => function ($inputValue) {
-                //add required attributes that does not exists
-                $attributes = ['name', 'description', 'meta_title', 'meta_description', 'meta_keywords'];
-                foreach ($attributes as $attribute) {
-                    if (!isset($inputValue[$attribute])) {
-                        $inputValue[$attribute] = '';
-                    }
-                }
-                return $inputValue;
-            },
+            'values.localizedAttributes.*' => [
+                [
+                    'AddMissingAttributes',
+                    'options' => [
+                        'attributes' => [
+                            'name' => '',
+                            'description' => '',
+                            'meta_title' => '',
+                            'meta_description' => '',
+                            'meta_keywords' => '',
+                        ],
+                    ],
+                ],
+            ],
             'values.attributes' => [
                 [
                     'ExcludeKeysAssociativeFilter',

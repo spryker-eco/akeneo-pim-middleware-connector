@@ -64,21 +64,7 @@ class AttributeMapDictionary extends AbstractDictionary
                         'key' => 'key_translation',
                     ],
                 ],
-                function ($inputValue, $key, $result) {
-                    foreach ($inputValue as $inputValueKey => $item) {
-                        $item['values'] = array_keys($result['options']);
-                        $item['value_translations'] = [];
-                        foreach ($result['options'] as $optionKey => $optionValue) {
-                            if (isset($optionValue[$inputValueKey])) {
-                                $item['value_translations'][$optionKey] = $optionValue[$inputValueKey];
-                                continue;
-                            }
-                            $item['value_translations'][$optionKey] = $optionKey;
-                        }
-                        $inputValue[$inputValueKey] = $item;
-                    }
-                    return $inputValue;
-                },
+                'AddAttributeValues',
                 [
                     'LocaleKeysToIds',
                     'options' => [
@@ -87,12 +73,7 @@ class AttributeMapDictionary extends AbstractDictionary
                 ],
             ],
             'labels.*.key_translation' => [
-                function ($inputValue, $key, $result) {
-                    if ($inputValue === null) {
-                        return $result['code'];
-                    }
-                    return $inputValue;
-                },
+                'AttributeEmptyTranslationToKey',
             ],
         ];
     }

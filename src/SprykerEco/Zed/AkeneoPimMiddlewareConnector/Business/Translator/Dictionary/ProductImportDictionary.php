@@ -105,19 +105,19 @@ class ProductImportDictionary extends AbstractDictionary
                         ],
                     ],
                 ],
-                function ($inputValue) {
-                    //add required attributes that does not exists
-                    $attributes = ['name', 'description', 'meta_title', 'meta_description', 'meta_keywords'];
-                    foreach ($attributes as $attribute) {
-                        if (!isset($inputValue[$attribute])) {
-                            $inputValue[$attribute] = '';
-                        }
-                        if (!isset($inputValue['is_searchable'])) {
-                            $inputValue['is_searchable'] = true;
-                        }
-                    }
-                    return $inputValue;
-                },
+                [
+                    'AddMissingAttributes',
+                    'options' => [
+                        'attributes' => [
+                            'name' => '',
+                            'description' => '',
+                            'meta_title' => '',
+                            'meta_description' => '',
+                            'meta_keywords' => '',
+                            'is_searchable' => true,
+                        ],
+                    ],
+                ],
             ],
             'values.attributes' => [
                 [
