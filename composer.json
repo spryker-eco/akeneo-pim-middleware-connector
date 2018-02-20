@@ -6,8 +6,8 @@
     "spryker/kernel": "^3.0.0",
     "spryker/locale": "^3.0.0",
     "spryker/tax": "^5.0.0",
-    "spryker-eco/akeneo-pim": "dev-feature/ECO-1078-service-layer",
-    "spryker-middleware/process": "dev-dev",
+    "spryker-eco/akeneo-pim": "dev-beta/ECO-777-akeneo-pim",
+    "spryker-middleware/process": "dev-beta/middleware-process",
     "spryker/data-import": "^1.0.0"
   },
   "repositories": [
