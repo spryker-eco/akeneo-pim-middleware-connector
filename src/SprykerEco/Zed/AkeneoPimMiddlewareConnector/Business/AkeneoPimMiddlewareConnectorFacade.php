@@ -129,4 +129,44 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
             ->createTaxSetMapper()
             ->map($payload);
     }
+
+    /**
+     * @return \Generated\Shared\Transfer\MapperConfigTransfer
+     */
+    public function getDefaultCategoryImportMapperConfig(): MapperConfigTransfer
+    {
+        return $this->getFactory()
+            ->createDefaultCategoryImportMap()
+            ->getMapperConfig();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
+     */
+    public function getDefaultCategoryImportTranslatorConfig(): TranslatorConfigTransfer
+    {
+        return $this->getFactory()
+            ->createDefaultCategoryImportDictionary()
+            ->getTranslatorConfig();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
+     */
+    public function getDefaultProductImportTranslatorConfig(): TranslatorConfigTransfer
+    {
+        return $this->getFactory()
+            ->createDefaultProductImportDictionary()
+            ->getTranslatorConfig();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
+     */
+    public function getDefaultProductModelImportTranslatorConfig(): TranslatorConfigTransfer
+    {
+        return $this->getFactory()
+            ->createDefaultProductModelImportDictionary()
+            ->getTranslatorConfig();
+    }
 }

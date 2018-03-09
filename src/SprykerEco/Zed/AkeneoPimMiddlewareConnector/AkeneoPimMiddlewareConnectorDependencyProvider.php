@@ -17,12 +17,19 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\CategoryMap
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\AttributeImportConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\AttributeMapConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\CategoryImportConfigurationPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\DefaultCategoryImportConfigurationPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\DefaultProductImportConfigurationPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\DefaultProductModelImportConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\LocaleMapImportConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductImportConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductModelImportConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductModelPreparationConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductPreparationConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\TaxSetMapImportConfigurationPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultCategoryImportTranslationStagePlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultCategoryMapperStagePlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductImportTranslationStagePlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductModelImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\LocaleMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductMapperStagePlugin;
@@ -44,6 +51,8 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorF
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddAttributeValuesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddMissingAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AttributeEmptyTranslationToKeyTranslatorFunctionPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\DefaultPriceSelectorTranslatorFunctionPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\DefaultValuesToLocalizedAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\EnrichAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\LabelsToLocaleIdsTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\LabelsToLocalizedAttributeNamesTranslatorFunctionPlugin;
@@ -52,6 +61,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorF
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\MeasureUnitToIntTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\MoveLocalizedAttributesToAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\PriceSelectorTranslatorFunctionPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\SkipItemsWithoutParentTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\ValuesToAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\ValuesToLocalizedAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeBridge;
@@ -67,6 +77,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 {
     const SERVICE_AKENEO_PIM = 'SERVICE_AKENEO_PIM';
     const FACADE_PROCESS = 'FACADE_PROCESS';
+
+    const DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES';
+    const DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS';
 
     const AKENEO_PIM_MIDDLEWARE_PROCESSES = 'AKENEO_PIM_MIDDLEWARE_PROCESSES';
     const AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG = 'AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG';
@@ -139,6 +152,10 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     const TAX_SET_MAP_IMPORT_PRE_PROCESSOR_PLUGINS = 'TAX_SET_MAP_IMPORT_PRE_PROCESSOR_PLUGINS';
     const TAX_SET_MAP_IMPORT_POST_PROCESSOR_PLUGINS = 'TAX_SET_MAP_IMPORT_POST_PROCESSOR_PLUGINS';
 
+    const DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS = 'DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS';
+    const DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS = 'DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS';
+    const DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS = 'DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS';
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -160,7 +177,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container = $this->addProductConcreteDataImporterPlugin($container);
         $container = $this->addDefaultLoggerConfigPlugin($container);
         $container = $this->addAkeneoPimProcesses($container);
+        $container = $this->addDefaultAkeneoPimProcesses($container);
         $container = $this->addAkeneoPimTranslatorFunctions($container);
+        $container = $this->addDefaultAkeneoPimTranslatorFunctions($container);
         $container = $this->addAttributeImportProcessPlugins($container);
         $container = $this->addAttributeMapProcessPlugins($container);
         $container = $this->addCategoryImportProcessPlugins($container);
@@ -170,6 +189,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container = $this->addProductModelPreparationProcessPlugins($container);
         $container = $this->addProductPreparationProcessPlugins($container);
         $container = $this->addTaxSetMapImportProcessPlugins($container);
+        $container = $this->addDefaultCategoryImportStagePluginsStack($container);
+        $container = $this->addDefaultProductImportStagePluginsStack($container);
+        $container = $this->addDefaultProductModelImportStagePluginsStack($container);
 
         return $container;
     }
@@ -203,6 +225,32 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             new ProductModelPreparationConfigurationPlugin(),
             new ProductPreparationConfigurationPlugin(),
             new TaxSetMapImportConfigurationPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addDefaultAkeneoPimProcesses(Container $container): Container
+    {
+        $container[static::DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES] = function () {
+            return $this->getDefaultAkeneoPimProceseesPluginsStack();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
+     */
+    protected function getDefaultAkeneoPimProceseesPluginsStack(): array
+    {
+        return [
+            new DefaultCategoryImportConfigurationPlugin(),
+            new DefaultProductImportConfigurationPlugin(),
+            new DefaultProductModelImportConfigurationPlugin(),
         ];
     }
 
@@ -601,6 +649,33 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             new ValuesToLocalizedAttributesTranslatorFunctionPlugin(),
             new MeasureUnitToIntTranslatorFunctionPlugin(),
             new LabelsToLocaleIdsTranslatorFunctionPlugin(),
+            new SkipItemsWithoutParentTranslatorFunctionPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addDefaultAkeneoPimTranslatorFunctions($container): Container
+    {
+        $container[static::DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS] = function () {
+            return $this->getDefaultAkeneoPimTranslatorFunctionPluginsStack();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     */
+    protected function getDefaultAkeneoPimTranslatorFunctionPluginsStack(): array
+    {
+        return [
+            new DefaultPriceSelectorTranslatorFunctionPlugin(),
+            new DefaultValuesToLocalizedAttributesTranslatorFunctionPlugin(),
+            new SkipItemsWithoutParentTranslatorFunctionPlugin(),
         ];
     }
 
@@ -641,6 +716,63 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addProductConcreteDataImporterPlugin(Container $container): Container
     {
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addDefaultCategoryImportStagePluginsStack($container)
+    {
+        $container[static::DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS] = function () {
+            return [
+                new StreamReaderStagePlugin(),
+                new DefaultCategoryMapperStagePlugin(),
+                new DefaultCategoryImportTranslationStagePlugin(),
+                new StreamWriterStagePlugin(),
+            ];
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addDefaultProductImportStagePluginsStack($container)
+    {
+        $container[static::DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS] = function () {
+            return [
+                new StreamReaderStagePlugin(),
+                new DefaultProductImportTranslationStagePlugin(),
+                new ProductMapperStagePlugin(),
+                new StreamWriterStagePlugin(),
+            ];
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addDefaultProductModelImportStagePluginsStack($container)
+    {
+        $container[static::DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS] = function () {
+            return [
+                new StreamReaderStagePlugin(),
+                new DefaultProductModelImportTranslationStagePlugin(),
+                new ProductModelImportMapperStagePlugin(),
+                new StreamWriterStagePlugin(),
+            ];
+        };
+
         return $container;
     }
 }

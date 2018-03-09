@@ -553,4 +553,44 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_PRODUCT_CONCRETE_IMPORTER_PLUGIN);
     }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
+     */
+    public function getDefaultAkeneoPimProcesses()
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     */
+    public function getDefaultAkeneoPimTranslatorFunctions()
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
+     */
+    public function getDefaultCategoryImportStagePluginsStack(): array
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
+     */
+    public function getDefaultProductImportStagePluginsStack(): array
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
+     */
+    public function getDefaultProductModelImportStagePluginsStack(): array
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS);
+    }
 }

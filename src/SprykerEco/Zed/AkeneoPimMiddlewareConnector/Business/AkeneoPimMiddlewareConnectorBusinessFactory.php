@@ -13,12 +13,16 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\LocaleMapperInte
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\AttributeMapImportMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\AttributeMapPreparationMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\CategoryImportMap;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\DefaultCategoryImportMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\ProductImportMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\ProductModelImportMap;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\TaxSetMapper;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\TaxSetMapperInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\AttributeMapDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\CategoryImportDictionary;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\DefaultCategoryImportDictionary;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\DefaultProductImportDictionary;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\DefaultProductModelImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductModelImportDictionary;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
@@ -116,5 +120,37 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     public function createTaxSetMapper(): TaxSetMapperInterface
     {
         return new TaxSetMapper();
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
+     */
+    public function createDefaultCategoryImportMap(): MapInterface
+    {
+        return new DefaultCategoryImportMap();
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
+     */
+    public function createDefaultProductModelImportDictionary(): DictionaryInterface
+    {
+        return new DefaultProductModelImportDictionary($this->getConfig());
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
+     */
+    public function createDefaultProductImportDictionary(): DictionaryInterface
+    {
+        return new DefaultProductImportDictionary($this->getConfig());
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
+     */
+    public function createDefaultCategoryImportDictionary(): DictionaryInterface
+    {
+        return new DefaultCategoryImportDictionary($this->getConfig());
     }
 }

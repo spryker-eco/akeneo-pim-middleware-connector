@@ -58,6 +58,26 @@ interface AkeneoPimMiddlewareConnectorFacadeInterface
     public function getAttributeMapPreparationMapperConfig(): MapperConfigTransfer;
 
     /**
+     * @return \Generated\Shared\Transfer\MapperConfigTransfer
+     */
+    public function getDefaultCategoryImportMapperConfig(): MapperConfigTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
+     */
+    public function getDefaultCategoryImportTranslatorConfig(): TranslatorConfigTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
+     */
+    public function getDefaultProductImportTranslatorConfig(): TranslatorConfigTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
+     */
+    public function getDefaultProductModelImportTranslatorConfig(): TranslatorConfigTransfer;
+
+    /**
      * @param array $payload
      *
      * @return array
