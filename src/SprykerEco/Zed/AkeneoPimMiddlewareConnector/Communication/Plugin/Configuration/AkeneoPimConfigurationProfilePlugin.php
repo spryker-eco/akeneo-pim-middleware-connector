@@ -33,4 +33,12 @@ class AkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements Conf
         return $this->getFactory()
             ->getAkeneoPimTranslatorFunctions();
     }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\ValidatorPluginInterface[]
+     */
+    public function getValidatorPlugins(): array
+    {
+        return [];
+    }
 }

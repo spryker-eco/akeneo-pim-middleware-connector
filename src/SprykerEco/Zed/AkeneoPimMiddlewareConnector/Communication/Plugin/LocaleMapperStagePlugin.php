@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin;
 
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface;
 use SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
 
@@ -20,13 +19,12 @@ class LocaleMapperStagePlugin extends AbstractPlugin implements StagePluginInter
 {
     /**
      * @param mixed $payload
-     * @param \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface $inStream
      * @param \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface $outStream
      * @param mixed $originalPayload
      *
      * @return mixed
      */
-    public function process($payload, ReadStreamInterface $inStream, WriteStreamInterface $outStream, $originalPayload)
+    public function process($payload, WriteStreamInterface $outStream, $originalPayload)
     {
         return $this->getFacade()
             ->mapLocalePayload($payload);
