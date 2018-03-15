@@ -7,7 +7,7 @@
     "spryker/locale": "^3.0.0",
     "spryker/tax": "^5.0.0",
     "spryker-eco/akeneo-pim": "dev-beta/ECO-777-akeneo-pim",
-    "spryker-middleware/process": "dev-beta/middleware-process",
+    "spryker-middleware/process": "dev-feature/SM-106-get-rid-of-input-stream-in-stages",
     "spryker/data-import": "^1.0.0"
   },
   "repositories": [
