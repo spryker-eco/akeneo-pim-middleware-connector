@@ -51,11 +51,9 @@ abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStrea
     }
 
     /**
-     * @param string $mode
-     *
      * @return bool
      */
-    abstract public function open(string $mode): bool;
+    abstract public function open(): bool;
 
     /**
      * @return bool

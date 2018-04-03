@@ -68,7 +68,8 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddl
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Log\MiddlewareLoggerConfigPlugin;
-use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonStreamPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonInputStreamPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonOutputStreamPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\StreamReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\StreamWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
@@ -326,7 +327,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new AttributeAkeneoApiStreamPlugin();
         };
         $container[static::ATTRIBUTE_MAP_OUTPUT_STREAM_PLUGIN] = function () {
-            return new JsonStreamPlugin();
+            return new JsonOutputStreamPlugin();
         };
 
         $container[static::ATTRIBUTE_MAP_ITERATOR_PLUGIN] = function () {
@@ -437,7 +438,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     protected function addProductImportProcessPlugins(Container $container): Container
     {
         $container[static::PRODUCT_IMPORT_INPUT_STREAM_PLUGIN] = function () {
-            return new JsonStreamPlugin();
+            return new JsonInputStreamPlugin();
         };
         $container[static::PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
             return new ProductConcreteWriteStreamPlugin();
@@ -475,7 +476,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     protected function addProductModelImportProcessPlugins(Container $container): Container
     {
         $container[static::PRODUCT_MODEL_IMPORT_INPUT_STREAM_PLUGIN] = function () {
-            return new JsonStreamPlugin();
+            return new JsonInputStreamPlugin();
         };
         $container[static::PRODUCT_MODEL_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
             return new ProductAbstractWriteStreamPlugin();
@@ -516,7 +517,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new ProductAkeneoApiStreamPlugin();
         };
         $container[static::PRODUCT_PREPARATION_OUTPUT_STREAM_PLUGIN] = function () {
-            return new JsonStreamPlugin();
+            return new JsonOutputStreamPlugin();
         };
 
         $container[static::PRODUCT_PREPARATION_ITERATOR_PLUGIN] = function () {
@@ -552,7 +553,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new ProductModelAkeneoApiStreamPlugin();
         };
         $container[static::PRODUCT_MODEL_PREPARATION_OUTPUT_STREAM_PLUGIN] = function () {
-            return new JsonStreamPlugin();
+            return new JsonOutputStreamPlugin();
         };
 
         $container[static::PRODUCT_MODEL_PREPARATION_ITERATOR_PLUGIN] = function () {

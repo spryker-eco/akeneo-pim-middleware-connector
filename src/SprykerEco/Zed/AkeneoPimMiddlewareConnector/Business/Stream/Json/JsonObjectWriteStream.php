@@ -28,11 +28,6 @@ class JsonObjectWriteStream implements WriteStreamInterface
     protected $data = [];
 
     /**
-     * @var string
-     */
-    protected $mode = '';
-
-    /**
      * @param string $path
      */
     public function __construct(string $path)
@@ -41,19 +36,15 @@ class JsonObjectWriteStream implements WriteStreamInterface
     }
 
     /**
-     * @param string $mode
-     *
      * @return bool
      */
-    public function open(string $mode): bool
+    public function open(): bool
     {
-        $this->handle = fopen($this->path, $mode);
+        $this->handle = fopen($this->path, 'w');
 
         if ($this->handle === false) {
             return false;
         }
-
-        $this->mode = $mode;
 
         return true;
     }
