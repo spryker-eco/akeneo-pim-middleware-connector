@@ -51,11 +51,9 @@ class PropelCriteriaReadStream implements StreamInterface, ReadStreamInterface
     }
 
     /**
-     * @param string $mode
-     *
      * @return bool
      */
-    public function open(string $mode): bool
+    public function open(): bool
     {
         $this->iterator = $this->modelCriteria
             ->find()
