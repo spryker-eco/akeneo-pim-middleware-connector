@@ -23,6 +23,7 @@ class ProductImportMap extends AbstractMap
             'prices' => 'values.price',
             'images' => 'values.bild_information',
             'picto_images' => 'values.picto_informationen',
+            'is_active' => 'enabled',
             'attributes' => [
                 'values.attributes',
             ],
