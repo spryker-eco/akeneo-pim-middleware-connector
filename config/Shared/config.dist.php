@@ -18,5 +18,5 @@ $config[AkeneoPimMiddlewareConnectorConstants::LOCALES_FOR_IMPORT] = [
 ];
 $config[AkeneoPimMiddlewareConnectorConstants::DEFAULT_STORES_FOR_PRODUCTS] = [
     'DE',
-    'AT'
+    'AT',
 ];

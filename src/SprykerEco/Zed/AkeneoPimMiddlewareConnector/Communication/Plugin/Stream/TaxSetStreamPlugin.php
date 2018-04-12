@@ -17,6 +17,8 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInte
  */
 class TaxSetStreamPlugin extends AbstractPlugin implements InputStreamPluginInterface
 {
+    protected const PLUGIN_NAME = 'TaxSetStreamPlugin';
+
     /**
      * @param string $path
      *
@@ -27,5 +29,13 @@ class TaxSetStreamPlugin extends AbstractPlugin implements InputStreamPluginInte
         return $this->getFactory()
             ->createStreamFactory()
             ->createTaxSetReadStream();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
     }
 }

@@ -17,6 +17,8 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInte
  */
 class LocaleStreamPlugin extends AbstractPlugin implements InputStreamPluginInterface
 {
+    protected const PLUGIN_NAME = 'LocaleStreamPlugin';
+
     /**
      * @param string $path
      *
@@ -27,5 +29,13 @@ class LocaleStreamPlugin extends AbstractPlugin implements InputStreamPluginInte
         return $this->getFactory()
             ->createStreamFactory()
             ->createLocaleReadStream();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
     }
 }

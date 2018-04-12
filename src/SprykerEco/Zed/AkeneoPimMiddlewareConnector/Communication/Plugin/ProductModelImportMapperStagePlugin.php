@@ -10,18 +10,20 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin;
 use Generated\Shared\Transfer\MapperConfigTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface;
-use SprykerMiddleware\Zed\Process\Dependency\Plugin\MapperStagePluginInterface;
+use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
 
 /**
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
  */
-class ProductModelImportMapperStagePlugin extends AbstractPlugin implements MapperStagePluginInterface
+class ProductModelImportMapperStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
+    protected const PLUGIN_NAME = 'ProductModelImportMapperStagePlugin';
+
     /**
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
-    public function getMapperConfig(): MapperConfigTransfer
+    protected function getMapperConfig(): MapperConfigTransfer
     {
         return $this->getFacade()
             ->getProductModelImportMapperConfig();
@@ -39,5 +41,13 @@ class ProductModelImportMapperStagePlugin extends AbstractPlugin implements Mapp
         return $this->getFactory()
             ->getProcessFacade()
             ->map($payload, $this->getMapperConfig());
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
     }
 }

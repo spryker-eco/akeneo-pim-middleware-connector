@@ -17,6 +17,8 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class TaxSetMapperStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
+    protected const PLUGIN_NAME = 'TaxSetMapperStagePlugin';
+
     /**
      * @param mixed $payload
      * @param \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface $outStream
@@ -28,5 +30,13 @@ class TaxSetMapperStagePlugin extends AbstractPlugin implements StagePluginInter
     {
         return $this->getFacade()
             ->mapTaxSetPayload($payload);
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
     }
 }

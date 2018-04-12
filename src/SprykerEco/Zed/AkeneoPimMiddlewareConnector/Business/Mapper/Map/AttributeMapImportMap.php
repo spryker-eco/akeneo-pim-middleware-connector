@@ -7,8 +7,8 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map;
 
-use SprykerMiddleware\Shared\Process\ProcessConfig;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\AbstractMap;
+use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
 class AttributeMapImportMap extends AbstractMap
 {
@@ -43,6 +43,6 @@ class AttributeMapImportMap extends AbstractMap
      */
     public function getStrategy(): string
     {
-        return ProcessConfig::MAPPER_STRATEGY_SKIP_UNKNOWN;
+        return MapInterface::MAPPER_STRATEGY_SKIP_UNKNOWN;
     }
 }

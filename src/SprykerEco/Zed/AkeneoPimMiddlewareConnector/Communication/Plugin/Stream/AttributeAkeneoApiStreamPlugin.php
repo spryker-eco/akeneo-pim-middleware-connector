@@ -17,6 +17,8 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInte
  */
 class AttributeAkeneoApiStreamPlugin extends AbstractPlugin implements InputStreamPluginInterface
 {
+    protected const PLUGIN_NAME = 'AttributeAkeneoApiStreamPlugin';
+
     /**
      * @param string $path
      *
@@ -27,5 +29,13 @@ class AttributeAkeneoApiStreamPlugin extends AbstractPlugin implements InputStre
         return $this->getFactory()
             ->createStreamFactory()
             ->createAttributeAkeneoApiReadStream();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
     }
 }
