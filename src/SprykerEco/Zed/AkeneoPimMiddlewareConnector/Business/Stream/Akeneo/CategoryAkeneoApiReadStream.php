@@ -10,11 +10,9 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo;
 class CategoryAkeneoApiReadStream extends AbstractAkeneoApiReadStream
 {
     /**
-     * @param string $mode
-     *
      * @return bool
      */
-    public function open(string $mode): bool
+    public function open(): bool
     {
         $this->cursor = $this->akeneoPimService
             ->getAllCategories();

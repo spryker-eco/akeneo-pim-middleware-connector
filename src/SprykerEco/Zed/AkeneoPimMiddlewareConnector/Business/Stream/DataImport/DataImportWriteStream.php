@@ -32,11 +32,9 @@ class DataImportWriteStream implements WriteStreamInterface
     }
 
     /**
-     * @param string $mode
-     *
      * @return bool
      */
-    public function open(string $mode): bool
+    public function open(): bool
     {
         $this->data = [];
         return true;
