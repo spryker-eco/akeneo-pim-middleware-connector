@@ -76,7 +76,7 @@ class DataImportWriteStream implements WriteStreamInterface
      *
      * @return int
      */
-    public function write($data): int
+    public function write(array $data): int
     {
         $this->data[] = $data;
         return 1;

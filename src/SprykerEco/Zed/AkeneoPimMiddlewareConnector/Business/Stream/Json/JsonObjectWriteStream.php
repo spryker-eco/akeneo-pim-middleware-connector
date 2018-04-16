@@ -89,7 +89,7 @@ class JsonObjectWriteStream implements WriteStreamInterface
      *
      * @return int
      */
-    public function write($data): int
+    public function write(array $data): int
     {
         foreach ($data as $key => $value) {
             $this->data[$key] = $value;
