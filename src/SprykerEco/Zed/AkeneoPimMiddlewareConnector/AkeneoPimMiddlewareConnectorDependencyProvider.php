@@ -490,6 +490,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container[static::PRODUCT_MODEL_IMPORT_STAGE_PLUGINS] = function () {
             return [
                 new StreamReaderStagePlugin(),
+                new DefaultProductModelImportValidatorStagePlugin(),
                 new ProductModelImportTranslationStagePlugin(),
                 new ProductModelImportMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
