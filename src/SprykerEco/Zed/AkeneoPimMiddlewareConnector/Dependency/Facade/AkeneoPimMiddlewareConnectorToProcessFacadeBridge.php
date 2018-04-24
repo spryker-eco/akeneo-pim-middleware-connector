@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade;
 
 use Generated\Shared\Transfer\MapperConfigTransfer;
 use Generated\Shared\Transfer\TranslatorConfigTransfer;
+use Generated\Shared\Transfer\ValidatorConfigTransfer;
 
 class AkeneoPimMiddlewareConnectorToProcessFacadeBridge implements AkeneoPimMiddlewareConnectorToProcessFacadeInterface
 {
@@ -50,5 +51,16 @@ class AkeneoPimMiddlewareConnectorToProcessFacadeBridge implements AkeneoPimMidd
     public function translate(array $payload, TranslatorConfigTransfer $translatorConfigTransfer): array
     {
         return $this->processFacade->translate($payload, $translatorConfigTransfer);
+    }
+
+    /**
+     * @param array $payload
+     * @param \Generated\Shared\Transfer\ValidatorConfigTransfer $validationConfigTransfer
+     *
+     * @return array
+     */
+    public function validate(array $payload, ValidatorConfigTransfer $validationConfigTransfer): array
+    {
+        return $this->processFacade->validate($payload, $validationConfigTransfer);
     }
 }

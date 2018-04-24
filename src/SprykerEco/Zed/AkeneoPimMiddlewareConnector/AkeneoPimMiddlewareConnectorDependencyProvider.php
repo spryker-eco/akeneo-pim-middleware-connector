@@ -30,6 +30,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultCate
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultCategoryMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductModelImportTranslationStagePlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductModelImportValidatorStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\LocaleMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductMapperStagePlugin;
@@ -768,6 +769,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container[static::DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS] = function () {
             return [
                 new StreamReaderStagePlugin(),
+                new DefaultProductModelImportValidatorStagePlugin(),
                 new DefaultProductModelImportTranslationStagePlugin(),
                 new ProductModelImportMapperStagePlugin(),
                 new StreamWriterStagePlugin(),

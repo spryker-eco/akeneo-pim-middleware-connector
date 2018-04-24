@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business;
 
 use Generated\Shared\Transfer\MapperConfigTransfer;
 use Generated\Shared\Transfer\TranslatorConfigTransfer;
+use Generated\Shared\Transfer\ValidatorConfigTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -168,5 +169,15 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
         return $this->getFactory()
             ->createDefaultProductModelImportDictionary()
             ->getTranslatorConfig();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
+     */
+    public function getProductImportValidatorConfig(): ValidatorConfigTransfer
+    {
+        return $this->getFactory()
+            ->createProductImportValidationRuleSet()
+            ->getValidatorConfig();
     }
 }

@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business;
 
 use Generated\Shared\Transfer\MapperConfigTransfer;
 use Generated\Shared\Transfer\TranslatorConfigTransfer;
+use Generated\Shared\Transfer\ValidatorConfigTransfer;
 
 interface AkeneoPimMiddlewareConnectorFacadeInterface
 {
@@ -76,6 +77,11 @@ interface AkeneoPimMiddlewareConnectorFacadeInterface
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
      */
     public function getDefaultProductModelImportTranslatorConfig(): TranslatorConfigTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
+     */
+    public function getProductImportValidatorConfig(): ValidatorConfigTransfer;
 
     /**
      * @param array $payload
