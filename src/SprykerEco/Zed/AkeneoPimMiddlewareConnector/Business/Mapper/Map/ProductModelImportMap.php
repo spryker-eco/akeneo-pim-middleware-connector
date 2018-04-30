@@ -50,15 +50,9 @@ class ProductModelImportMap extends AbstractMap
 
             'attributes' => [
                 'values.attributes',
-                'except' => [
-                    'country_availability',
-                ],
             ],
             'localizedAttributes' => [
                 'values.localizedAttributes',
-                'except' => [
-                    'bild_information',
-                ],
             ],
             'color_code' => function ($item) {
                 return '';
