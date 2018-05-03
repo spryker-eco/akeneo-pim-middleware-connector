@@ -67,4 +67,12 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     {
         return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_STORES_FOR_PRODUCTS);
     }
+
+    /**
+     * @return string
+     */
+    public function getSkuValuesFilePath(): string
+    {
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::SKU_VALUE_FILE_PATH);
+    }
 }

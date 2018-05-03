@@ -174,6 +174,16 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     /**
      * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
      */
+    public function getProductModelImportValidatorConfig(): ValidatorConfigTransfer
+    {
+        return $this->getFactory()
+            ->createProductModelImportValidationRuleSet()
+            ->getValidatorConfig();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
+     */
     public function getProductImportValidatorConfig(): ValidatorConfigTransfer
     {
         return $this->getFactory()

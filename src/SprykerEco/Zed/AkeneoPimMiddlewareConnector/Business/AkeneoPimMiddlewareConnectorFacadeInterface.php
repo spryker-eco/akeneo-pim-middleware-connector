@@ -81,6 +81,11 @@ interface AkeneoPimMiddlewareConnectorFacadeInterface
     /**
      * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
      */
+    public function getProductModelImportValidatorConfig(): ValidatorConfigTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
+     */
     public function getProductImportValidatorConfig(): ValidatorConfigTransfer;
 
     /**

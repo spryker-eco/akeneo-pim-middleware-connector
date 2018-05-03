@@ -26,6 +26,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\D
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductModelImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\ValidationRuleSet\ProductImportValidationRuleSet;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\ValidationRuleSet\ProductModelImportValidationRuleSet;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface;
 use SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\ValidationRuleSetInterface;
@@ -159,8 +160,16 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     /**
      * @return \SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\ValidationRuleSetInterface
      */
+    public function createProductModelImportValidationRuleSet(): ValidationRuleSetInterface
+    {
+        return new ProductModelImportValidationRuleSet();
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\ValidationRuleSetInterface
+     */
     public function createProductImportValidationRuleSet(): ValidationRuleSetInterface
     {
-        return new ProductImportValidationRuleSet();
+        return new ProductImportValidationRuleSet($this->getConfig());
     }
 }
