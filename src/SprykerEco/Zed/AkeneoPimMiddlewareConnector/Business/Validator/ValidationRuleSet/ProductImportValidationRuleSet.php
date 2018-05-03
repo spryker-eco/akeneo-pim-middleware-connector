@@ -33,7 +33,7 @@ class ProductImportValidationRuleSet extends AbstractValidationRuleSet implement
     }
 
     /**
-     * @return
+     * @return array
      */
     protected function getRules(): array
     {

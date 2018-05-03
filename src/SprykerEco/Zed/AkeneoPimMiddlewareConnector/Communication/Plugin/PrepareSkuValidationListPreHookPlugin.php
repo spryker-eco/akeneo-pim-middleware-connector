@@ -19,7 +19,7 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginI
  */
 class PrepareSkuValidationListPreHookPlugin extends AbstractPlugin implements PreProcessorHookPluginInterface
 {
-    public const PLUGIN_NAME = 'SkuGetterPreHookPlugin';
+    public const PLUGIN_NAME = 'PrepareSkuValidationListPreHookPlugin';
 
     /**
      * @return string
