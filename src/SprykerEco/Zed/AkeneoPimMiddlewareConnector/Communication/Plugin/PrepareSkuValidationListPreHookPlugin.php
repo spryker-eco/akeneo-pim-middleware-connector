@@ -15,8 +15,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginI
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorRepositoryInterface getRepository()()
  */
-class SkuGetterPreHookPlugin extends AbstractPlugin implements PreProcessorHookPluginInterface
+class PrepareSkuValidationListPreHookPlugin extends AbstractPlugin implements PreProcessorHookPluginInterface
 {
     public const PLUGIN_NAME = 'SkuGetterPreHookPlugin';
 
@@ -35,6 +36,6 @@ class SkuGetterPreHookPlugin extends AbstractPlugin implements PreProcessorHookP
      */
     public function process(?ProcessResultTransfer $processResultTransfer = null): void
     {
-        file_put_contents($this->getConfig()->getSkuValuesFilePath(), $this->getFactory()->getProductAbstractRepository()->getSkuValues());
+        file_put_contents($this->getConfig()->getSkuValuesFilePath(), json_encode($this->getRepository()->getSkuList()));
     }
 }

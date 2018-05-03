@@ -15,7 +15,7 @@ use SprykerMiddleware\Zed\Process\Business\Validator\Validators\InListValidator;
 class ProductImportValidationRuleSet extends AbstractValidationRuleSet implements ValidationRuleSetInterface
 {
     /**
-     * @var array
+     * @var string[]
      */
     protected static $skuValues;
 
@@ -33,7 +33,7 @@ class ProductImportValidationRuleSet extends AbstractValidationRuleSet implement
     }
 
     /**
-     * @return array
+     * @return
      */
     protected function getRules(): array
     {
@@ -50,7 +50,7 @@ class ProductImportValidationRuleSet extends AbstractValidationRuleSet implement
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     protected function getSkuValues(): array
     {

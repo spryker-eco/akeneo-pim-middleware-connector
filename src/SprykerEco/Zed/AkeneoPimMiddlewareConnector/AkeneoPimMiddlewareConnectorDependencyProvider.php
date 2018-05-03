@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector;
 
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\AttributeMapMapperStagePlugin;
@@ -33,11 +34,11 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProd
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductModelImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductModelImportValidatorStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\LocaleMapperStagePlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\PrepareSkuValidationListPreHookPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductModelImportMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductModelImportTranslationStagePlugin;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\SkuGetterPreHookPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\AttributeAkeneoApiStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\AttributeWriteStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\CategoryAkeneoApiStreamPlugin;
@@ -69,8 +70,6 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorF
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\ValuesToLocalizedAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeBridge;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\Repository\ProductAbstractRepository;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\Repository\ProductAbstractRepositoryInterface;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Log\MiddlewareLoggerConfigPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonInputStreamPlugin;
@@ -87,7 +86,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     public const DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES';
     public const DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS';
 
-    public const PRODUCT_ABSTRACT_REPOSITORY = 'PRODUCT_ABSTRACT_REPOSITORY';
+    public const PRODUCT_ABSTRACT_QUERY = 'PRODUCT_ABSTRACT_QUERY';
 
     public const AKENEO_PIM_MIDDLEWARE_PROCESSES = 'AKENEO_PIM_MIDDLEWARE_PROCESSES';
     public const AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG = 'AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG';
@@ -200,7 +199,18 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container = $this->addDefaultCategoryImportStagePluginsStack($container);
         $container = $this->addDefaultProductImportStagePluginsStack($container);
         $container = $this->addDefaultProductModelImportStagePluginsStack($container);
-        $container = $this->addProductAbstractRepository($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function providePersistenceLayerDependencies(Container $container): Container
+    {
+        $container = $this->addProductAbstractQuery($container);
 
         return $container;
     }
@@ -468,7 +478,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
         $container[static::PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
             return [
-                new SkuGetterPreHookPlugin(),
+                new PrepareSkuValidationListPreHookPlugin(),
             ];
         };
 
@@ -792,22 +802,14 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\Repository\ProductAbstractRepositoryInterface
-     */
-    protected function getProductAbstractRepository(): ProductAbstractRepositoryInterface
-    {
-        return new ProductAbstractRepository();
-    }
-
-    /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductAbstractRepository($container): Container
+    protected function addProductAbstractQuery($container): Container
     {
-        $container[static::PRODUCT_ABSTRACT_REPOSITORY] = function () {
-            return $this->getProductAbstractRepository();
+        $container[static::PRODUCT_ABSTRACT_QUERY] = function () {
+            return SpyProductAbstractQuery::create();
         };
 
         return $container;

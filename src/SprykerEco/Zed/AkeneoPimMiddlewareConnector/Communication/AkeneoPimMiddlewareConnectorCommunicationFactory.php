@@ -16,7 +16,6 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFu
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\Repository\ProductAbstractRepositoryInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface;
@@ -593,13 +592,5 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     public function getDefaultProductModelImportStagePluginsStack(): array
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS);
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\Repository\ProductAbstractRepositoryInterface
-     */
-    public function getProductAbstractRepository(): ProductAbstractRepositoryInterface
-    {
-        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::PRODUCT_ABSTRACT_REPOSITORY);
     }
 }
