@@ -16,9 +16,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
  */
-class DefaultProductModelImportValidatorStagePlugin extends AbstractPlugin implements StagePluginInterface
+class DefaultProductImportValidatorStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
-    protected const PLUGIN_NAME = 'DefaultProductModelImportValidatorStagePlugin';
+    protected const PLUGIN_NAME = 'DefaultProductImportValidatorStagePlugin';
 
     /**
      * @return string
@@ -48,6 +48,6 @@ class DefaultProductModelImportValidatorStagePlugin extends AbstractPlugin imple
     protected function getValidatorConfig(): ValidatorConfigTransfer
     {
         return $this->getFacade()
-            ->getProductModelImportValidatorConfig();
+            ->getProductImportValidatorConfig();
     }
 }
