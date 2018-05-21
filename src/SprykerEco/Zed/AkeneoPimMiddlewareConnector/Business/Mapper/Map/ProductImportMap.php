@@ -7,17 +7,50 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map;
 
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\AbstractMap;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
 class ProductImportMap extends AbstractMap
 {
     /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig
+     */
+    private $config;
+
+    /**
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig $config
+     */
+    public function __construct(AkeneoPimMiddlewareConnectorConfig $config)
+    {
+        $this->config = $config;
+    }
+
+    /**
      * @return array
      */
     public function getMap(): array
     {
         return [
+            'taxSetName' => function ($item) {
+                return $this->config->getDefaultTaxSet();
+            },
+            'color_code' => function ($item) {
+                return '';
+            },
+            'new_from' => function ($item) {
+                return null;
+            },
+            'new_to' => function ($item) {
+                return null;
+            },
+            'category_key' => 'categories',
+            'category_product_order' => function ($item) {
+                return 0;
+            },
+            'stores' => function ($item) {
+                return $this->config->getDefaultStoresForProducts();
+            },
             'concrete_sku' => 'identifier',
             'abstract_sku' => 'parent',
             'prices' => 'values.price',

@@ -11,6 +11,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\Attribute
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\CategoryAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductModelAkeneoApiReadStream;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\DataImportProductConcreteWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\DataImportWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Db\PropelCriteriaReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Json\JsonObjectWriteStream;
@@ -155,7 +156,7 @@ class StreamFactory implements StreamFactoryInterface
      */
     public function createProductConcreteWriteStream(): WriteStreamInterface
     {
-        return new DataImportWriteStream($this->productConcreteImporterPlugin);
+        return new DataImportProductConcreteWriteStream($this->productConcreteImporterPlugin, $this->productAbstractImporterPlugin);
     }
 
     /**

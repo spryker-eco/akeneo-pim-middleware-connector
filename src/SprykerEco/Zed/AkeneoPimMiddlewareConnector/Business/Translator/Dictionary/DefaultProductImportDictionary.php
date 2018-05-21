@@ -41,7 +41,6 @@ class DefaultProductImportDictionary extends AbstractDictionary
     public function getDictionary(): array
     {
         return [
-            'parent' => 'SkipItemsWithoutParent',
             'values.*' => 'MeasureUnitToInt',
             'values.collection.data' => function ($value) {
                 if (is_array($value)) {
@@ -49,6 +48,14 @@ class DefaultProductImportDictionary extends AbstractDictionary
                 }
                 return $value;
             },
+            'categories' => [
+                [
+                    'ArrayToString',
+                    'options' => [
+                        'glue' => ',',
+                    ],
+                ],
+            ],
             'values' => [
                 [
                     'EnrichAttributes',

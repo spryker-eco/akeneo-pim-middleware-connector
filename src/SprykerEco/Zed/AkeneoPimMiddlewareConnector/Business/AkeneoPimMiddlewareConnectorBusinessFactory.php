@@ -42,7 +42,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
      */
     public function createProductImportMap(): MapInterface
     {
-        return new ProductImportMap();
+        return new ProductImportMap($this->getConfig());
     }
 
     /**
