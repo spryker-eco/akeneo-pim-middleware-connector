@@ -99,6 +99,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN';
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_CONCRETE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_CONCRETE_IMPORTER_PLUGIN';
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_PRICE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_PRICE_IMPORTER_PLUGIN';
+    public const AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_STORES_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_STORES_IMPORTER_PLUGIN';
 
     public const ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN = 'ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN';
     public const ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN = 'ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN';
@@ -204,6 +205,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container = $this->addDefaultProductImportStagePluginsStack($container);
         $container = $this->addDefaultProductModelImportStagePluginsStack($container);
         $container = $this->addProductPriceDataImporterPlugin($container);
+        $container = $this->addProductAbstractStoresDataImporterPlugin($container);
 
         return $container;
     }
@@ -754,6 +756,16 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      * @return \Spryker\Zed\Kernel\Container
      */
     protected function addProductPriceDataImporterPlugin(Container $container): Container
+    {
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addProductAbstractStoresDataImporterPlugin(Container $container): Container
     {
         return $container;
     }

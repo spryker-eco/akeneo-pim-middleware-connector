@@ -16,6 +16,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     public const KEY_ABSTRACT_SKU = 'abstract_sku';
     public const KEY_CONCRETE_SKU = 'concrete_sku';
     public const KEY_PRICES = 'prices';
+    public const KEY_STORES = 'stores';
 
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
@@ -33,6 +34,11 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     protected $dataImporterPricePlugin;
 
     /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected $dataImportAbstractStoresPlugin;
+
+    /**
      * @var array
      */
     protected $concreteData;
@@ -48,19 +54,27 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     protected $pricesData;
 
     /**
+     * @var $storesData
+     */
+    protected $storesData;
+
+    /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterConcretePlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterAbstractPlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterPricePlugin
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImportAbstractStoresPlugin
      */
     public function __construct(
         DataImporterPluginInterface $dataImporterConcretePlugin,
         DataImporterPluginInterface $dataImporterAbstractPlugin,
-        DataImporterPluginInterface $dataImporterPricePlugin
+        DataImporterPluginInterface $dataImporterPricePlugin,
+        DataImporterPluginInterface $dataImportAbstractStoresPlugin
     )
     {
         $this->dataImporterConcretePlugin = $dataImporterConcretePlugin;
         $this->dataImporterAbstractPlugin = $dataImporterAbstractPlugin;
         $this->dataImporterPricePlugin = $dataImporterPricePlugin;
+        $this->dataImportAbstractStoresPlugin = $dataImportAbstractStoresPlugin;
     }
 
     /**
@@ -71,6 +85,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
         $this->concreteData = [];
         $this->abstractData = [];
         $this->pricesData = [];
+        $this->storesData = [];
 
         return true;
     }
@@ -120,7 +135,17 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
 
         if (is_array($data[static::KEY_PRICES])) {
             foreach ($data[static::KEY_PRICES] as $price) {
+                $price['abstract_sku'] = $data[static::KEY_ABSTRACT_SKU] ?? $this->createAbstractSKU($data[static::KEY_CONCRETE_SKU]);
                 $this->pricesData[] = $price;
+            }
+        }
+
+        if (is_array($data[static::KEY_STORES])) {
+            foreach ($data[static::KEY_STORES] as $store) {
+                $this->storesData[] = [
+                    'product_abstract_sku' => $data[static::KEY_ABSTRACT_SKU] ?? $this->createAbstractSKU($data[static::KEY_CONCRETE_SKU]),
+                    'store_name' => $store
+                ];
             }
         }
 
@@ -140,10 +165,12 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     {
         $this->dataImporterAbstractPlugin->import($this->abstractData);
         $this->dataImporterConcretePlugin->import($this->concreteData);
+        $this->dataImportAbstractStoresPlugin->import($this->storesData);
         $this->dataImporterPricePlugin->import($this->pricesData);
 
         $this->concreteData = [];
         $this->abstractData = [];
+        $this->storesData = [];
         $this->pricesData = [];
 
         return true;

@@ -48,7 +48,8 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
             $this->getAttributeImporterPlugin(),
             $this->getProductAbstractImporterPlugin(),
             $this->getProductConcreteImporterPlugin(),
-            $this->getProductPriceImporterPlugin()
+            $this->getProductPriceImporterPlugin(),
+            $this->getProductAbstractStoresImporterPlugin()
         );
     }
 
@@ -599,5 +600,10 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     public function getProductPriceImporterPlugin(): DataImporterPluginInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_PRODUCT_PRICE_IMPORTER_PLUGIN);
+    }
+
+    public function getProductAbstractStoresImporterPlugin(): DataImporterPluginInterface
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_STORES_IMPORTER_PLUGIN);
     }
 }
