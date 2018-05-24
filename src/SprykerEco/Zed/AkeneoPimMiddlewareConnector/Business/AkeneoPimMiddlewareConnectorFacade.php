@@ -190,4 +190,18 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
             ->createProductImportValidationRuleSet()
             ->getValidatorConfig();
     }
+
+    /**
+     * @param string $name
+     * @param int $idLocale
+     * @param string $identifier
+     *
+     * @return string
+     */
+    public function generateProductUrl(string $name, int $idLocale, string $identifier): string
+    {
+        return $this->getFactory()
+            ->createUrlGeneratorStrategy()
+            ->generate($name, $idLocale, $identifier);
+    }
 }

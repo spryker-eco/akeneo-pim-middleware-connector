@@ -54,6 +54,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TaxSetMappe
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddAttributeOptionsTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddAttributeValuesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddMissingAttributesTranslatorFunctionPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddUrlToLocalizedAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AttributeEmptyTranslationToKeyTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\DefaultPriceSelectorTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\DefaultValuesToLocalizedAttributesTranslatorFunctionPlugin;
@@ -88,6 +89,8 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
     public const PRODUCT_ABSTRACT_QUERY = 'PRODUCT_ABSTRACT_QUERY';
 
+    public const URL_GENERATOR_STRATEGY = 'URL_GENERATOR_STRATEGY';
+
     public const AKENEO_PIM_MIDDLEWARE_PROCESSES = 'AKENEO_PIM_MIDDLEWARE_PROCESSES';
     public const AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG = 'AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG';
     public const AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS = 'AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS';
@@ -95,6 +98,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     public const AKENEO_PIM_MIDDLEWARE_ATTRIBUTE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_ATTRIBUTE_IMPORTER_PLUGIN';
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN';
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_CONCRETE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_CONCRETE_IMPORTER_PLUGIN';
+    public const AKENEO_PIM_MIDDLEWARE_PRODUCT_PRICE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_PRICE_IMPORTER_PLUGIN';
 
     public const ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN = 'ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN';
     public const ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN = 'ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN';
@@ -199,6 +203,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container = $this->addDefaultCategoryImportStagePluginsStack($container);
         $container = $this->addDefaultProductImportStagePluginsStack($container);
         $container = $this->addDefaultProductModelImportStagePluginsStack($container);
+        $container = $this->addProductPriceDataImporterPlugin($container);
 
         return $container;
     }
@@ -660,6 +665,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             new AddAttributeOptionsTranslatorFunctionPlugin(),
             new AddAttributeValuesTranslatorFunctionPlugin(),
             new AddMissingAttributesTranslatorFunctionPlugin(),
+            new AddUrlToLocalizedAttributesTranslatorFunctionPlugin(),
             new AttributeEmptyTranslationToKeyTranslatorFunctionPlugin(),
             new EnrichAttributesTranslatorFunctionPlugin(),
             new LabelsToLocalizedAttributeNamesTranslatorFunctionPlugin(),
@@ -738,6 +744,16 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      * @return \Spryker\Zed\Kernel\Container
      */
     protected function addProductConcreteDataImporterPlugin(Container $container): Container
+    {
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addProductPriceDataImporterPlugin(Container $container): Container
     {
         return $container;
     }

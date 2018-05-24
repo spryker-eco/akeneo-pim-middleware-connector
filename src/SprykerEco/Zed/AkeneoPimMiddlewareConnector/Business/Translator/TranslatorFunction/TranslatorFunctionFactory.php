@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
 
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface;
 
@@ -18,11 +19,18 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
     protected $akeneoPimService;
 
     /**
-     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface
      */
-    public function __construct(AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService)
+    protected $facade;
+
+    /**
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface $facade
+     */
+    public function  __construct(AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService, AkeneoPimMiddlewareConnectorFacadeInterface $facade)
     {
         $this->akeneoPimService = $akeneoPimService;
+        $this->facade = $facade;
     }
 
     /**
@@ -31,6 +39,14 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
     public function createAddAttributeOptionsTranslatorFunction(): TranslatorFunctionInterface
     {
         return new AddAttributeOptions($this->akeneoPimService);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface
+     */
+    public function createAddUrlToLocalizedAttributesTranslatorFunction(): TranslatorFunctionInterface
+    {
+        return new AddUrlToLocalizedAttributes($this->facade);
     }
 
     /**

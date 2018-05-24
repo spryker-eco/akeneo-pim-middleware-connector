@@ -36,7 +36,7 @@ class LocaleKeysToIds extends AbstractTranslatorFunction implements TranslatorFu
 
         foreach ($value as $locale => $content) {
             if (array_key_exists($locale, $localeMap)) {
-                $result[$localeMap[$locale]] = $content;
+                $result[$localeMap[$locale]] = ['idLocale' => $localeMap[$locale]] + $content;
             }
         }
 

@@ -54,12 +54,18 @@ class StreamFactory implements StreamFactoryInterface
     protected $productConcreteImporterPlugin;
 
     /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected $productPriceImporterPlugin;
+
+    /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface $queryContainer
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $categoryImporterPlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $attributeImporterPlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $productAbstractImporterPlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $productConcreteImporterPlugin
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $productPriceImporterPlugin
      */
     public function __construct(
         AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService,
@@ -67,7 +73,8 @@ class StreamFactory implements StreamFactoryInterface
         DataImporterPluginInterface $categoryImporterPlugin,
         DataImporterPluginInterface $attributeImporterPlugin,
         DataImporterPluginInterface $productAbstractImporterPlugin,
-        DataImporterPluginInterface $productConcreteImporterPlugin
+        DataImporterPluginInterface $productConcreteImporterPlugin,
+        DataImporterPluginInterface $productPriceImporterPlugin
     ) {
         $this->akeneoPimService = $akeneoPimService;
         $this->queryContainer = $queryContainer;
@@ -75,6 +82,7 @@ class StreamFactory implements StreamFactoryInterface
         $this->attributeImporterPlugin = $attributeImporterPlugin;
         $this->productConcreteImporterPlugin = $productConcreteImporterPlugin;
         $this->productAbstractImporterPlugin = $productAbstractImporterPlugin;
+        $this->productPriceImporterPlugin = $productPriceImporterPlugin;
     }
 
     /**
@@ -156,7 +164,7 @@ class StreamFactory implements StreamFactoryInterface
      */
     public function createProductConcreteWriteStream(): WriteStreamInterface
     {
-        return new DataImportProductConcreteWriteStream($this->productConcreteImporterPlugin, $this->productAbstractImporterPlugin);
+        return new DataImportProductConcreteWriteStream($this->productConcreteImporterPlugin, $this->productAbstractImporterPlugin, $this->productPriceImporterPlugin);
     }
 
     /**

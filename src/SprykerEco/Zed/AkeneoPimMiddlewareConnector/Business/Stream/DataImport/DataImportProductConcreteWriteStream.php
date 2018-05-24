@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
- * For full license information, please view the LICENSE file that was distributed with this source code.
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport;
@@ -15,6 +15,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
 {
     public const KEY_ABSTRACT_SKU = 'abstract_sku';
     public const KEY_CONCRETE_SKU = 'concrete_sku';
+    public const KEY_PRICES = 'prices';
 
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
@@ -27,6 +28,11 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     protected $dataImporterAbstractPlugin;
 
     /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
+     */
+    protected $dataImporterPricePlugin;
+
+    /**
      * @var array
      */
     protected $concreteData;
@@ -37,13 +43,24 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     protected $abstractData;
 
     /**
+     * @var array
+     */
+    protected $pricesData;
+
+    /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterConcretePlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterAbstractPlugin
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterPricePlugin
      */
-    public function __construct(DataImporterPluginInterface $dataImporterConcretePlugin, DataImporterPluginInterface $dataImporterAbstractPlugin)
+    public function __construct(
+        DataImporterPluginInterface $dataImporterConcretePlugin,
+        DataImporterPluginInterface $dataImporterAbstractPlugin,
+        DataImporterPluginInterface $dataImporterPricePlugin
+    )
     {
         $this->dataImporterConcretePlugin = $dataImporterConcretePlugin;
         $this->dataImporterAbstractPlugin = $dataImporterAbstractPlugin;
+        $this->dataImporterPricePlugin = $dataImporterPricePlugin;
     }
 
     /**
@@ -53,6 +70,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     {
         $this->concreteData = [];
         $this->abstractData = [];
+        $this->pricesData = [];
 
         return true;
     }
@@ -96,8 +114,14 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     public function write(array $data): int
     {
         if (is_null($data[static::KEY_ABSTRACT_SKU])) {
-            $data[static::KEY_ABSTRACT_SKU] = $data[static::KEY_CONCRETE_SKU] . '_abstract';
+            $data[static::KEY_ABSTRACT_SKU] = $this->createAbstractSKU($data[static::KEY_CONCRETE_SKU]);
             $this->abstractData[] = $data;
+        }
+
+        if (is_array($data[static::KEY_PRICES])) {
+            foreach ($data[static::KEY_PRICES] as $price) {
+                $this->pricesData[] = $price;
+            }
         }
 
         $this->concreteData[] = $data;
@@ -116,10 +140,22 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     {
         $this->dataImporterAbstractPlugin->import($this->abstractData);
         $this->dataImporterConcretePlugin->import($this->concreteData);
+        $this->dataImporterPricePlugin->import($this->pricesData);
 
         $this->concreteData = [];
         $this->abstractData = [];
+        $this->pricesData = [];
 
         return true;
+    }
+
+    /**
+     * @param string $sku
+     *
+     * @return string
+     */
+    protected function createAbstractSKU(string $sku): string
+    {
+        return $sku . '_abstract';
     }
 }

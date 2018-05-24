@@ -53,7 +53,21 @@ class ProductImportMap extends AbstractMap
             },
             'concrete_sku' => 'identifier',
             'abstract_sku' => 'parent',
-            'prices' => 'values.price',
+            'prices' => function ($item) {
+                $result = [];
+                foreach ($item['values']['price'] as $value) {
+                    $result[] = [
+                        'price' => $value['price'],
+                        'price_type' => $value['type'],
+                        'currency' => $value['currency'],
+                        'store' => $value['store'],
+                        'concrete_sku' => $item['identifier'],
+                        'value_gross' => $value['price'],
+                        'value_net' => $value['price'],
+                    ];
+                }
+                return $result;
+            },
             'images' => 'values.bild_information',
             'picto_images' => 'values.picto_informationen',
             'is_active' => 'enabled',
