@@ -61,7 +61,6 @@ class ProductImportMap extends AbstractMap
                         'price_type' => $value['type'],
                         'currency' => $value['currency'],
                         'store' => $value['store'],
-//                        'abstract_sku' => $item['identifier'],
                         'concrete_sku' => $item['identifier'],
                         'value_gross' => $value['price'],
                         'value_net' => $value['price'],

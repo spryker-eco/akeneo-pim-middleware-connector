@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
 
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface;
 
@@ -19,18 +19,18 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
     protected $akeneoPimService;
 
     /**
-     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface
      */
-    protected $facade;
+    protected $urlGenerator;
 
     /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
-     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface $facade
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface $urlGenerator
      */
-    public function  __construct(AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService, AkeneoPimMiddlewareConnectorFacadeInterface $facade)
+    public function  __construct(AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService, UrlGeneratorStrategyInterface $urlGenerator)
     {
         $this->akeneoPimService = $akeneoPimService;
-        $this->facade = $facade;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -46,7 +46,7 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
      */
     public function createAddUrlToLocalizedAttributesTranslatorFunction(): TranslatorFunctionInterface
     {
-        return new AddUrlToLocalizedAttributes($this->facade);
+        return new AddUrlToLocalizedAttributes($this->urlGenerator);
     }
 
     /**

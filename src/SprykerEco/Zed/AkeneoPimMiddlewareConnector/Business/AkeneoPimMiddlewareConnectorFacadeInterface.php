@@ -101,13 +101,4 @@ interface AkeneoPimMiddlewareConnectorFacadeInterface
      * @return array
      */
     public function mapTaxSetPayload(array $payload): array;
-
-    /**
-     * @param string $name
-     * @param int $idLocale
-     * @param string $identifier
-     *
-     * @return string
-     */
-    public function generateProductUrl(string $name, int $idLocale, string $identifier): string;
 }

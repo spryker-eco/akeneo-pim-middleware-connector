@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
 
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface;
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\AbstractTranslatorFunction;
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface;
 
@@ -17,13 +17,16 @@ class AddUrlToLocalizedAttributes extends AbstractTranslatorFunction implements 
     protected const KEY_URL = 'url';
 
     /**
-     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface
      */
-    protected $facade;
+    protected $urlGenerator;
 
-    public function __construct(AkeneoPimMiddlewareConnectorFacadeInterface $facade)
+    /**
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface $urlGenerator
+     */
+    public function __construct(UrlGeneratorStrategyInterface $urlGenerator)
     {
-        $this->facade = $facade;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -34,7 +37,7 @@ class AddUrlToLocalizedAttributes extends AbstractTranslatorFunction implements 
      */
     public function translate($value, array $payload)
     {
-        $value[static::KEY_URL] = $this->facade->generateProductUrl($value[static::KEY_NAME], $value['attributes']['idLocale'], $payload['identifier'] ?? $payload['code']);
+        $value[static::KEY_URL] = $this->urlGenerator->generate($value[static::KEY_NAME], $value['attributes']['idLocale'], $payload['identifier'] ?? $payload['code']);
 
         return $value;
     }
