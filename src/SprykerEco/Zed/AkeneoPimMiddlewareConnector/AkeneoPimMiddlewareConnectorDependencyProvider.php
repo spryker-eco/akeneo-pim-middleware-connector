@@ -54,6 +54,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TaxSetMappe
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddAttributeOptionsTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddAttributeValuesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddMissingAttributesTranslatorFunctionPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddMissingLocalesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddUrlToLocalizedAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AttributeEmptyTranslationToKeyTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\DefaultPriceSelectorTranslatorFunctionPlugin;
@@ -667,6 +668,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             new AddAttributeOptionsTranslatorFunctionPlugin(),
             new AddAttributeValuesTranslatorFunctionPlugin(),
             new AddMissingAttributesTranslatorFunctionPlugin(),
+            new AddMissingLocalesTranslatorFunctionPlugin(),
             new AddUrlToLocalizedAttributesTranslatorFunctionPlugin(),
             new AttributeEmptyTranslationToKeyTranslatorFunctionPlugin(),
             new EnrichAttributesTranslatorFunctionPlugin(),
