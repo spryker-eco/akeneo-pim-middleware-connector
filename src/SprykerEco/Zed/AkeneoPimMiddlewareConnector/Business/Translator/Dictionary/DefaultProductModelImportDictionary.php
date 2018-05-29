@@ -81,6 +81,12 @@ class DefaultProductModelImportDictionary extends AbstractDictionary
             ],
             'values.localizedAttributes' => [
                 [
+                    'AddMissingLocales',
+                    'options' => [
+                        'locales' => $this->config->getLocalesForImport(),
+                    ],
+                ],
+                [
                     'LocaleKeysToIds',
                     'options' => [
                         'map' => $this->getLocaleMap(),
