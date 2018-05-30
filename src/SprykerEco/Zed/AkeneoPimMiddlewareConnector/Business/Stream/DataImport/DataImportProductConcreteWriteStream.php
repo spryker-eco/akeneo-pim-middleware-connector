@@ -13,10 +13,11 @@ use SprykerMiddleware\Zed\Process\Business\Exception\MethodNotSupportedException
 
 class DataImportProductConcreteWriteStream implements WriteStreamInterface
 {
-    public const KEY_ABSTRACT_SKU = 'abstract_sku';
-    public const KEY_CONCRETE_SKU = 'concrete_sku';
-    public const KEY_PRICES = 'prices';
-    public const KEY_STORES = 'stores';
+    protected const KEY_ABSTRACT_SKU = 'abstract_sku';
+    protected const KEY_CONCRETE_SKU = 'concrete_sku';
+    protected const KEY_PRICES = 'prices';
+    protected const KEY_STORES = 'stores';
+    protected const ABSTRACT_IDENTIFIER = 'abstract_product_creation';
 
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
@@ -128,14 +129,13 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
      */
     public function write(array $data): int
     {
-        if (is_null($data[static::KEY_ABSTRACT_SKU])) {
-            $data[static::KEY_ABSTRACT_SKU] = $this->createAbstractSKU($data[static::KEY_CONCRETE_SKU]);
+        if ($data[static::ABSTRACT_IDENTIFIER]) {
             $this->abstractData[] = $data;
         }
 
         if (is_array($data[static::KEY_PRICES])) {
             foreach ($data[static::KEY_PRICES] as $price) {
-                $price['abstract_sku'] = $data[static::KEY_ABSTRACT_SKU] ?? $this->createAbstractSKU($data[static::KEY_CONCRETE_SKU]);
+                $price['abstract_sku'] = $data[static::KEY_ABSTRACT_SKU];
                 $this->pricesData[] = $price;
             }
         }
@@ -143,7 +143,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
         if (is_array($data[static::KEY_STORES])) {
             foreach ($data[static::KEY_STORES] as $store) {
                 $this->storesData[] = [
-                    'product_abstract_sku' => $data[static::KEY_ABSTRACT_SKU] ?? $this->createAbstractSKU($data[static::KEY_CONCRETE_SKU]),
+                    'product_abstract_sku' => $data[static::KEY_ABSTRACT_SKU],
                     'store_name' => $store
                 ];
             }
@@ -174,15 +174,5 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
         $this->pricesData = [];
 
         return true;
-    }
-
-    /**
-     * @param string $sku
-     *
-     * @return string
-     */
-    protected function createAbstractSKU(string $sku): string
-    {
-        return $sku . '_abstract';
     }
 }

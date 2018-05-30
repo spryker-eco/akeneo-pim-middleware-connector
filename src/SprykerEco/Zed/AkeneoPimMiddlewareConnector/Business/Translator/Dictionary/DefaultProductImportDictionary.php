@@ -48,6 +48,9 @@ class DefaultProductImportDictionary extends AbstractDictionary
                 }
                 return $value;
             },
+            'parent' => [
+                'AddAbstractSkuIfNotExist',
+            ],
             'categories' => [
                 [
                     'ArrayToString',

@@ -52,7 +52,8 @@ class ProductImportMap extends AbstractMap
                 return $this->config->getDefaultStoresForProducts();
             },
             'concrete_sku' => 'identifier',
-            'abstract_sku' => 'parent',
+            'abstract_sku' => 'parent.abstract_sku',
+            'abstract_product_creation' => 'parent.abstract_product_creation',
             'prices' => function ($item) {
                 $result = [];
                 foreach ($item['values']['price'] as $value) {
