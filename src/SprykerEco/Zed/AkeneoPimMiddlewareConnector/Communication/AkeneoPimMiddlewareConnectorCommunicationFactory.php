@@ -11,8 +11,6 @@ use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorDependencyProvider;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactoryInterface;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategy;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactoryInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeInterface;
@@ -34,7 +32,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
      */
     public function createTranslatorFunctionFactory(): TranslatorFunctionFactoryInterface
     {
-        return new TranslatorFunctionFactory($this->getAkeneoPimService(), $this->createUrlGeneratorStrategy());
+        return new TranslatorFunctionFactory($this->getAkeneoPimService());
     }
 
     /**
@@ -612,13 +610,5 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     public function getProductAbstractStoresImporterPlugin(): DataImporterPluginInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_STORES_IMPORTER_PLUGIN);
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategy
-     */
-    public function createUrlGeneratorStrategy(): UrlGeneratorStrategyInterface
-    {
-        return new UrlGeneratorStrategy();
     }
 }
