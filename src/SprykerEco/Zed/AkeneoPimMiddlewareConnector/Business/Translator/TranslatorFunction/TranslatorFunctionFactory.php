@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
 
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategy;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface;
@@ -26,11 +25,12 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
 
     /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface $urlGenerator
      */
-    public function  __construct(AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService)
+    public function  __construct(AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface $akeneoPimService, UrlGeneratorStrategyInterface $urlGenerator)
     {
         $this->akeneoPimService = $akeneoPimService;
-        $this->urlGenerator = $this->createUrlGeneratorStrategy();
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -57,13 +57,5 @@ class TranslatorFunctionFactory implements TranslatorFunctionFactoryInterface
     public function createTranslatorFunction(string $translatorFunctionClassName): TranslatorFunctionInterface
     {
         return new $translatorFunctionClassName();
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface
-     */
-    public function createUrlGeneratorStrategy(): UrlGeneratorStrategyInterface
-    {
-        return new UrlGeneratorStrategy();
     }
 }

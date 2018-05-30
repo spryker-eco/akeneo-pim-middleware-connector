@@ -174,12 +174,4 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     {
         return new ProductImportValidationRuleSet($this->getConfig());
     }
-
-    /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface
-     */
-    public function createUrlGeneratorStrategy(): UrlGeneratorStrategyInterface
-    {
-        return new UrlGeneratorStrategy();
-    }
 }

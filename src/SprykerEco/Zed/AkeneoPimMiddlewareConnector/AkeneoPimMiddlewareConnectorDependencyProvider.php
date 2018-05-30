@@ -72,6 +72,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorF
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\ValuesToAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\ValuesToLocalizedAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeBridge;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToUtilTextBridge;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Log\MiddlewareLoggerConfigPlugin;
@@ -84,6 +85,7 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPl
 class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDependencyProvider
 {
     public const SERVICE_AKENEO_PIM = 'SERVICE_AKENEO_PIM';
+    public const SERVICE_UTIL_TEXT = 'SERVICE_UTIL_TEXT';
     public const FACADE_PROCESS = 'FACADE_PROCESS';
 
     public const DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES';
@@ -183,6 +185,10 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
 
         $container[static::FACADE_PROCESS] = function (Container $container) {
             return new AkeneoPimMiddlewareConnectorToProcessFacadeBridge($container->getLocator()->process()->facade());
+        };
+
+        $container[static::SERVICE_UTIL_TEXT] = function (Container $container) {
+            return new AkeneoPimMiddlewareConnectorToUtilTextBridge($container->getLocator()->utilText()->service());
         };
 
         $container = $this->addCategoryDataImporterPlugin($container);

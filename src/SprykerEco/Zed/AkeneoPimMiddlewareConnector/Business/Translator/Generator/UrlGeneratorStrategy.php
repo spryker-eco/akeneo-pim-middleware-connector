@@ -10,6 +10,7 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Genera
 use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\Url\Persistence\SpyUrlQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToUtilTextBridgeInterface;
 
 class UrlGeneratorStrategy implements UrlGeneratorStrategyInterface
 {
@@ -20,6 +21,19 @@ class UrlGeneratorStrategy implements UrlGeneratorStrategyInterface
     protected static $idLocaleBuffer;
 
     /**
+     * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToUtilTextBridgeInterface
+     */
+    protected $utilTextService;
+
+    /**
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToUtilTextBridgeInterface $textService
+     */
+    public function __construct(AkeneoPimMiddlewareConnectorToUtilTextBridgeInterface $textService)
+    {
+        $this->utilTextService = $textService;
+    }
+
+    /**
      * @param string $name
      * @param int $idLocale
      * @param string $identifier
@@ -28,30 +42,11 @@ class UrlGeneratorStrategy implements UrlGeneratorStrategyInterface
      */
     public function generate(string $name, int $idLocale, string $identifier): string
     {
-        $abstractProductUrl = $this->generateUrlSlug($name);
+        $abstractProductUrl = $this->utilTextService->generateSlug($name);
         $abstractProductUrl = '/' . $this->getLocaleNameById($idLocale) . '/' . $abstractProductUrl . '-' . md5($identifier);
         $this->cleanupRedirectUrls($abstractProductUrl);
 
         return $abstractProductUrl;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return string
-     */
-    protected function generateUrlSlug($value): string
-    {
-        if (function_exists('iconv')) {
-            $value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);
-        }
-
-        $value = preg_replace("/[^a-zA-Z0-9 -]/", "", trim($value));
-        $value = mb_strtolower($value);
-        $value = str_replace(' ', '-', $value);
-        $value = preg_replace('/(\-)\1+/', '$1', $value);
-
-        return $value;
     }
 
     /**

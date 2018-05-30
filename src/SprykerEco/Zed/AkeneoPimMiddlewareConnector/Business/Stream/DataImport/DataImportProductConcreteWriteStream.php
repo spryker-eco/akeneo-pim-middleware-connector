@@ -17,7 +17,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     protected const KEY_CONCRETE_SKU = 'concrete_sku';
     protected const KEY_PRICES = 'prices';
     protected const KEY_STORES = 'stores';
-    protected const ABSTRACT_IDENTIFIER = 'abstract_product_creation';
+    protected const ABSTRACT_PRODUCT_CREATION_IDENTIFIER = 'abstract_product_creation';
 
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
@@ -129,7 +129,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
      */
     public function write(array $data): int
     {
-        if ($data[static::ABSTRACT_IDENTIFIER]) {
+        if ($data[static::ABSTRACT_PRODUCT_CREATION_IDENTIFIER]) {
             $this->abstractData[] = $data;
         }
 
