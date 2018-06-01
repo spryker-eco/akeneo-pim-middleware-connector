@@ -77,8 +77,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
         DataImporterPluginInterface $dataImporterPricePlugin,
         DataImporterPluginInterface $dataImportAbstractStoresPlugin,
         int $bufferSize = 200
-    )
-    {
+    ) {
         $this->dataImporterConcretePlugin = $dataImporterConcretePlugin;
         $this->dataImporterAbstractPlugin = $dataImporterAbstractPlugin;
         $this->dataImporterPricePlugin = $dataImporterPricePlugin;
@@ -152,7 +151,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
             foreach ($data[static::KEY_STORES] as $store) {
                 $this->storesData[] = [
                     'product_abstract_sku' => $data[static::KEY_ABSTRACT_SKU],
-                    'store_name' => $store
+                    'store_name' => $store,
                 ];
             }
         }

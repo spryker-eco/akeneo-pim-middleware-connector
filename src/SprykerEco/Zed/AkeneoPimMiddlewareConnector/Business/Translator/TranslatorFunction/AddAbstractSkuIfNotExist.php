@@ -26,7 +26,7 @@ class AddAbstractSkuIfNotExist extends AbstractTranslatorFunction implements Tra
      */
     public function translate($value, array $payload)
     {
-        if (is_null($payload[static::KEY_PARENT])) {
+        if ($payload[static::KEY_PARENT] === null) {
             $value[static::KEY_ABSTRACT_SKU] = $this->createAbstractSKU($payload[static::KEY_IDENTIFIER]);
             $value[static::ABSTRACT_IDENTIFIER] = true;
 

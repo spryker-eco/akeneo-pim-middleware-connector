@@ -7,14 +7,10 @@
     "spryker/locale": "^3.0.0",
     "spryker/tax": "^5.0.0",
     "spryker-eco/akeneo-pim": "dev-beta/ECO-777-akeneo-pim",
-    "spryker-middleware/process": "dev-dev",
+    "spryker-middleware/process": "1.0.0",
     "spryker/data-import": "^1.0.0"
   },
   "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:spryker-middleware/process.git"
-    },
     {
       "type": "git",
       "url": "git@github.com:spryker-eco/akeneo-pim.git"

@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction;
 
-
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface;
 

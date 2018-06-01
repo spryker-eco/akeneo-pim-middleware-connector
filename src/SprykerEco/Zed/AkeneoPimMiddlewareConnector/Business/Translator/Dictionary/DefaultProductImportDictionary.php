@@ -150,7 +150,7 @@ class DefaultProductImportDictionary extends AbstractDictionary
                 ],
                 [
                     'AddUrlToLocalizedAttributes',
-                ]
+                ],
             ],
             'values.attributes' => [
                 [
