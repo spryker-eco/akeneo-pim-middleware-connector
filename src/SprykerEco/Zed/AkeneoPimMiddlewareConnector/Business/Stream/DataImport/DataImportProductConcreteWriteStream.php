@@ -55,27 +55,35 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     protected $pricesData;
 
     /**
-     * @var $storesData
+     * @var array
      */
     protected $storesData;
+
+    /**
+     * @var int
+     */
+    protected $bufferSize;
 
     /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterConcretePlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterAbstractPlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImporterPricePlugin
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface $dataImportAbstractStoresPlugin
+     * @param int $bufferSize
      */
     public function __construct(
         DataImporterPluginInterface $dataImporterConcretePlugin,
         DataImporterPluginInterface $dataImporterAbstractPlugin,
         DataImporterPluginInterface $dataImporterPricePlugin,
-        DataImporterPluginInterface $dataImportAbstractStoresPlugin
+        DataImporterPluginInterface $dataImportAbstractStoresPlugin,
+        int $bufferSize = 200
     )
     {
         $this->dataImporterConcretePlugin = $dataImporterConcretePlugin;
         $this->dataImporterAbstractPlugin = $dataImporterAbstractPlugin;
         $this->dataImporterPricePlugin = $dataImporterPricePlugin;
         $this->dataImportAbstractStoresPlugin = $dataImportAbstractStoresPlugin;
+        $this->bufferSize = $bufferSize;
     }
 
     /**
@@ -151,7 +159,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
 
         $this->concreteData[] = $data;
 
-        if (count($this->concreteData) > 200) {
+        if (count($this->concreteData) > $this->bufferSize) {
             $this->flush();
         }
 

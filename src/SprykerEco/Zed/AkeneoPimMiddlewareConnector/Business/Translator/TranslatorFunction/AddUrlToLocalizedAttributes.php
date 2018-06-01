@@ -38,6 +38,7 @@ class AddUrlToLocalizedAttributes extends AbstractTranslatorFunction implements 
     public function translate($value, array $payload)
     {
         $value[static::KEY_URL] = $this->urlGenerator->generate($value[static::KEY_NAME], $value['attributes']['idLocale'], $payload['identifier'] ?? $payload['code']);
+        unset($value['attributes']['idLocale']);
 
         return $value;
     }
