@@ -4,7 +4,7 @@ env:
     - APPLICATION_STORE=DE
     - MODULE_DIR=module
     - SHOP_DIR=current
-    - MODULE_NAME=amazon-pay
+    - MODULE_NAME=akeneo-pim-middleware-connector
 script:
   - git clone -b '0.1.0' --single-branch https://github.com/spryker-eco/eco-ci.git ecoci
   - ./ecoci/build/travis.sh
