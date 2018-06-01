@@ -10,13 +10,16 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Transl
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\AbstractTranslatorFunction;
 use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface;
 
-class LocaleKeysToIds extends AbstractTranslatorFunction implements TranslatorFunctionInterface
+class AddMissingLocales extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    protected const OPTION_LOCALES = 'locales';
+    protected const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
+
     /**
      * @var array
      */
     protected $requiredOptions = [
-        'map',
+        self::OPTION_LOCALES,
     ];
 
     /**
@@ -27,27 +30,20 @@ class LocaleKeysToIds extends AbstractTranslatorFunction implements TranslatorFu
      */
     public function translate($value, array $payload)
     {
-        if ($value === null) {
-            return $value;
-        }
-
-        $result = [];
-        $localeMap = $this->getMap();
-
-        foreach ($value as $locale => $content) {
-            if (array_key_exists($locale, $localeMap)) {
-                $result[$localeMap[$locale]] = ['idLocale' => $localeMap[$locale]] + $content;
+        foreach ($this->getLocales() as $locale) {
+            if (!array_key_exists($locale, $value)) {
+                $value[$locale] = [];
             }
         }
 
-        return $result;
+        return $value;
     }
 
     /**
      * @return array
      */
-    protected function getMap(): array
+    protected function getLocales(): array
     {
-        return $this->options['map'];
+        return $this->options[static::OPTION_LOCALES];
     }
 }

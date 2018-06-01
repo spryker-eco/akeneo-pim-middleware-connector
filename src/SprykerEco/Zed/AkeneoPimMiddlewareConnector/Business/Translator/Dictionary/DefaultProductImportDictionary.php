@@ -41,7 +41,6 @@ class DefaultProductImportDictionary extends AbstractDictionary
     public function getDictionary(): array
     {
         return [
-            'parent' => 'SkipItemsWithoutParent',
             'values.*' => 'MeasureUnitToInt',
             'values.collection.data' => function ($value) {
                 if (is_array($value)) {
@@ -49,6 +48,17 @@ class DefaultProductImportDictionary extends AbstractDictionary
                 }
                 return $value;
             },
+            'parent' => [
+                'AddAbstractSkuIfNotExist',
+            ],
+            'categories' => [
+                [
+                    'ArrayToString',
+                    'options' => [
+                        'glue' => ',',
+                    ],
+                ],
+            ],
             'values' => [
                 [
                     'EnrichAttributes',
@@ -74,6 +84,12 @@ class DefaultProductImportDictionary extends AbstractDictionary
             ],
 
             'values.localizedAttributes' => [
+                [
+                    'AddMissingLocales',
+                    'options' => [
+                        'locales' => $this->config->getLocalesForImport(),
+                    ],
+                ],
                 [
                     'LocaleKeysToIds',
                     'options' => [
@@ -132,6 +148,9 @@ class DefaultProductImportDictionary extends AbstractDictionary
                         ],
                     ],
                 ],
+                [
+                    'AddUrlToLocalizedAttributes',
+                ]
             ],
             'values.attributes' => [
                 [

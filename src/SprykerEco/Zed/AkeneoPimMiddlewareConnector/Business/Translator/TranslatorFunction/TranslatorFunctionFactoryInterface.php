@@ -17,6 +17,11 @@ interface TranslatorFunctionFactoryInterface
     public function createAddAttributeOptionsTranslatorFunction(): TranslatorFunctionInterface;
 
     /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface
+     */
+    public function createAddUrlToLocalizedAttributesTranslatorFunction(): TranslatorFunctionInterface;
+
+    /**
      * @param string $translatorFunctionClassName
      *
      * @return \SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\TranslatorFunctionInterface

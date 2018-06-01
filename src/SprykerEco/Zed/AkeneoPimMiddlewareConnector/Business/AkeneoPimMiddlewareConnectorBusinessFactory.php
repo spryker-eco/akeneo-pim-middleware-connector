@@ -25,6 +25,8 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\D
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\DefaultProductModelImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductImportDictionary;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductModelImportDictionary;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategy;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\ValidationRuleSet\ProductImportValidationRuleSet;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\ValidationRuleSet\ProductModelImportValidationRuleSet;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
@@ -42,7 +44,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
      */
     public function createProductImportMap(): MapInterface
     {
-        return new ProductImportMap();
+        return new ProductImportMap($this->getConfig());
     }
 
     /**
