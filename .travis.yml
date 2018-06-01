@@ -1,0 +1,10 @@
+env:
+  global:
+    - APPLICATION_ENV=devtest
+    - APPLICATION_STORE=DE
+    - MODULE_DIR=module
+    - SHOP_DIR=current
+    - MODULE_NAME=amazon-pay
+script:
+  - git clone -b '0.1.0' --single-branch https://github.com/spryker-eco/eco-ci.git ecoci
+  - ./ecoci/build/travis.sh
