@@ -43,7 +43,7 @@ class UrlGeneratorStrategy implements UrlGeneratorStrategyInterface
     public function generate(string $name, int $idLocale, string $identifier): string
     {
         $abstractProductUrl = $this->utilTextService->generateSlug($name);
-        $abstractProductUrl = '/' . $this->getLocaleNameById($idLocale) . '/' . $abstractProductUrl . '-' . md5($identifier);
+        $abstractProductUrl = '/' . substr($this->getLocaleNameById($idLocale), 0, 2) . '/' . $abstractProductUrl . '-' . md5($identifier);
         $this->cleanupRedirectUrls($abstractProductUrl);
 
         return $abstractProductUrl;
