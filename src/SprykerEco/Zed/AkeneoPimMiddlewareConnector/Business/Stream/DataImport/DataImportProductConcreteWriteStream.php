@@ -130,7 +130,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
     }
 
     /**
-     * @param mixed $data
+     * @param array $data
      *
      * @return int
      */
