@@ -30,6 +30,13 @@ class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
      */
     public function get(): array
     {
+        if ($this->cursorVariants !== null) {
+            $this->cursorVariants->next();
+            if ($this->cursorVariants->valid()) {
+                return $this->cursorVariants->current();
+            }
+        }
+
         $item = $this->cursor->current();
         $this->cursor->next();
 
