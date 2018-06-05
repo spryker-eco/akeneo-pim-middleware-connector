@@ -20,6 +20,11 @@ interface StreamFactoryInterface
     /**
      * @return \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface
      */
+    public function createSuperAttributesAkeneoApiReadStream(): ReadStreamInterface;
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface
+     */
     public function createCategoryAkeneoApiReadStream(): ReadStreamInterface;
 
     /**
@@ -48,6 +53,13 @@ interface StreamFactoryInterface
      * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
      */
     public function createJsonObjectWriteStream(string $path);
+
+    /**
+     * @param string $path
+     *
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createJsonSuperAttributeWriteStream(string $path): WriteStreamInterface;
 
     /**
      * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface

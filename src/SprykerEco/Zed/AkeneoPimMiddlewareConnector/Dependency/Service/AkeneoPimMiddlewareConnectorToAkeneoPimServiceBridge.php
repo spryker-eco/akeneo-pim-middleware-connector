@@ -61,6 +61,31 @@ class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimM
     }
 
     /**
+     * @param int $pageSize
+     * @param array $queryParameters
+     *
+     * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
+     */
+    public function getAllFamilies($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
+    {
+        return $this->akeneoPimService
+            ->getAllFamilies($pageSize, $queryParameters);
+    }
+
+    /**
+     * @param string $code
+     * @param int $pageSize
+     * @param array $queryParameters
+     *
+     * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
+     */
+    public function getFamilyVariants(string $code, int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
+    {
+        return $this->akeneoPimService
+            ->getAllFamilyVariants($code, $pageSize, $queryParameters);
+    }
+
+    /**
      * @param string $attributeCode
      * @param int $pageSize
      * @param array $queryParameters

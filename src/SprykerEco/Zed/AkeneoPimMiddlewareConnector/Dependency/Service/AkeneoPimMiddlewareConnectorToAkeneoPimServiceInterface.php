@@ -36,6 +36,23 @@ interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
     public function getAllAttributes($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
 
     /**
+     * @param int $pageSize
+     * @param array $queryParameters
+     *
+     * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
+     */
+    public function getAllFamilies($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+
+    /**
+     * @param string $code
+     * @param int $pageSize
+     * @param array $queryParameters
+     *
+     * @return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
+     */
+    public function getFamilyVariants(string $code, int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+
+    /**
      * @param string $attributeCode
      * @param int $pageSize
      * @param array $queryParameters

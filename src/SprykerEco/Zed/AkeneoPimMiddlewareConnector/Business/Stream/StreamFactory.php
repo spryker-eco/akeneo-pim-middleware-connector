@@ -9,12 +9,14 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream;
 
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\AttributeAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\CategoryAkeneoApiReadStream;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\SuperAttributeAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductModelAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\DataImportProductConcreteWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\DataImportWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Db\PropelCriteriaReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Json\JsonObjectWriteStream;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Json\JsonSuperAttributeWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface;
@@ -104,6 +106,14 @@ class StreamFactory implements StreamFactoryInterface
     /**
      * @return \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface
      */
+    public function createSuperAttributesAkeneoApiReadStream(): ReadStreamInterface
+    {
+        return new SuperAttributeAkeneoApiReadStream($this->akeneoPimService);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface
+     */
     public function createCategoryAkeneoApiReadStream(): ReadStreamInterface
     {
         return new CategoryAkeneoApiReadStream($this->akeneoPimService);
@@ -149,6 +159,16 @@ class StreamFactory implements StreamFactoryInterface
     public function createJsonObjectWriteStream(string $path): WriteStreamInterface
     {
         return new JsonObjectWriteStream($path);
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+     */
+    public function createJsonSuperAttributeWriteStream(string $path): WriteStreamInterface
+    {
+        return new JsonSuperAttributeWriteStream($path);
     }
 
     /**

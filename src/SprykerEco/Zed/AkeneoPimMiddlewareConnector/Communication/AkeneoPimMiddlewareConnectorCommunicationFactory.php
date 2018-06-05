@@ -439,11 +439,35 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface
+     */
+    public function getSuperAttributesImportInputStreamPlugin(): InputStreamPluginInterface
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::SUPER_ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
+     */
+    public function getSuperAttributesImportOutputStreamPlugin(): OutputStreamPluginInterface
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::SUPER_ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN);
+    }
+
+    /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
      */
     public function getProductPreparationIteratorPlugin(): ProcessIteratorPluginInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::PRODUCT_PREPARATION_ITERATOR_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
+     */
+    public function getSuperAttributesImportIteratorPlugin(): ProcessIteratorPluginInterface
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::SUPER_ATTRIBUTE_IMPORT_ITERATOR_PLUGIN);
     }
 
     /**
@@ -455,6 +479,14 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
+     */
+    public function getSuperAttributesImportPreProcessorPluginsStack(): array
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::SUPER_ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS);
+    }
+
+    /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getProductPreparationStagePluginsStack(): array
@@ -463,11 +495,27 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
+     */
+    public function getSuperAttributesImportStagePluginsStack(): array
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS);
+    }
+
+    /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getProductPreparationPostProcessorPluginsStack(): array
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::PRODUCT_PREPARATION_POST_PROCESSOR_PLUGINS);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
+     */
+    public function getSuperAttributesImportPostProcessorPluginsStack(): array
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::SUPER_ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS);
     }
 
     /**
