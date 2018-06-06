@@ -43,5 +43,5 @@ before_install:
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script:
-  - git clone -b feature/increase-memory-size https://github.com/spryker-eco/eco-ci.git ecoci
+  - git clone -b master https://github.com/spryker-eco/eco-ci.git ecoci
   - ./ecoci/build/travis.sh
