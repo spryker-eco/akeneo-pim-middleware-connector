@@ -14,6 +14,8 @@ class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
      */
     protected $cursorVariants;
 
+    protected const KEY_CODE = 'code';
+
     /**
      * @return bool
      */
@@ -37,10 +39,10 @@ class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
             }
         }
 
-        $item = $this->cursor->current();
+        $family = $this->cursor->current();
         $this->cursor->next();
 
-        $this->cursorVariants = $this->akeneoPimService->getFamilyVariants($item['code']);
+        $this->cursorVariants = $this->akeneoPimService->getFamilyVariants($family[static::KEY_CODE]);
 
         return $this->cursorVariants->valid() ? $this->cursorVariants->current() : [];
     }
