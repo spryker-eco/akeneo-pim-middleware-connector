@@ -26,6 +26,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configurati
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductModelImportConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductModelPreparationConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\ProductPreparationConfigurationPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\SuperAttributeImportConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\TaxSetMapImportConfigurationPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultCategoryImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultCategoryMapperStagePlugin;
@@ -44,16 +45,19 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\Attr
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\CategoryAkeneoApiStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\CategoryWriteStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\JsonObjectWriteStreamPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\JsonSuperAttributeWriteStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\LocaleStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\ProductAbstractWriteStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\ProductAkeneoApiStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\ProductConcreteWriteStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\ProductModelAkeneoApiStreamPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\SuperAttributesAkeneoApiStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream\TaxSetStreamPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TaxSetMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddAbstractSkuIfNotExistTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddAttributeOptionsTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddAttributeValuesTranslatorFunctionPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddFamilyAttributeTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddMissingAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddMissingLocalesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\AddUrlToLocalizedAttributesTranslatorFunctionPlugin;
@@ -161,6 +165,13 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     public const PRODUCT_MODEL_PREPARATION_PRE_PROCESSOR_PLUGINS = 'PRODUCT_MODEL_PREPARATION_PRE_PROCESSOR_PLUGINS';
     public const PRODUCT_MODEL_PREPARATION_POST_PROCESSOR_PLUGINS = 'PRODUCT_MODEL_PREPARATION_POST_PROCESSOR_PLUGINS';
 
+    public const SUPER_ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN = 'SUPER_ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN';
+    public const SUPER_ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN = 'SUPER_ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN';
+    public const SUPER_ATTRIBUTE_IMPORT_ITERATOR_PLUGIN = 'SUPER_ATTRIBUTE_IMPORT_ITERATOR_PLUGIN';
+    public const SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS = 'SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS';
+    public const SUPER_ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS = 'SUPER_ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS';
+    public const SUPER_ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS = 'SUPER_ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS';
+
     public const TAX_SET_MAP_IMPORT_INPUT_STREAM_PLUGIN = 'TAX_SET_MAP_IMPORT_INPUT_STREAM_PLUGIN';
     public const TAX_SET_MAP_IMPORT_OUTPUT_STREAM_PLUGIN = 'TAX_SET_MAP_IMPORT_OUTPUT_STREAM_PLUGIN';
     public const TAX_SET_MAP_IMPORT_ITERATOR_PLUGIN = 'TAX_SET_MAP_IMPORT_ITERATOR_PLUGIN';
@@ -209,6 +220,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container = $this->addProductModelPreparationProcessPlugins($container);
         $container = $this->addProductPreparationProcessPlugins($container);
         $container = $this->addTaxSetMapImportProcessPlugins($container);
+        $container = $this->addSuperAttributeImportProcessPlugins($container);
         $container = $this->addDefaultCategoryImportStagePluginsStack($container);
         $container = $this->addDefaultProductImportStagePluginsStack($container);
         $container = $this->addDefaultProductModelImportStagePluginsStack($container);
@@ -258,6 +270,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             new ProductModelImportConfigurationPlugin(),
             new ProductModelPreparationConfigurationPlugin(),
             new ProductPreparationConfigurationPlugin(),
+            new SuperAttributeImportConfigurationPlugin(),
             new TaxSetMapImportConfigurationPlugin(),
         ];
     }
@@ -657,6 +670,43 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      *
      * @return \Spryker\Zed\Kernel\Container
      */
+    protected function addSuperAttributeImportProcessPlugins(Container $container): Container
+    {
+        $container[static::SUPER_ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+            return new SuperAttributesAkeneoApiStreamPlugin();
+        };
+
+        $container[static::SUPER_ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonSuperAttributeWriteStreamPlugin();
+        };
+
+        $container[static::SUPER_ATTRIBUTE_IMPORT_ITERATOR_PLUGIN] = function () {
+            return new NullIteratorPlugin();
+        };
+
+        $container[static::SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS] = function () {
+            return [
+                new StreamReaderStagePlugin(),
+                new StreamWriterStagePlugin(),
+            ];
+        };
+
+        $container[static::SUPER_ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+            return [];
+        };
+
+        $container[static::SUPER_ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+            return [];
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
     protected function addAkeneoPimTranslatorFunctions($container): Container
     {
         $container[static::AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS] = function () {
@@ -675,6 +725,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             new AddAbstractSkuIfNotExistTranslatorFunctionPlugin(),
             new AddAttributeOptionsTranslatorFunctionPlugin(),
             new AddAttributeValuesTranslatorFunctionPlugin(),
+            new AddFamilyAttributeTranslatorFunctionPlugin(),
             new AddMissingAttributesTranslatorFunctionPlugin(),
             new AddMissingLocalesTranslatorFunctionPlugin(),
             new AddUrlToLocalizedAttributesTranslatorFunctionPlugin(),

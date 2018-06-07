@@ -162,6 +162,9 @@ class DefaultProductImportDictionary extends AbstractDictionary
                         ],
                     ],
                 ],
+                [
+                    'AddFamilyAttribute',
+                ],
             ],
         ];
     }
