@@ -1,5 +1,7 @@
 # AkeneoPimMiddlewareConnector Module
 
+[![Build Status](https://travis-ci.org/spryker-eco/akeneo-pim-middleware-connector.svg?branch=dev)](https://travis-ci.org/spryker-eco/akeneo-pim-middleware-connector)
+
 ## Installation
 
 ```

@@ -1,0 +1,33 @@
+{
+  "name": "spryker-eco/akeneo-pim-middleware-connector",
+  "description": "Akeneo PIM to Middleware connector Module",
+  "require": {
+    "php": ">=7.1",
+    "spryker/kernel": "^3.0.0",
+    "spryker/locale": "^3.0.0",
+    "spryker/tax": "^5.0.0",
+    "spryker-eco/akeneo-pim": "dev-beta/ECO-777-akeneo-pim",
+    "spryker-middleware/process": "1.0.0",
+    "spryker/data-import": "^1.0.0",
+    "spryker/propel-orm": "^1.0.0",
+    "propel/propel": "^2.0.0"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:spryker-eco/akeneo-pim.git"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "SprykerEco": "src/",
+      "Function": "tests/"
+    }
+  },
+  "autoload-dev": {
+    "psr-0": {
+      "Functional": "tests/",
+      "Unit": "tests/"
+    }
+  }
+}
