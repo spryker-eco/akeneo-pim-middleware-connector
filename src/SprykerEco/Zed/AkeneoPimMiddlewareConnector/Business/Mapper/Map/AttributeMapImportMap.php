@@ -26,7 +26,7 @@ class AttributeMapImportMap extends AbstractMap
         'pim_catalog_identifier' => 'text',
         'pim_catalog_file' => 'text',
         'pim_catalog_date' => 'date',
-        'pim_assets_collection' => 'text'
+        'pim_assets_collection' => 'text',
     ];
 
     /**

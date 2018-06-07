@@ -9,9 +9,9 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream;
 
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\AttributeAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\CategoryAkeneoApiReadStream;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\SuperAttributeAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\ProductModelAkeneoApiReadStream;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo\SuperAttributeAkeneoApiReadStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\DataImportProductConcreteWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\DataImport\DataImportWriteStream;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Db\PropelCriteriaReadStream;

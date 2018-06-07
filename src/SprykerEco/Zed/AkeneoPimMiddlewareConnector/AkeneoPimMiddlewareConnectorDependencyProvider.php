@@ -684,7 +684,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new NullIteratorPlugin();
         };
 
-        $container[static::SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS ] = function () {
+        $container[static::SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS] = function () {
             return [
                 new StreamReaderStagePlugin(),
                 new StreamWriterStagePlugin(),
