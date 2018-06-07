@@ -46,6 +46,9 @@ class ProductImportValidationRuleSet extends AbstractValidationRuleSet implement
                     ],
                 ],
             ],
+            'categories' => [
+                'NotBlank'
+            ]
         ];
     }
 
