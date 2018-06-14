@@ -8,9 +8,7 @@
     "spryker/tax": "^5.0.0",
     "spryker-eco/akeneo-pim": "dev-beta/ECO-777-akeneo-pim",
     "spryker-middleware/process": "1.0.0",
-    "spryker/data-import": "^1.0.0",
-    "spryker/propel-orm": "^1.0.0",
-    "propel/propel": "^2.0.0"
+    "spryker/data-import": "^1.0.0"
   },
   "repositories": [
     {
@@ -24,6 +22,7 @@
       "Function": "tests/"
     }
   },
+  "minimum-stability": "dev",
   "autoload-dev": {
     "psr-0": {
       "Functional": "tests/",

@@ -1,4 +1,7 @@
-#include:
+namespace: AkeneoPimMiddlewareConnector
+
+include:
+    - tests/SprykerEcoTest/Zed/AkeneoPimMiddlewareConnector
 
 paths:
     tests: tests
