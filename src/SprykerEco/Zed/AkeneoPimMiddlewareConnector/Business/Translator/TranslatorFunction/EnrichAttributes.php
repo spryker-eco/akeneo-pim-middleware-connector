@@ -21,6 +21,8 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
     const ATTRIBUTE_TYPES_WITH_OPTIONS = [
         'pim_catalog_simpleselect',
         'pim_catalog_multiselect',
+        'pim_reference_data_multiselect',
+        'pim_assets_collection'
     ];
 
     /**
@@ -145,12 +147,12 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
      * @param string $attributeKey
      * @param string $optionKey
      *
-     * @return string
+     * @return array
      */
-    protected function getOptions(string $attributeKey, string $optionKey): string
+    protected function getOptions(string $attributeKey, string $optionKey): array
     {
         if (!array_key_exists($optionKey, static::$attributeOptionMap[$attributeKey])) {
-            return $optionKey;
+            return [$optionKey];
         }
 
         return static::$attributeOptionMap[$attributeKey][$optionKey];
