@@ -17,12 +17,16 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
     const KEY_LOCALE = 'locale';
     const KEY_TYPE = 'type';
     const KEY_LOCALIZABLE = 'localizable';
+    const KEY_KEY = 'key';
 
     const ATTRIBUTE_TYPES_WITH_OPTIONS = [
         'pim_catalog_simpleselect',
         'pim_catalog_multiselect',
+    ];
+
+    protected const ATTRIBUTES_TYPES_FOR_SKIPPING = [
+        'pim_assets_collection',
         'pim_reference_data_multiselect',
-        'pim_assets_collection'
     ];
 
     /**
@@ -34,6 +38,11 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
      * @var array
      */
     protected static $attributeLocalizableMap;
+
+    /**
+     * @var array
+     */
+    protected static $attributesForSkippingMap;
 
     /**
      * @var array
@@ -53,6 +62,11 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
         $this->initAttributeOptionMap();
 
         foreach ($value as $attributeKey => &$attributeValues) {
+            if ($this->isKeySkipped($attributeKey)) {
+                unset($value[$attributeKey]);
+                continue;
+            }
+
             if (!$this->hasKey($attributeKey) || $this->isKeyExcluded($attributeKey)) {
                 continue;
             }
@@ -121,6 +135,15 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
                 return in_array($element[static::KEY_TYPE], static::ATTRIBUTE_TYPES_WITH_OPTIONS);
             })
         );
+
+        static::$attributesForSkippingMap = array_map(
+            function ($element) {
+                return $element[static::KEY_KEY];
+            },
+            array_filter($this->getMap(), function ($element) {
+                return in_array($element[static::KEY_TYPE], static::ATTRIBUTES_TYPES_FOR_SKIPPING);
+            })
+        );
     }
 
     /**
@@ -141,6 +164,16 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
     protected function isKeyExcluded(string $key): bool
     {
         return in_array($key, $this->options['excludeKeys']);
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return bool
+     */
+    protected function isKeySkipped(string $key): bool
+    {
+        return array_key_exists($key, static::$attributesForSkippingMap);
     }
 
     /**
