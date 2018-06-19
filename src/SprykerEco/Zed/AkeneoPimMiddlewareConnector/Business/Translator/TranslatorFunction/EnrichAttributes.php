@@ -30,7 +30,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
         'pim_assets_collection',
         'pim_reference_data_multiselect',
         'pim_reference_data_simpleselect',
-        'pim_catalog_price_collection'
+        'pim_catalog_price_collection',
     ];
 
     /**
