@@ -65,7 +65,7 @@ class ProductImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-
+            'values.price' => 'PriceSelector',
             'values.localizedAttributes' => [
                 [
                     'LocaleKeysToIds',
@@ -92,7 +92,6 @@ class ProductImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-            'values.price' => 'PriceSelector',
             'values.localizedAttributes.*' => [
                 [
                     'ExcludeKeysAssociativeFilter',

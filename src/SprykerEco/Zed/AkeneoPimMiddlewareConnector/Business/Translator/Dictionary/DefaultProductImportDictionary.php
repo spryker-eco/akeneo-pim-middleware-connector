@@ -82,7 +82,6 @@ class DefaultProductImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-
             'values.localizedAttributes' => [
                 [
                     'AddMissingLocales',
@@ -192,6 +191,12 @@ class DefaultProductImportDictionary extends AbstractDictionary
             static::$attributeMap = json_decode($content, true);
         }
 
-        return static::$attributeMap;
+        $formattedResult = [];
+
+        foreach (static::$attributeMap as $key => $value) {
+            $formattedResult[$value['attribute_key']] = $value;
+        }
+
+        return $formattedResult;
     }
 }
