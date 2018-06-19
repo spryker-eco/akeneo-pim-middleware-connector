@@ -42,7 +42,6 @@ class ProductImportDictionary extends AbstractDictionary
     {
         return [
             'values.*' => 'MeasureUnitToInt',
-            'values.price' => 'PriceSelector',
             'values' => [
                 [
                     'EnrichAttributes',
@@ -66,6 +65,7 @@ class ProductImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
+            'values.price' => 'PriceSelector',
             'values.localizedAttributes' => [
                 [
                     'LocaleKeysToIds',

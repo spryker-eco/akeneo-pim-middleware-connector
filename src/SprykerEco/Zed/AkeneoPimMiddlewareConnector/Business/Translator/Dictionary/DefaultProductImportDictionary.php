@@ -59,14 +59,6 @@ class DefaultProductImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-            'values.price' => [
-                [
-                    'DefaultPriceSelector',
-                    'options' => [
-                        'stores' => $this->config->getDefaultStoresForProducts(),
-                    ],
-                ],
-            ],
             'values' => [
                 [
                     'EnrichAttributes',
@@ -90,7 +82,6 @@ class DefaultProductImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-
             'values.localizedAttributes' => [
                 [
                     'AddMissingLocales',
@@ -120,6 +111,14 @@ class DefaultProductImportDictionary extends AbstractDictionary
                             'meta_description',
                             'meta_keywords',
                         ],
+                    ],
+                ],
+            ],
+            'values.price' => [
+                [
+                    'DefaultPriceSelector',
+                    'options' => [
+                        'stores' => $this->config->getDefaultStoresForProducts(),
                     ],
                 ],
             ],

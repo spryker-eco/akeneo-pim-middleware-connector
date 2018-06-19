@@ -19,7 +19,9 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
     const KEY_LOCALIZABLE = 'localizable';
     const KEY_KEY = 'key';
 
-    const ATTRIBUTE_TYPES_WITH_OPTIONS = [
+    protected const ATTRIBUTE_PRICE = 'price';
+
+    protected const ATTRIBUTE_TYPES_WITH_OPTIONS = [
         'pim_catalog_simpleselect',
         'pim_catalog_multiselect',
     ];
@@ -142,7 +144,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
                 return $element[static::KEY_KEY];
             },
             array_filter($this->getMap(), function ($element) {
-                return in_array($element[static::KEY_TYPE], static::ATTRIBUTES_TYPES_FOR_SKIPPING);
+                return in_array($element[static::KEY_TYPE], static::ATTRIBUTES_TYPES_FOR_SKIPPING) && $element[static::KEY_KEY] != static::ATTRIBUTE_PRICE;
             })
         );
     }
