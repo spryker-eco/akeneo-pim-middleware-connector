@@ -29,6 +29,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
     protected const ATTRIBUTES_TYPES_FOR_SKIPPING = [
         'pim_assets_collection',
         'pim_reference_data_multiselect',
+        'pim_reference_data_simpleselect',
         'pim_catalog_price_collection'
     ];
 
