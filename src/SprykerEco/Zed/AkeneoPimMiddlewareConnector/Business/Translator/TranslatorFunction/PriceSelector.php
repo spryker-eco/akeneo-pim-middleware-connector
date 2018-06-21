@@ -22,17 +22,13 @@ class PriceSelector extends AbstractTranslatorFunction implements TranslatorFunc
     const KEY_PRICE_TYPE = 'type';
     const KEY_STORE = 'store';
 
-    const LOCALE_TO_PRICE_TYPE_MAP = [
-        'de_AT' => [
-            self::KEY_CURRENCY => 'EUR',
-            self::KEY_PRICE_TYPE => 'DEFAULT',
-            self::KEY_STORE => 'AT',
-        ],
-        'de_DE' => [
-            self::KEY_CURRENCY => 'EUR',
-            self::KEY_PRICE_TYPE => 'DEFAULT',
-            self::KEY_STORE => 'DE',
-        ],
+    public const OPTION_LOCALE_TO_PRICE_MAP = 'LOCALE_TO_PRICE_MAP_OPTION';
+
+    /**
+     * @var array
+     */
+    protected $requiredOptions = [
+        self::OPTION_LOCALE_TO_PRICE_MAP
     ];
 
     /**
@@ -51,15 +47,17 @@ class PriceSelector extends AbstractTranslatorFunction implements TranslatorFunc
 
         $result = [];
 
+        $localeToPriceTypeMap = $this->getLocaleToPriceMap();
+
         foreach ($value as $priceInfo) {
             $locale = $priceInfo[static::KEY_LOCALE];
-            if (!array_key_exists($locale, static::LOCALE_TO_PRICE_TYPE_MAP)) {
+            if (!array_key_exists($locale, $localeToPriceTypeMap)) {
                 continue;
             }
 
-            $currency = static::LOCALE_TO_PRICE_TYPE_MAP[$locale][static::KEY_CURRENCY] ?? null;
-            $type = static::LOCALE_TO_PRICE_TYPE_MAP[$locale][self::KEY_PRICE_TYPE] ?? null;
-            $store = static::LOCALE_TO_PRICE_TYPE_MAP[$locale][self::KEY_STORE] ?? null;
+            $currency = $localeToPriceTypeMap[$locale][static::KEY_CURRENCY] ?? null;
+            $type = $localeToPriceTypeMap[$locale][self::KEY_PRICE_TYPE] ?? null;
+            $store = $localeToPriceTypeMap[$locale][self::KEY_STORE] ?? null;
 
             foreach ($priceInfo[static::KEY_DATA] as $price) {
                 if ($price[static::KEY_CURRENCY] === $currency) {
@@ -74,5 +72,13 @@ class PriceSelector extends AbstractTranslatorFunction implements TranslatorFunc
         }
 
         return $result;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getLocaleToPriceMap(): array
+    {
+        return $this->options[static::OPTION_LOCALE_TO_PRICE_MAP];
     }
 }

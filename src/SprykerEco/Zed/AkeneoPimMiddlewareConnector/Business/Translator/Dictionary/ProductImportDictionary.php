@@ -8,6 +8,7 @@
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary;
 
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\PriceSelector;
 use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary;
 
 class ProductImportDictionary extends AbstractDictionary
@@ -65,7 +66,14 @@ class ProductImportDictionary extends AbstractDictionary
                     ],
                 ],
             ],
-            'values.price' => 'PriceSelector',
+            'values.price' => [
+                [
+                    'PriceSelector',
+                    'options' => [
+                        PriceSelector::OPTION_LOCALE_TO_PRICE_MAP => $this->config->getLocaleToPriceMap(),
+                    ]
+                ]
+            ],
             'values.localizedAttributes' => [
                 [
                     'LocaleKeysToIds',
