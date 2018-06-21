@@ -7,10 +7,11 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper;
 
-use Orm\Zed\Locale\Persistence\Map\SpyLocaleTableMap;
-
 class LocaleMapper implements LocaleMapperInterface
 {
+    protected const KEY_COLUMN_LOCALE_NAME = 'spy_locale.locale_name';
+    protected const KEY_COLUMN_LOCALE_ID = 'spy_locale.id_locale';
+
     /**
      * @param array $payload
      *
@@ -19,7 +20,7 @@ class LocaleMapper implements LocaleMapperInterface
     public function map(array $payload): array
     {
         return [
-            $payload[SpyLocaleTableMap::COL_LOCALE_NAME] => $payload[SpyLocaleTableMap::COL_ID_LOCALE],
+            $payload[static::KEY_COLUMN_LOCALE_NAME] => $payload[static::KEY_COLUMN_LOCALE_ID],
         ];
     }
 }
