@@ -190,18 +190,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
-        $container[static::SERVICE_AKENEO_PIM] = function (Container $container) {
-            return new AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge($container->getLocator()->akeneoPim()->service());
-        };
-
-        $container[static::FACADE_PROCESS] = function (Container $container) {
-            return new AkeneoPimMiddlewareConnectorToProcessFacadeBridge($container->getLocator()->process()->facade());
-        };
-
-        $container[static::SERVICE_UTIL_TEXT] = function (Container $container) {
-            return new AkeneoPimMiddlewareConnectorToUtilTextBridge($container->getLocator()->utilText()->service());
-        };
-
+        $container = $this->addServiceAkeneoPim($container);
+        $container = $this->addFacadeProcess($container);
+        $container = $this->addServiceUtilText($container);
         $container = $this->addCategoryDataImporterPlugin($container);
         $container = $this->addAttributeDataImporterPlugin($container);
         $container = $this->addProductAbstractDataImporterPlugin($container);
@@ -221,9 +212,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container = $this->addProductPreparationProcessPlugins($container);
         $container = $this->addTaxSetMapImportProcessPlugins($container);
         $container = $this->addSuperAttributeImportProcessPlugins($container);
-        $container = $this->addDefaultCategoryImportStagePluginsStack($container);
-        $container = $this->addDefaultProductImportStagePluginsStack($container);
-        $container = $this->addDefaultProductModelImportStagePluginsStack($container);
+        $container = $this->addDefaultCategoryImportStagePlugins($container);
+        $container = $this->addDefaultProductImportStagePlugins($container);
+        $container = $this->addDefaultProductModelImportStagePlugins($container);
         $container = $this->addProductPriceDataImporterPlugin($container);
         $container = $this->addProductAbstractStoresDataImporterPlugin($container);
 
@@ -250,7 +241,49 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     protected function addAkeneoPimProcesses(Container $container): Container
     {
         $container[static::AKENEO_PIM_MIDDLEWARE_PROCESSES] = function () {
-            return $this->getAkeneoPimProceseesPluginsStack();
+            return $this->getAkeneoPimProceseesPlugins();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addServiceAkeneoPim(Container $container): Container
+    {
+        $container[static::SERVICE_AKENEO_PIM] = function (Container $container) {
+            return new AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge($container->getLocator()->akeneoPim()->service());
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addFacadeProcess(Container $container): Container
+    {
+        $container[static::FACADE_PROCESS] = function (Container $container) {
+            return new AkeneoPimMiddlewareConnectorToProcessFacadeBridge($container->getLocator()->process()->facade());
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addServiceUtilText(Container $container): Container
+    {
+        $container[static::SERVICE_UTIL_TEXT] = function (Container $container) {
+            return new AkeneoPimMiddlewareConnectorToUtilTextBridge($container->getLocator()->utilText()->service());
         };
 
         return $container;
@@ -259,7 +292,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
      */
-    protected function getAkeneoPimProceseesPluginsStack(): array
+    protected function getAkeneoPimProceseesPlugins(): array
     {
         return [
             new AttributeImportConfigurationPlugin(),
@@ -283,7 +316,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     protected function addDefaultAkeneoPimProcesses(Container $container): Container
     {
         $container[static::DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES] = function () {
-            return $this->getDefaultAkeneoPimProceseesPluginsStack();
+            return $this->getDefaultAkeneoPimProcessesPlugins();
         };
 
         return $container;
@@ -292,7 +325,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
      */
-    protected function getDefaultAkeneoPimProceseesPluginsStack(): array
+    protected function getDefaultAkeneoPimProcessesPlugins(): array
     {
         return [
             new DefaultCategoryImportConfigurationPlugin(),
@@ -710,7 +743,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     protected function addAkeneoPimTranslatorFunctions($container): Container
     {
         $container[static::AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS] = function () {
-            return $this->getAkeneoPimTranslatorFunctionPluginsStack();
+            return $this->getAkeneoPimTranslatorFunctionPlugins();
         };
 
         return $container;
@@ -719,7 +752,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
      */
-    protected function getAkeneoPimTranslatorFunctionPluginsStack(): array
+    protected function getAkeneoPimTranslatorFunctionPlugins(): array
     {
         return [
             new AddAbstractSkuIfNotExistTranslatorFunctionPlugin(),
@@ -753,7 +786,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     protected function addDefaultAkeneoPimTranslatorFunctions($container): Container
     {
         $container[static::DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS] = function () {
-            return $this->getDefaultAkeneoPimTranslatorFunctionPluginsStack();
+            return $this->getDefaultAkeneoPimTranslatorFunctionPlugins();
         };
 
         return $container;
@@ -762,7 +795,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
      */
-    protected function getDefaultAkeneoPimTranslatorFunctionPluginsStack(): array
+    protected function getDefaultAkeneoPimTranslatorFunctionPlugins(): array
     {
         return [
             new DefaultPriceSelectorTranslatorFunctionPlugin(),
@@ -836,7 +869,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addDefaultCategoryImportStagePluginsStack($container)
+    protected function addDefaultCategoryImportStagePlugins($container): Container
     {
         $container[static::DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS] = function () {
             return [
@@ -855,7 +888,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addDefaultProductImportStagePluginsStack($container)
+    protected function addDefaultProductImportStagePlugins($container): Container
     {
         $container[static::DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS] = function () {
             return [
@@ -875,7 +908,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addDefaultProductModelImportStagePluginsStack($container)
+    protected function addDefaultProductModelImportStagePlugins($container): Container
     {
         $container[static::DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS] = function () {
             return [

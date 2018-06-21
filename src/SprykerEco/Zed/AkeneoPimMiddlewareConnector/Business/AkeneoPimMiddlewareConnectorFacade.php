@@ -18,6 +18,10 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements AkeneoPimMiddlewareConnectorFacadeInterface
 {
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
     public function getCategoryImportMapperConfig(): MapperConfigTransfer
@@ -28,6 +32,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer;
      */
     public function getCategoryImportTranslatorConfig(): TranslatorConfigTransfer
@@ -38,6 +46,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
     public function getProductImportMapperConfig(): MapperConfigTransfer
@@ -48,6 +60,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer;
      */
     public function getProductImportTranslatorConfig(): TranslatorConfigTransfer
@@ -58,6 +74,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
     public function getProductModelImportMapperConfig(): MapperConfigTransfer
@@ -68,6 +88,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer;
      */
     public function getProductModelImportTranslatorConfig(): TranslatorConfigTransfer
@@ -78,6 +102,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
     public function getAttributeMapMapperConfig(): MapperConfigTransfer
@@ -88,6 +116,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer;
      */
     public function getAttributeMapTranslatorConfig(): TranslatorConfigTransfer
@@ -98,6 +130,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
     public function getAttributeMapPreparationMapperConfig(): MapperConfigTransfer
@@ -108,6 +144,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @param array $payload
      *
      * @return array
@@ -120,6 +160,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @param array $payload
      *
      * @return array
@@ -132,6 +176,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
     public function getDefaultCategoryImportMapperConfig(): MapperConfigTransfer
@@ -142,6 +190,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
      */
     public function getDefaultCategoryImportTranslatorConfig(): TranslatorConfigTransfer
@@ -152,6 +204,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
      */
     public function getDefaultProductImportTranslatorConfig(): TranslatorConfigTransfer
@@ -162,6 +218,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
      */
     public function getDefaultProductModelImportTranslatorConfig(): TranslatorConfigTransfer
@@ -172,6 +232,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
      */
     public function getProductModelImportValidatorConfig(): ValidatorConfigTransfer
@@ -182,6 +246,10 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
      */
     public function getProductImportValidatorConfig(): ValidatorConfigTransfer
