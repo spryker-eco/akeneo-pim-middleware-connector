@@ -76,7 +76,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
         DataImporterPluginInterface $dataImporterAbstractPlugin,
         DataImporterPluginInterface $dataImporterPricePlugin,
         DataImporterPluginInterface $dataImportAbstractStoresPlugin,
-        int $bufferSize = 200
+        int $bufferSize = 30
     ) {
         $this->dataImporterConcretePlugin = $dataImporterConcretePlugin;
         $this->dataImporterAbstractPlugin = $dataImporterAbstractPlugin;
@@ -103,6 +103,8 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
      */
     public function close(): bool
     {
+        $this->flush();
+
         return true;
     }
 

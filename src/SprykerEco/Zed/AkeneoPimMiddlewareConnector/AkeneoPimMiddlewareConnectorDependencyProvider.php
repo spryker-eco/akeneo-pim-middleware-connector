@@ -82,6 +82,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlug
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Log\MiddlewareLoggerConfigPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonInputStreamPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonOutputStreamPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonRowOutputStreamPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\StreamReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\StreamWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
@@ -600,7 +601,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             return new ProductAkeneoApiStreamPlugin();
         };
         $container[static::PRODUCT_PREPARATION_OUTPUT_STREAM_PLUGIN] = function () {
-            return new JsonOutputStreamPlugin();
+            return new JsonRowOutputStreamPlugin();
         };
 
         $container[static::PRODUCT_PREPARATION_ITERATOR_PLUGIN] = function () {
