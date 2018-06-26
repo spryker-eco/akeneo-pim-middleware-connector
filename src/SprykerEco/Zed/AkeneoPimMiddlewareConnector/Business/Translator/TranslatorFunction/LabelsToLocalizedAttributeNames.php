@@ -22,11 +22,33 @@ class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction impleme
      */
     public function translate($value, array $payload)
     {
+        $defaultLocales = $this->getLocales();
+
         $key = isset($this->options['key']) ? $this->options['key'] : static::KEY_NAME;
+
+        if (empty($value) && $defaultLocales) {
+           $code = $payload['category_key'];
+           foreach ($defaultLocales as $locale) {
+               $value[$locale] = [
+                   $key => $code,
+               ];
+           }
+
+           return $value;
+        }
+
         return array_map(function ($value) use ($key) {
             return [
                 $key => $value,
             ];
         }, $value);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getLocales(): array
+    {
+        return $this->options['defaultLocales'];
     }
 }

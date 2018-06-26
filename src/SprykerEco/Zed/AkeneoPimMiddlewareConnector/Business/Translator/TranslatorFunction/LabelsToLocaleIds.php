@@ -31,6 +31,10 @@ class LabelsToLocaleIds extends AbstractTranslatorFunction implements Translator
             return $value;
         }
 
+        if (empty($value)) {
+            $value = $this->getMap();
+        }
+
         $result = [];
         $localeMap = $this->getMap();
 

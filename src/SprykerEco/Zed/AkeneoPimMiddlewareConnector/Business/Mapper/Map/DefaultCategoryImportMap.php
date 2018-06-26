@@ -22,6 +22,7 @@ class DefaultCategoryImportMap extends AbstractMap
             'parent_category_key' => 'parent',
             'localizedAttributes' => 'labels',
             'locales' => 'labels',
+            'is_active' => 'enabled',
             'is_root' => function (array $item) {
                 return false;
             },

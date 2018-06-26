@@ -37,7 +37,12 @@ class DefaultCategoryImportDictionary extends AbstractDictionary
     {
         return [
             'localizedAttributes' => [
-                'LabelsToLocalizedAttributeNames',
+                [
+                    'LabelsToLocalizedAttributeNames',
+                    'options' => [
+                        'defaultLocales' => $this->config->getLocalesForImport(),
+                    ],
+                ],
                 [
                     'LocaleKeysToIds',
                     'options' => [
