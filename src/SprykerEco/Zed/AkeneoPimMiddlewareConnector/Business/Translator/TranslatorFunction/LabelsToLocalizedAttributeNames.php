@@ -49,6 +49,6 @@ class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction impleme
      */
     protected function getLocales(): array
     {
-        return $this->options['defaultLocales'];
+        return $this->options['defaultLocales'] ?? [];
     }
 }
