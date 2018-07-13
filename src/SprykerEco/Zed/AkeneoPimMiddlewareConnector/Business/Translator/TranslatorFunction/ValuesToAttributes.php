@@ -12,10 +12,10 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class ValuesToAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_ATTRIBUTES = 'attributes';
+    protected const KEY_ATTRIBUTES = 'attributes';
 
-    const KEY_LOCALE = 'locale';
-    const KEY_DATA = 'data';
+    protected const KEY_LOCALE = 'locale';
+    protected const KEY_DATA = 'data';
 
     /**
      * @var array

@@ -16,7 +16,7 @@ class DataImportWriteStream implements WriteStreamInterface
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface
      */
-    private $dataImporterPlugin;
+    protected $dataImporterPlugin;
 
     /**
      * @var array

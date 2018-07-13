@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class AttributeEmptyTranslationToKey extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_CODE = 'code';
+    protected const KEY_CODE = 'code';
 
     /**
      * @param mixed $value

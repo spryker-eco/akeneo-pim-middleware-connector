@@ -12,8 +12,8 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class MeasureUnitToInt extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_DATA = 'data';
-    const KEY_AMOUNT = 'amount';
+    protected const KEY_DATA = 'data';
+    protected const KEY_AMOUNT = 'amount';
 
     /**
      * @param mixed $value

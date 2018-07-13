@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class ValuesToAttributesTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'ValuesToAttributes';
+    protected const NAME = 'ValuesToAttributes';
 
     /**
      * @return string

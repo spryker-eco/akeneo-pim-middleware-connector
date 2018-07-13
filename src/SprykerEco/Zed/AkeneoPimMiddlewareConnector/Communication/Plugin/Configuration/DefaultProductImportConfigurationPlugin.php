@@ -20,7 +20,7 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
  */
 class DefaultProductImportConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
 {
-    const PROCESS_NAME = 'DEFAULT_PRODUCT_IMPORT_PROCESS';
+    protected const PROCESS_NAME = 'DEFAULT_PRODUCT_IMPORT_PROCESS';
 
     /**
      * @return string

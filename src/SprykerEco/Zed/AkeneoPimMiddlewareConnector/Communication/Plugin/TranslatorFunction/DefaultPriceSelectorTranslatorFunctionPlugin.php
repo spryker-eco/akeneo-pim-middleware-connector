@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class DefaultPriceSelectorTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'DefaultPriceSelector';
+    protected const NAME = 'DefaultPriceSelector';
 
     /**
      * @return string

@@ -10,6 +10,7 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin;
 use Generated\Shared\Transfer\ValidatorConfigTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface;
+use SprykerMiddleware\Zed\Process\Business\Exception\TolerableProcessException;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
 
 /**

@@ -12,14 +12,14 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class DefaultValuesToLocalizedAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
+    protected const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
-    const KEY_LOCALE = 'locale';
-    const KEY_DATA = 'data';
+    protected const KEY_LOCALE = 'locale';
+    protected const KEY_DATA = 'data';
 
-    const KEY_ERP_NAME = 'erp_name';
-    const KEY_NAME = 'name';
-    const KEY_DESCRIPTION = 'description';
+    protected const KEY_ERP_NAME = 'erp_name';
+    protected const KEY_NAME = 'name';
+    protected const KEY_DESCRIPTION = 'description';
 
     /**
      * @var array

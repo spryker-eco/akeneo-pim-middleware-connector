@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class SkipItemsWithoutParentTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'SkipItemsWithoutParent';
+    protected const NAME = 'SkipItemsWithoutParent';
 
     /**
      * @return string

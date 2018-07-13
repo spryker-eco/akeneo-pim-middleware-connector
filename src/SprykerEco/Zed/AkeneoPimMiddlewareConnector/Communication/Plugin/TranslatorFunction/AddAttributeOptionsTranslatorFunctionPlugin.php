@@ -16,7 +16,7 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\Translato
  */
 class AddAttributeOptionsTranslatorFunctionPlugin extends AbstractPlugin implements TranslatorFunctionPluginInterface
 {
-    const NAME = 'AddAttributeOptions';
+    protected const NAME = 'AddAttributeOptions';
 
     /**
      * @return string

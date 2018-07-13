@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class DefaultValuesToLocalizedAttributesTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'DefaultValuesToLocalizedAttributes';
+    protected const NAME = 'DefaultValuesToLocalizedAttributes';
 
     /**
      * @return string

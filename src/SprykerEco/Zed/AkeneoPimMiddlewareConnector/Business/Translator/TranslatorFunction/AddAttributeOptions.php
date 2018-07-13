@@ -14,7 +14,7 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class AddAttributeOptions extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const ATTRIBUTE_TYPES_WITH_OPTIONS = [
+    protected const ATTRIBUTE_TYPES_WITH_OPTIONS = [
         'pim_catalog_simpleselect',
         'pim_catalog_multiselect',
     ];

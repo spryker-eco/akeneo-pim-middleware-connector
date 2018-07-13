@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class EnrichAttributesTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'EnrichAttributes';
+    protected const NAME = 'EnrichAttributes';
 
     /**
      * @return string

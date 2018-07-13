@@ -33,7 +33,7 @@ class ProductModelImportMap extends AbstractMap
     {
         return [
             'taxSetName' => function ($item) {
-                return $this->config->getDefaultTaxSet();
+                return $this->config->getTaxSet();
             },
             'new_from' => function ($item) {
                 return null;
@@ -58,7 +58,7 @@ class ProductModelImportMap extends AbstractMap
                 return '';
             },
             'stores' => function ($item) {
-                return $this->config->getDefaultStoresForProducts();
+                return $this->config->getActiveStoresForProducts();
             },
         ];
     }

@@ -12,8 +12,8 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class MoveLocalizedAttributesToAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_ATTRIBUTES = 'attributes';
-    const ATTRIBUTE_BLACKLIST = 'blacklist';
+    public const KEY_ATTRIBUTES = 'attributes';
+    public const ATTRIBUTE_BLACKLIST = 'blacklist';
 
     /**
      * @var array

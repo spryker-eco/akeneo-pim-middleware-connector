@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class AddMissingAttributesTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'AddMissingAttributes';
+    protected const NAME = 'AddMissingAttributes';
 
     /**
      * @return string

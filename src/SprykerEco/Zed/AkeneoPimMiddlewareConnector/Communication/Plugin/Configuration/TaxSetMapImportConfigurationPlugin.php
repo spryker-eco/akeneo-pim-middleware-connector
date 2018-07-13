@@ -20,7 +20,7 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
  */
 class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
 {
-    const PROCESS_NAME = 'TAX_SET_MAP_IMPORT_PROCESS';
+    protected const PROCESS_NAME = 'TAX_SET_MAP_IMPORT_PROCESS';
 
     /**
      * @return string

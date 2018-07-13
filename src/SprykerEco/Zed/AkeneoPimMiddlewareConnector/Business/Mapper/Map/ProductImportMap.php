@@ -16,7 +16,7 @@ class ProductImportMap extends AbstractMap
     /**
      * @var \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig
      */
-    private $config;
+    protected $config;
 
     /**
      * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig $config
@@ -33,7 +33,7 @@ class ProductImportMap extends AbstractMap
     {
         return [
             'taxSetName' => function ($item) {
-                return $this->config->getDefaultTaxSet();
+                return $this->config->getTaxSet();
             },
             'color_code' => function ($item) {
                 return '';
@@ -49,7 +49,7 @@ class ProductImportMap extends AbstractMap
                 return 0;
             },
             'stores' => function ($item) {
-                return $this->config->getDefaultStoresForProducts();
+                return $this->config->getActiveStoresForProducts();
             },
             'concrete_sku' => 'identifier',
             'abstract_sku' => 'parent.abstract_sku',

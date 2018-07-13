@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class AddMissingLocalesTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'AddMissingLocales';
+    protected const NAME = 'AddMissingLocales';
 
     /**
      * @return string

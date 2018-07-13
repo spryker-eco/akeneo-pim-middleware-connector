@@ -13,14 +13,14 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class PriceSelector extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_LOCALE = 'locale';
-    const KEY_DATA = 'data';
-    const KEY_AMOUNT = 'amount';
+    protected const KEY_LOCALE = 'locale';
+    protected const KEY_DATA = 'data';
+    protected const KEY_AMOUNT = 'amount';
 
-    const KEY_PRICE = 'price';
-    const KEY_CURRENCY = 'currency';
-    const KEY_PRICE_TYPE = 'type';
-    const KEY_STORE = 'store';
+    protected const KEY_PRICE = 'price';
+    protected const KEY_CURRENCY = 'currency';
+    protected const KEY_PRICE_TYPE = 'type';
+    protected const KEY_STORE = 'store';
 
     public const OPTION_LOCALE_TO_PRICE_MAP = 'LOCALE_TO_PRICE_MAP_OPTION';
 

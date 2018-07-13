@@ -20,7 +20,7 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
  */
 class AttributeMapConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
 {
-    const PROCESS_NAME = 'ATTRIBUTE_MAP_PROCESS';
+    protected const PROCESS_NAME = 'ATTRIBUTE_MAP_PROCESS';
 
     /**
      * @return string

@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class LabelsToLocaleIdsTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'LabelsToLocaleIds';
+    protected const NAME = 'LabelsToLocaleIds';
 
     /**
      * @return string

@@ -12,9 +12,9 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class AddAttributeValues extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_OPTIONS = 'options';
-    const KEY_VALUES = 'values';
-    const KEY_VALUE_TRANSLATIONS = 'value_translations';
+    protected const KEY_OPTIONS = 'options';
+    protected const KEY_VALUES = 'values';
+    protected const KEY_VALUE_TRANSLATIONS = 'value_translations';
 
     /**
      * @param mixed $value

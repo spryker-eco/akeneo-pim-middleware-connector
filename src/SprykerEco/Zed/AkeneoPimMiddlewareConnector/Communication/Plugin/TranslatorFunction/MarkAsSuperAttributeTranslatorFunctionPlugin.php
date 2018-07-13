@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class MarkAsSuperAttributeTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'MarkAsSuperAttribute';
+    protected const NAME = 'MarkAsSuperAttribute';
 
     /**
      * @return string

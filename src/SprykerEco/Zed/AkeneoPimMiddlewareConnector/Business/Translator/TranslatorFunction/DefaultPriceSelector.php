@@ -13,15 +13,15 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class DefaultPriceSelector extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const DEFAULT_PRICE_TYPE = 'DEFAULT';
+    protected const DEFAULT_PRICE_TYPE = 'DEFAULT';
 
-    const KEY_AMOUNT = 'amount';
-    const KEY_DATA = 'data';
-    const KEY_LOCALE = 'locale';
-    const KEY_CURRENCY = 'currency';
-    const KEY_PRICE = 'price';
-    const KEY_PRICE_TYPE = 'type';
-    const KEY_STORE = 'store';
+    protected const KEY_AMOUNT = 'amount';
+    protected const KEY_DATA = 'data';
+    protected const KEY_LOCALE = 'locale';
+    protected const KEY_CURRENCY = 'currency';
+    protected const KEY_PRICE = 'price';
+    protected const KEY_PRICE_TYPE = 'type';
+    protected const KEY_STORE = 'store';
 
     public const OPTION_STORES = 'OPTION_STORES';
     public const OPTION_LOCALE_TO_PRICE_MAP = 'LOCALE_TO_PRICE_MAP_OPTION';
@@ -73,8 +73,8 @@ class DefaultPriceSelector extends AbstractTranslatorFunction implements Transla
             }
 
             $currency = $localeToPriceTypeMap[$locale][static::KEY_CURRENCY] ?? null;
-            $type = $localeToPriceTypeMap[$locale][self::KEY_PRICE_TYPE] ?? null;
-            $store = $localeToPriceTypeMap[$locale][self::KEY_STORE] ?? null;
+            $type = $localeToPriceTypeMap[$locale][static::KEY_PRICE_TYPE] ?? null;
+            $store = $localeToPriceTypeMap[$locale][static::KEY_STORE] ?? null;
 
             foreach ($priceInfo[static::KEY_DATA] as $price) {
                 if ($price[static::KEY_CURRENCY] === $currency) {

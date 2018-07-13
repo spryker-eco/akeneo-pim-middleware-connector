@@ -39,17 +39,17 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     /**
      * @return int
      */
-    public function getDefaultFkCategoryTemplate(): int
+    public function getFkCategoryTemplate(): int
     {
-        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_FK_CATEGORY_TEMPLATE);
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::FK_CATEGORY_TEMPLATE);
     }
 
     /**
      * @return string
      */
-    public function getDefaultTaxSet(): string
+    public function getTaxSet(): string
     {
-        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_TAX_SET);
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::TAX_SET);
     }
 
     /**
@@ -63,9 +63,9 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     /**
      * @return array
      */
-    public function getDefaultStoresForProducts(): array
+    public function getActiveStoresForProducts(): array
     {
-        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_STORES_FOR_PRODUCTS);
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::ACTIVE_STORES_FOR_PRODUCTS);
     }
 
     /**

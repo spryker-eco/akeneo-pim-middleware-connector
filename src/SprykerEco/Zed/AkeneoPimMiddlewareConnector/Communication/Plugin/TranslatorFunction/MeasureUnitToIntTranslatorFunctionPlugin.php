@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class MeasureUnitToIntTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'MeasureUnitToInt';
+    protected const NAME = 'MeasureUnitToInt';
 
     /**
      * @return string

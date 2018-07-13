@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class AttributeEmptyTranslationToKeyTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'AttributeEmptyTranslationToKey';
+    protected const NAME = 'AttributeEmptyTranslationToKey';
 
     /**
      * @return string

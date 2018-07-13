@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\Akeneo;
 class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
 {
     /**
-     * @var \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
+     * @var \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursor
      */
     protected $cursorVariants;
 

@@ -119,7 +119,7 @@ class DefaultProductImportDictionary extends AbstractDictionary
                 [
                     'DefaultPriceSelector',
                     'options' => [
-                        DefaultPriceSelector::OPTION_STORES => $this->config->getDefaultStoresForProducts(),
+                        DefaultPriceSelector::OPTION_STORES => $this->config->getActiveStoresForProducts(),
                         DefaultPriceSelector::OPTION_LOCALE_TO_PRICE_MAP => $this->config->getLocaleToPriceMap(),
                     ],
                 ],

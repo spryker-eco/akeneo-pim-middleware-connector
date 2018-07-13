@@ -12,12 +12,12 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_OPTIONS = 'options';
-    const KEY_DATA = 'data';
-    const KEY_LOCALE = 'locale';
-    const KEY_TYPE = 'type';
-    const KEY_LOCALIZABLE = 'localizable';
-    const KEY_KEY = 'key';
+    protected const KEY_OPTIONS = 'options';
+    protected const KEY_DATA = 'data';
+    protected const KEY_LOCALE = 'locale';
+    protected const KEY_TYPE = 'type';
+    protected const KEY_LOCALIZABLE = 'localizable';
+    protected const KEY_KEY = 'key';
 
     protected const ATTRIBUTE_PRICE = 'price';
 
@@ -224,7 +224,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
      *
      * @return array
      */
-    private function getMultiSelectAttributeValue(array $options): array
+    protected function getMultiSelectAttributeValue(array $options): array
     {
         $value = [];
 
@@ -247,7 +247,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
      *
      * @return array
      */
-    private function getSimpleSelectAttributeValue($option): array
+    protected function getSimpleSelectAttributeValue($option): array
     {
         $value = [];
 
@@ -267,7 +267,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
      *
      * @return array
      */
-    private function getAttributeValue(string $attributeKey, $attributeData): array
+    protected function getAttributeValue(string $attributeKey, $attributeData): array
     {
         if (is_array($attributeData)) {
             $options = $this->getArrayOptions($attributeKey, $attributeData);
@@ -285,7 +285,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
      *
      * @return mixed
      */
-    private function isAttributeLocalizable(string $attributeKey)
+    protected function isAttributeLocalizable(string $attributeKey)
     {
         return static::$attributeLocalizableMap[$attributeKey];
     }

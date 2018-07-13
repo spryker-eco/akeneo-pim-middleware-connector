@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class AddAbstractSkuIfNotExistTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'AddAbstractSkuIfNotExist';
+    protected const NAME = 'AddAbstractSkuIfNotExist';
 
     /**
      * @return string

@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    const KEY_NAME = 'name';
+    protected const KEY_NAME = 'name';
 
     /**
      * @param mixed $value

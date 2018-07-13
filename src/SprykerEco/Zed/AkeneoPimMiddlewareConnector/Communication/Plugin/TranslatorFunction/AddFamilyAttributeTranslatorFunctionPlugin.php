@@ -12,7 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\Abstra
 
 class AddFamilyAttributeTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
-    const NAME = 'AddFamilyAttribute';
+    protected const NAME = 'AddFamilyAttribute';
 
     /**
      * @return string
