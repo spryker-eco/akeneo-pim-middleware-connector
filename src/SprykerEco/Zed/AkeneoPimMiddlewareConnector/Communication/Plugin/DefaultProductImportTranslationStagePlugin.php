@@ -30,11 +30,11 @@ class DefaultProductImportTranslationStagePlugin extends AbstractPlugin implemen
     }
 
     /**
-     * @param mixed $payload
+     * @param array $payload
      * @param \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface $outStream
      * @param mixed $originalPayload
      *
-     * @return mixed
+     * @return array
      */
     public function process($payload, WriteStreamInterface $outStream, $originalPayload)
     {

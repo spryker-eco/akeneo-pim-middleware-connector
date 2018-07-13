@@ -27,8 +27,6 @@ class AkeneoPimMiddlewareConnectorToProcessFacadeBridge implements AkeneoPimMidd
     }
 
     /**
-     * @api
-     *
      * @param array $payload
      * @param \Generated\Shared\Transfer\MapperConfigTransfer $mapperConfigTransfer
      *
