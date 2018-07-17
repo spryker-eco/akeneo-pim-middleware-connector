@@ -39,6 +39,7 @@ class AkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements Conf
      */
     public function getValidatorPlugins(): array
     {
-        return [];
+        return $this->getFactory()
+            ->getAkeneoPimValidators();
     }
 }

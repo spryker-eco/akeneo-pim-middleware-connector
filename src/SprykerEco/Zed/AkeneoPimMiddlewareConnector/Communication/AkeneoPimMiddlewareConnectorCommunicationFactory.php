@@ -15,7 +15,10 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\Ur
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Generator\UrlGeneratorStrategyInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\TranslatorFunctionFactoryInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\Validators\Factory\ValidatorFactory;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\Validators\Factory\ValidatorFactoryInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeInterface;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProductFacadeBridgeInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Plugin\DataImporterPluginInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface;
@@ -35,6 +38,14 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     public function createTranslatorFunctionFactory(): TranslatorFunctionFactoryInterface
     {
         return new TranslatorFunctionFactory($this->getAkeneoPimService(), $this->createUrlGeneratorStrategy());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\Validators\Factory\ValidatorFactoryInterface
+     */
+    public function createValidatorFactory(): ValidatorFactoryInterface
+    {
+        return new ValidatorFactory($this->getProductFacade());
     }
 
     /**
@@ -71,11 +82,27 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\GenericValidatorPluginInterface[]
+     */
+    public function getAkeneoPimValidators(): array
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::AKENEO_PIM_MIDDLEWARE_VALIDATORS);
+    }
+
+    /**
      * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeInterface
      */
     public function getProcessFacade(): AkeneoPimMiddlewareConnectorToProcessFacadeInterface
     {
         return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::FACADE_PROCESS);
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProductFacadeBridgeInterface
+     */
+    public function getProductFacade(): AkeneoPimMiddlewareConnectorToProductFacadeBridgeInterface
+    {
+        return $this->getProvidedDependency(AkeneoPimMiddlewareConnectorDependencyProvider::FACADE_PRODUCT);
     }
 
     /**

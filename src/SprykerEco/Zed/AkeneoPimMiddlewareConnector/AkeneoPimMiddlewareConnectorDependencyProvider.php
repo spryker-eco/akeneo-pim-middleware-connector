@@ -35,7 +35,6 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProd
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductModelImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\DefaultProductModelImportValidatorStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\LocaleMapperStagePlugin;
-use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\PrepareSkuValidationListPreHookPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductImportTranslationStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductMapperStagePlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\ProductModelImportMapperStagePlugin;
@@ -75,7 +74,9 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorF
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\SkipItemsWithoutParentTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\ValuesToAttributesTranslatorFunctionPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction\ValuesToLocalizedAttributesTranslatorFunctionPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Validator\ProductAbstractExistValidatorPlugin;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProcessFacadeBridge;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProductFacadeBridge;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToUtilTextBridge;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
@@ -93,6 +94,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     public const SERVICE_AKENEO_PIM = 'SERVICE_AKENEO_PIM';
     public const SERVICE_UTIL_TEXT = 'SERVICE_UTIL_TEXT';
     public const FACADE_PROCESS = 'FACADE_PROCESS';
+    public const FACADE_PRODUCT = 'FACADE_PRODUCT';
 
     public const DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES';
     public const DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS';
@@ -104,6 +106,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     public const AKENEO_PIM_MIDDLEWARE_PROCESSES = 'AKENEO_PIM_MIDDLEWARE_PROCESSES';
     public const AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG = 'AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG';
     public const AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS = 'AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS';
+    public const AKENEO_PIM_MIDDLEWARE_VALIDATORS = 'AKENEO_PIM_MIDDLEWARE_VALIDATORS';
     public const AKENEO_PIM_MIDDLEWARE_CATEGORY_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_CATEGORY_IMPORTER_PLUGIN';
     public const AKENEO_PIM_MIDDLEWARE_ATTRIBUTE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_ATTRIBUTE_IMPORTER_PLUGIN';
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN';
@@ -194,6 +197,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     {
         $container = $this->addServiceAkeneoPim($container);
         $container = $this->addFacadeProcess($container);
+        $container = $this->addFacadeProduct($container);
         $container = $this->addServiceUtilText($container);
         $container = $this->addCategoryDataImporterPlugin($container);
         $container = $this->addAttributeDataImporterPlugin($container);
@@ -203,6 +207,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         $container = $this->addAkeneoPimProcesses($container);
         $container = $this->addDefaultAkeneoPimProcesses($container);
         $container = $this->addAkeneoPimTranslatorFunctions($container);
+        $container = $this->addAkeneoPimValidators($container);
         $container = $this->addDefaultAkeneoPimTranslatorFunctions($container);
         $container = $this->addAttributeImportProcessPlugins($container);
         $container = $this->addAttributeMapProcessPlugins($container);
@@ -272,6 +277,20 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     {
         $container[static::FACADE_PROCESS] = function (Container $container) {
             return new AkeneoPimMiddlewareConnectorToProcessFacadeBridge($container->getLocator()->process()->facade());
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addFacadeProduct(Container $container): Container
+    {
+        $container[static::FACADE_PRODUCT] = function (Container $container) {
+            return new AkeneoPimMiddlewareConnectorToProductFacadeBridge($container->getLocator()->product()->facade());
         };
 
         return $container;
@@ -540,9 +559,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
         };
 
         $container[static::PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
-            return [
-                new PrepareSkuValidationListPreHookPlugin(),
-            ];
+            return [];
         };
 
         $container[static::PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
@@ -752,6 +769,20 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     }
 
     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addAkeneoPimValidators($container): Container
+    {
+        $container[static::AKENEO_PIM_MIDDLEWARE_VALIDATORS] = function() {
+            return $this->getAkeneoPimValidatorPlugins();
+        };
+
+        return $container;
+    }
+
+    /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
      */
     protected function getAkeneoPimTranslatorFunctionPlugins(): array
@@ -777,6 +808,16 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
             new MeasureUnitToIntTranslatorFunctionPlugin(),
             new LabelsToLocaleIdsTranslatorFunctionPlugin(),
             new SkipItemsWithoutParentTranslatorFunctionPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\GenericValidatorPluginInterface[]
+     */
+    protected function getAkeneoPimValidatorPlugins(): array
+    {
+        return [
+            new ProductAbstractExistValidatorPlugin(),
         ];
     }
 

@@ -39,12 +39,7 @@ class ProductImportValidationRuleSet extends AbstractValidationRuleSet implement
     {
         return [
             'parent' => [
-                [
-                    'InList',
-                    'options' => [
-                        InListValidator::OPTION_VALUES => $this->getSkuValues(),
-                    ],
-                ],
+                'ProductAbstractExist'
             ],
             'categories' => [
                 'NotBlank',

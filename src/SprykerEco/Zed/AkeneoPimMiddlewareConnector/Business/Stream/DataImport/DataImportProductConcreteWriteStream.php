@@ -76,7 +76,7 @@ class DataImportProductConcreteWriteStream implements WriteStreamInterface
         DataImporterPluginInterface $dataImporterAbstractPlugin,
         DataImporterPluginInterface $dataImporterPricePlugin,
         DataImporterPluginInterface $dataImportAbstractStoresPlugin,
-        int $bufferSize = 30
+        int $bufferSize = 300
     ) {
         $this->dataImporterConcretePlugin = $dataImporterConcretePlugin;
         $this->dataImporterAbstractPlugin = $dataImporterAbstractPlugin;

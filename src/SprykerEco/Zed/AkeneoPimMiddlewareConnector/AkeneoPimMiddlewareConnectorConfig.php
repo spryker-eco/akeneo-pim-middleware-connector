@@ -69,14 +69,6 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
-     * @return string
-     */
-    public function getSkuValuesFilePath(): string
-    {
-        return $this->get(AkeneoPimMiddlewareConnectorConstants::SKU_VALUE_FILE_PATH);
-    }
-
-    /**
      * @return array
      */
     public function getLocaleToPriceMap(): array

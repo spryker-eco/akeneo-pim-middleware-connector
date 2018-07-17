@@ -56,6 +56,7 @@ class AkeneoPimMiddlewareConnectorToProcessFacadeBridge implements AkeneoPimMidd
      */
     public function validate(array $payload, ValidatorConfigTransfer $validationConfigTransfer): array
     {
+        var_dump($payload);
         return $this->processFacade->validate($payload, $validationConfigTransfer);
     }
 }
