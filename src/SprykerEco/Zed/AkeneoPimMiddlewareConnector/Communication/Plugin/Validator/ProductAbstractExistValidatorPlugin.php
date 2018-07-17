@@ -42,7 +42,7 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
      * @param string $key
      * @param array $options
      *
-     * @return mixed
+     * @return bool
      */
     public function validate($value, array $payload, string $key, array $options): bool
     {

@@ -10,7 +10,6 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\Validat
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig;
 use SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\AbstractValidationRuleSet;
 use SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\ValidationRuleSetInterface;
-use SprykerMiddleware\Zed\Process\Business\Validator\Validators\InListValidator;
 
 class ProductImportValidationRuleSet extends AbstractValidationRuleSet implements ValidationRuleSetInterface
 {
@@ -39,7 +38,7 @@ class ProductImportValidationRuleSet extends AbstractValidationRuleSet implement
     {
         return [
             'parent' => [
-                'ProductAbstractExist'
+                'ProductAbstractExist',
             ],
             'categories' => [
                 'NotBlank',

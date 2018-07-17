@@ -8,9 +8,7 @@
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence;
 
 use Orm\Zed\Locale\Persistence\Map\SpyLocaleTableMap;
-use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\Tax\Persistence\Map\SpyTaxSetTableMap;
-use Orm\Zed\Tax\Persistence\SpyTaxSetQuery;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 

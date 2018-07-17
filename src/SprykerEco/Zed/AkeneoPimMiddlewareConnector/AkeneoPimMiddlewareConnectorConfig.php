@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace  SprykerEco\Zed\AkeneoPimMiddlewareConnector;
+namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector;
 
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 use SprykerEco\Shared\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConstants;

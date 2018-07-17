@@ -775,7 +775,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addAkeneoPimValidators($container): Container
     {
-        $container[static::AKENEO_PIM_MIDDLEWARE_VALIDATORS] = function() {
+        $container[static::AKENEO_PIM_MIDDLEWARE_VALIDATORS] = function () {
             return $this->getAkeneoPimValidatorPlugins();
         };
 

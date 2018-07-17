@@ -71,8 +71,8 @@ class ProductImportDictionary extends AbstractDictionary
                     'PriceSelector',
                     'options' => [
                         PriceSelector::OPTION_LOCALE_TO_PRICE_MAP => $this->config->getLocaleToPriceMap(),
-                    ]
-                ]
+                    ],
+                ],
             ],
             'values.localizedAttributes' => [
                 [

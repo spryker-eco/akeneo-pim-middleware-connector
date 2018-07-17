@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
- * For full license information, please view the LICENSE file that was distributed with this source code.
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\Validators\Factory;
@@ -18,6 +18,9 @@ class ValidatorFactory implements ValidatorFactoryInterface
      */
     protected $productFacade;
 
+    /**
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProductFacadeBridgeInterface $productFacade
+     */
     public function __construct(AkeneoPimMiddlewareConnectorToProductFacadeBridgeInterface $productFacade)
     {
         $this->productFacade = $productFacade;

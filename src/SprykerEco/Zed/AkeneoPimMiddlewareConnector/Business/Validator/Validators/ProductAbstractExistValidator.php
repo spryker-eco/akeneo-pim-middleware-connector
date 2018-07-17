@@ -17,6 +17,9 @@ class ProductAbstractExistValidator extends AbstractValidator
      */
     protected $productFacade;
 
+    /**
+     * @param \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddlewareConnectorToProductFacadeBridgeInterface $productFacade
+     */
     public function __construct(AkeneoPimMiddlewareConnectorToProductFacadeBridgeInterface $productFacade)
     {
         $this->productFacade = $productFacade;
@@ -34,6 +37,6 @@ class ProductAbstractExistValidator extends AbstractValidator
             return true;
         }
 
-        return (bool) $this->productFacade->findProductAbstractIdBySku($value);
+        return (bool)$this->productFacade->findProductAbstractIdBySku($value);
     }
 }

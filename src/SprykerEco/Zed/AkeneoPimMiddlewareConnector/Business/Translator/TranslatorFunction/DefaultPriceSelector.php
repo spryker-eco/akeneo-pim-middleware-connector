@@ -31,7 +31,7 @@ class DefaultPriceSelector extends AbstractTranslatorFunction implements Transla
      */
     protected $requiredOptions = [
         self::OPTION_STORES,
-        self::OPTION_LOCALE_TO_PRICE_MAP
+        self::OPTION_LOCALE_TO_PRICE_MAP,
     ];
 
     /**

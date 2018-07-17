@@ -38,7 +38,7 @@ use SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\Validatio
 class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\ProductImportMap
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
      */
     public function createProductImportMap(): MapInterface
     {
@@ -46,7 +46,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\ProductModelImportMap
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
      */
     public function createProductModelImportMap(): MapInterface
     {
@@ -54,7 +54,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\CategoryImportMap
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
      */
     public function createCategoryImportMap(): MapInterface
     {
@@ -62,7 +62,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\AttributeMapImportMap
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
      */
     public function createAttributeMapImportMap(): MapInterface
     {
@@ -70,7 +70,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\AttributeMapPreparationMap
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
      */
     public function createAttributeMapPreparationMap(): MapInterface
     {
@@ -78,7 +78,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductModelImportDictionary
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
      */
     public function createProductModelImportDictionary(): DictionaryInterface
     {
@@ -86,7 +86,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\ProductImportDictionary
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
      */
     public function createProductImportDictionary(): DictionaryInterface
     {
@@ -94,7 +94,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\CategoryImportDictionary
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
      */
     public function createCategoryImportDictionary(): DictionaryInterface
     {
@@ -102,7 +102,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\AttributeMapDictionary
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
      */
     public function createAttributeMapDictionary(): DictionaryInterface
     {
@@ -110,7 +110,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\LocaleMapper
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\LocaleMapperInterface
      */
     public function createLocaleMapper(): LocaleMapperInterface
     {
@@ -118,7 +118,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\TaxSetMapper
+     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\TaxSetMapperInterface
      */
     public function createTaxSetMapper(): TaxSetMapperInterface
     {
@@ -126,7 +126,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map\DefaultCategoryImportMap
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
      */
     public function createDefaultCategoryImportMap(): MapInterface
     {
@@ -134,7 +134,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\DefaultProductModelImportDictionary
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
      */
     public function createDefaultProductModelImportDictionary(): DictionaryInterface
     {
@@ -142,7 +142,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\DefaultProductImportDictionary
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
      */
     public function createDefaultProductImportDictionary(): DictionaryInterface
     {
@@ -150,7 +150,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\Dictionary\DefaultCategoryImportDictionary
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
      */
     public function createDefaultCategoryImportDictionary(): DictionaryInterface
     {
@@ -158,7 +158,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\ValidationRuleSet\ProductModelImportValidationRuleSet
+     * @return \SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\ValidationRuleSetInterface
      */
     public function createProductModelImportValidationRuleSet(): ValidationRuleSetInterface
     {
@@ -166,7 +166,7 @@ class AkeneoPimMiddlewareConnectorBusinessFactory extends AbstractBusinessFactor
     }
 
     /**
-     * @return \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Validator\ValidationRuleSet\ProductImportValidationRuleSet
+     * @return \SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\ValidationRuleSetInterface
      */
     public function createProductImportValidationRuleSet(): ValidationRuleSetInterface
     {

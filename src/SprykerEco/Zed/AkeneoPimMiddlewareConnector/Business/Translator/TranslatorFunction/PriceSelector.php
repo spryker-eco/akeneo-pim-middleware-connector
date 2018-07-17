@@ -28,7 +28,7 @@ class PriceSelector extends AbstractTranslatorFunction implements TranslatorFunc
      * @var array
      */
     protected $requiredOptions = [
-        self::OPTION_LOCALE_TO_PRICE_MAP
+        self::OPTION_LOCALE_TO_PRICE_MAP,
     ];
 
     /**
