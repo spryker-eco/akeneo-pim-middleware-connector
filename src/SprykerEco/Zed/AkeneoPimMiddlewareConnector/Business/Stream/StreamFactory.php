@@ -140,7 +140,7 @@ class StreamFactory implements StreamFactoryInterface
      */
     public function createTaxSetReadStream(): ReadStreamInterface
     {
-        return new PropelCriteriaReadStream($this->queryContainer->createSpyTaxSetQuery());
+        return new PropelCriteriaReadStream($this->queryContainer->querySelectSpyTaxSet());
     }
 
     /**
@@ -148,7 +148,7 @@ class StreamFactory implements StreamFactoryInterface
      */
     public function createLocaleReadStream(): ReadStreamInterface
     {
-        return new PropelCriteriaReadStream($this->queryContainer->createSpyLocaleQuery());
+        return new PropelCriteriaReadStream($this->queryContainer->querySelectLocale());
     }
 
     /**

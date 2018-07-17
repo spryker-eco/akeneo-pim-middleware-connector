@@ -14,14 +14,18 @@ use Orm\Zed\Tax\Persistence\SpyTaxSetQuery;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
+/**
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorPersistenceFactory getFactory()
+ */
 class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer implements AkeneoPimMiddlewareConnectorQueryContainerInterface
 {
     /**
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */
-    public function createSpyTaxSetQuery(): ModelCriteria
+    public function querySelectSpyTaxSet(): ModelCriteria
     {
-        return SpyTaxSetQuery::create()
+        return $this->getFactory()
+            ->createSpyTaxSetQuery()
             ->select([
                 SpyTaxSetTableMap::COL_ID_TAX_SET,
                 SpyTaxSetTableMap::COL_NAME,
@@ -31,9 +35,10 @@ class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer 
     /**
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */
-    public function createSpyLocaleQuery(): ModelCriteria
+    public function querySelectLocale(): ModelCriteria
     {
-        return SpyLocaleQuery::create()
+        return $this->getFactory()
+            ->createSpyLocaleQuery()
             ->select([
                 SpyLocaleTableMap::COL_ID_LOCALE,
                 SpyLocaleTableMap::COL_LOCALE_NAME,

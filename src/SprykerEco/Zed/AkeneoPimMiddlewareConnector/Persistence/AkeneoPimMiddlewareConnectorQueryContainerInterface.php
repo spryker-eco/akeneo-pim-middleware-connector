@@ -14,10 +14,10 @@ interface AkeneoPimMiddlewareConnectorQueryContainerInterface
     /**
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */
-    public function createSpyTaxSetQuery(): ModelCriteria;
+    public function querySelectSpyTaxSet(): ModelCriteria;
 
     /**
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */
-    public function createSpyLocaleQuery(): ModelCriteria;
+    public function querySelectLocale(): ModelCriteria;
 }
