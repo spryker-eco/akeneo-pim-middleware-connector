@@ -46,16 +46,4 @@ class ProductImportValidationRuleSet extends AbstractValidationRuleSet implement
             ],
         ];
     }
-
-    /**
-     * @return string[]
-     */
-    protected function getSkuValues(): array
-    {
-        if (empty(static::$skuValues)) {
-            static::$skuValues = json_decode(file_get_contents($this->config->getSkuValuesFilePath()), true);
-        }
-
-        return static::$skuValues;
-    }
 }
