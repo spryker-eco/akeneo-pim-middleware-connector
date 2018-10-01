@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Service;
 
-use SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface;
+use SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface;
 
 class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
 {
@@ -28,7 +28,7 @@ class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimM
      * @param int $pageSize
      * @param array $queryParameters
      *
-     * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
+     * @@return \SprykerEco\Service\AkeneoPim\Api\Wrapper\AkeneoResourceCursorInterface
      */
     public function getAllProducts($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
     {
