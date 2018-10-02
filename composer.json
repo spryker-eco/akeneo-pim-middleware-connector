@@ -7,7 +7,7 @@
     "spryker/locale": "^3.0.0",
     "spryker/tax": "^5.0.0",
     "spryker-eco/akeneo-pim": "^1.0.0",
-    "spryker-middleware/process": "^1.0.0",
+    "spryker-middleware/process": "dev-dev",
     "spryker/data-import": "^1.0.0"
   },
   "repositories": [
