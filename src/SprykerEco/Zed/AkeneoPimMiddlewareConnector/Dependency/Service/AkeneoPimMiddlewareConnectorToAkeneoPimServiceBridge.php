@@ -28,7 +28,7 @@ class AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge implements AkeneoPimM
      * @param int $pageSize
      * @param array $queryParameters
      *
-     * @@return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
+     * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
     public function getAllProducts($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface
     {
