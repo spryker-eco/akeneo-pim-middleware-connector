@@ -58,7 +58,7 @@ class PropelCriteriaReadStream implements StreamInterface, ReadStreamInterface
         $this->iterator = $this->modelCriteria
             ->find()
             ->getIterator();
-        
+
         return true;
     }
 
