@@ -2,7 +2,7 @@
 
 /**
  * MIT License
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin;
@@ -30,6 +30,8 @@ class ProductModelImportTranslationStagePlugin extends AbstractPlugin implements
     }
 
     /**
+     * @api
+     *
      * @param mixed $payload
      * @param \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface $outStream
      * @param mixed $originalPayload
@@ -44,6 +46,8 @@ class ProductModelImportTranslationStagePlugin extends AbstractPlugin implements
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getName(): string

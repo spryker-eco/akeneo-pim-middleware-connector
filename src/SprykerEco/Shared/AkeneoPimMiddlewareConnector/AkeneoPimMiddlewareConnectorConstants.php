@@ -2,11 +2,14 @@
 
 /**
  * MIT License
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Shared\AkeneoPimMiddlewareConnector;
 
+/**
+ * Declares global environment configuration keys. Do not use it for other class constants.
+ */
 interface AkeneoPimMiddlewareConnectorConstants
 {
     public const LOCALE_MAP_FILE_PATH = 'AKENEOPIMMIDDLEWARECONNECTOR:LOCALE_MAP_FILE_PATH';

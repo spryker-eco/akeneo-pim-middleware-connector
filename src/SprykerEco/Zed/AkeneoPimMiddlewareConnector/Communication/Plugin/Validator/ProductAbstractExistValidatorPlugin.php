@@ -2,7 +2,7 @@
 
 /**
  * MIT License
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Validator;
@@ -21,6 +21,8 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
     public const KEY_URL = 'url';
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getName(): string
@@ -29,6 +31,8 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getValidatorClassName(): string
@@ -37,6 +41,8 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
     }
 
     /**
+     * @api
+     *
      * @param mixed $value
      * @param array $payload
      * @param string $key

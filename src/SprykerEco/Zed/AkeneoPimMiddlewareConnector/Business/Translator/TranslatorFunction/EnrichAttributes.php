@@ -2,7 +2,7 @@
 
 /**
  * MIT License
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
@@ -100,7 +100,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
                     $attributeValue[static::KEY_DATA] = $options[$locale];
                     continue;
                 }
-                
+
                 $value[$attributeKey] = $this->getAttributeValue($attributeKey, $attributeData);
             }
         }
@@ -130,8 +130,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
                 return $element[static::KEY_OPTIONS];
             },
             array_filter($this->getMap(), function ($element) {
-                return
-                    count($element[static::KEY_OPTIONS] ?? []) > 0 &&
+                return count($element[static::KEY_OPTIONS] ?? []) > 0 &&
                     in_array($element[static::KEY_TYPE], static::ATTRIBUTE_TYPES_WITH_OPTIONS);
             })
         );
