@@ -18,13 +18,13 @@
   ],
   "autoload": {
     "psr-4": {
-      "SprykerEco\\": "src/SprykerEco/",
+      "SprykerEco\\": "src/SprykerEco/"
     }
   },
   "minimum-stability": "dev",
   "autoload-dev": {
     "psr-4": {
-      "SprykerEcoTest\\": "tests/SprykerEcoTest/",
+      "SprykerEcoTest\\": "tests/SprykerEcoTest/"
     }
   }
 }
