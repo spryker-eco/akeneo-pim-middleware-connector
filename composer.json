@@ -19,14 +19,12 @@
   "autoload": {
     "psr-4": {
       "SprykerEco\\": "src/SprykerEco/",
-      "Function\\": "tests/"
     }
   },
   "minimum-stability": "dev",
   "autoload-dev": {
     "psr-4": {
-      "Functional\\": "tests/",
-      "Unit\\": "tests/"
+      "SprykerEcoTest\\": "tests/SprykerEcoTest/",
     }
   }
 }
