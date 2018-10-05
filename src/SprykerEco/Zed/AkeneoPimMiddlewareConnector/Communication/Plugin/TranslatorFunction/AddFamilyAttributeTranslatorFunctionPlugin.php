@@ -2,7 +2,7 @@
 
 /**
  * MIT License
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\TranslatorFunction;
@@ -15,6 +15,8 @@ class AddFamilyAttributeTranslatorFunctionPlugin extends AbstractGenericTranslat
     protected const NAME = 'AddFamilyAttribute';
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getName(): string
@@ -23,6 +25,8 @@ class AddFamilyAttributeTranslatorFunctionPlugin extends AbstractGenericTranslat
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getTranslatorFunctionClassName(): string

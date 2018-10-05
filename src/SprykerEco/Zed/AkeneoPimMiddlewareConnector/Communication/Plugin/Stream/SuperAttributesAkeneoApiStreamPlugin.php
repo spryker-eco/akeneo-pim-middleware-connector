@@ -2,7 +2,7 @@
 
 /**
  * MIT License
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream;
@@ -20,6 +20,8 @@ class SuperAttributesAkeneoApiStreamPlugin extends AbstractPlugin implements Inp
     protected const PLUGIN_NAME = 'SuperAttributesAkeneoApiStreamPlugin';
 
     /**
+     * @api
+     *
      * @param string $path
      *
      * @return \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface
@@ -32,6 +34,8 @@ class SuperAttributesAkeneoApiStreamPlugin extends AbstractPlugin implements Inp
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getName(): string

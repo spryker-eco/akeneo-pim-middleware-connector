@@ -2,7 +2,7 @@
 
 /**
  * MIT License
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration;
@@ -23,6 +23,8 @@ class ProductModelPreparationConfigurationPlugin extends AbstractPlugin implemen
     protected const PROCESS_NAME = 'PRODUCT_MODEL_PREPARATION_PROCESS';
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getProcessName(): string
@@ -31,6 +33,8 @@ class ProductModelPreparationConfigurationPlugin extends AbstractPlugin implemen
     }
 
     /**
+     * @api
+     *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface
      */
     public function getInputStreamPlugin(): InputStreamPluginInterface
@@ -40,6 +44,8 @@ class ProductModelPreparationConfigurationPlugin extends AbstractPlugin implemen
     }
 
     /**
+     * @api
+     *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
      */
     public function getOutputStreamPlugin(): OutputStreamPluginInterface
@@ -49,6 +55,8 @@ class ProductModelPreparationConfigurationPlugin extends AbstractPlugin implemen
     }
 
     /**
+     * @api
+     *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
      */
     public function getIteratorPlugin(): ProcessIteratorPluginInterface
@@ -58,6 +66,8 @@ class ProductModelPreparationConfigurationPlugin extends AbstractPlugin implemen
     }
 
     /**
+     * @api
+     *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getStagePlugins(): array
@@ -67,6 +77,8 @@ class ProductModelPreparationConfigurationPlugin extends AbstractPlugin implemen
     }
 
     /**
+     * @api
+     *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface
      */
     public function getLoggerPlugin(): MiddlewareLoggerConfigPluginInterface
@@ -76,6 +88,8 @@ class ProductModelPreparationConfigurationPlugin extends AbstractPlugin implemen
     }
 
     /**
+     * @api
+     *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[]
      */
     public function getPreProcessorHookPlugins(): array
@@ -85,6 +99,8 @@ class ProductModelPreparationConfigurationPlugin extends AbstractPlugin implemen
     }
 
     /**
+     * @api
+     *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[]
      */
     public function getPostProcessorHookPlugins(): array
