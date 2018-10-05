@@ -248,7 +248,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     protected function addAkeneoPimProcesses(Container $container): Container
     {
         $container[static::AKENEO_PIM_MIDDLEWARE_PROCESSES] = function () {
-            return $this->getAkeneoPimProceseesPlugins();
+            return $this->getAkeneoPimProcessesPlugins();
         };
 
         return $container;
@@ -313,7 +313,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
      */
-    protected function getAkeneoPimProceseesPlugins(): array
+    protected function getAkeneoPimProcessesPlugins(): array
     {
         return [
             new AttributeImportConfigurationPlugin(),
