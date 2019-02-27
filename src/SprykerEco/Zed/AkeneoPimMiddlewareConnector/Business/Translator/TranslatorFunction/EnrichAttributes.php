@@ -65,7 +65,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
     {
         $this->initAttributeOptionMap();
 
-        foreach ($value as $attributeKey => &$attributeValues) {
+        foreach ($value as $attributeKey => $attributeValues) {
             if ($this->isKeySkipped($attributeKey)) {
                 unset($value[$attributeKey]);
                 continue;
@@ -77,7 +77,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
 
             $isAttributeLocalizable = $this->isAttributeLocalizable($attributeKey);
 
-            foreach ($attributeValues as &$attributeValue) {
+            foreach ($attributeValues as $index => $attributeValue) {
                 $attributeData = $attributeValue[static::KEY_DATA];
                 $locale = $attributeValue[static::KEY_LOCALE];
 
@@ -86,10 +86,6 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
                     continue 2;
                 }
 
-//                if (count($attributeData) === 0) {
-//                    continue;
-//                }
-
                 if ($isAttributeLocalizable) {
                     $options = is_array($attributeData) ? $this->getArrayOptions($attributeKey, $attributeData) : $this->getOptions($attributeKey, $attributeData);
                     if (!array_key_exists($locale, $options)) {
@@ -97,7 +93,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
                         continue;
                     }
 
-                    $attributeValue[static::KEY_DATA] = $options[$locale];
+                    $value[$attributeKey][$index][static::KEY_DATA] = $options[$locale];
                     continue;
                 }
 
