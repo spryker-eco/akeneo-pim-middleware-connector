@@ -41,6 +41,7 @@ cache:
 
 before_install:
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - phpenv config-rm xdebug.ini
 
 script:
   - git clone -b master https://github.com/spryker-eco/eco-ci.git ecoci
