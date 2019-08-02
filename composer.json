@@ -14,7 +14,8 @@
   },
   "autoload": {
     "psr-4": {
-      "SprykerEco\\": "src/SprykerEco/"
+      "SprykerEco\\": "src/SprykerEco/",
+      "SprykerEcoTest\\Zed\\AkeneoPimMiddlewareConnector\\Helper": "tests/SprykerEcoTest/Zed/AkeneoPimMiddlewareConnector/_support/Helper/"
     }
   },
   "minimum-stability": "dev",
