@@ -32,11 +32,8 @@ class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
      */
     public function get(): array
     {
-        if ($this->cursorVariants !== null) {
-            $this->cursorVariants->next();
-            if ($this->cursorVariants->valid()) {
-                return $this->cursorVariants->current();
-            }
+        if (($this->cursorVariants !== null) && $this->cursorVariants->valid()) {
+            return $this->cursorVariants->current();
         }
 
         $family = $this->cursor->current();
@@ -45,5 +42,17 @@ class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
         $this->cursorVariants = $this->akeneoPimService->getFamilyVariants($family[static::KEY_CODE]);
 
         return $this->cursorVariants->valid() ? $this->cursorVariants->current() : [];
+    }
+
+    /**
+     * @return bool
+     */
+    public function eof(): bool
+    {
+        if ($this->cursorVariants !== null) {
+            $this->cursorVariants->next();
+        }
+
+        return parent::eof() && !$this->cursorVariants->valid();
     }
 }
