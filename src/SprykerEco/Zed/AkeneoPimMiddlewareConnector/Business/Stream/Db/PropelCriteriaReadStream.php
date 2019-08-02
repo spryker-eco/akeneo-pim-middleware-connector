@@ -47,6 +47,7 @@ class PropelCriteriaReadStream implements StreamInterface, ReadStreamInterface
         $item = $this->iterator
             ->current();
         $this->iterator->next();
+
         return $item;
     }
 
@@ -68,6 +69,7 @@ class PropelCriteriaReadStream implements StreamInterface, ReadStreamInterface
     public function close(): bool
     {
         unset($this->iterator);
+
         return true;
     }
 
@@ -81,6 +83,7 @@ class PropelCriteriaReadStream implements StreamInterface, ReadStreamInterface
     {
         if ($whence === SEEK_SET) {
             $this->iterator->seek($offset);
+
             return 0;
         }
 

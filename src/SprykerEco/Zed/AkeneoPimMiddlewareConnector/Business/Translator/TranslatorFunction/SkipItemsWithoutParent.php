@@ -25,6 +25,7 @@ class SkipItemsWithoutParent extends AbstractTranslatorFunction
         if (empty($value)) {
             throw new MissingParentForProductException();
         }
+
         return $value;
     }
 }

@@ -35,6 +35,7 @@ class AddMissingAttributes extends AbstractTranslatorFunction implements Transla
                 $value[$key] = $attributeValue;
             }
         }
+
         return $value;
     }
 

@@ -116,6 +116,7 @@ class DefaultValuesToLocalizedAttributes extends AbstractTranslatorFunction impl
         }
         if ($key === static::KEY_ERP_NAME) {
             $localizedAttributes[$locale][static::KEY_NAME] = $value;
+
             return $localizedAttributes;
         }
         $localizedAttributes[$locale][$key] = $value;

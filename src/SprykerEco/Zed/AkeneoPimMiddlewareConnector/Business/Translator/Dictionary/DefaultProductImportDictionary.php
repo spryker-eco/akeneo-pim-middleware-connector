@@ -47,6 +47,7 @@ class DefaultProductImportDictionary extends AbstractDictionary
                 if (is_array($value)) {
                     return reset($value);
                 }
+
                 return $value;
             },
             'parent' => [

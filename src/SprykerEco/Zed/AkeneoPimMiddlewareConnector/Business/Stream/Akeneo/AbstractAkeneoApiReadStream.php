@@ -47,6 +47,7 @@ abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStrea
         $item = $this->cursor
             ->current();
         $this->cursor->next();
+
         return $item;
     }
 
@@ -61,6 +62,7 @@ abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStrea
     public function close(): bool
     {
         unset($this->cursor);
+
         return true;
     }
 
