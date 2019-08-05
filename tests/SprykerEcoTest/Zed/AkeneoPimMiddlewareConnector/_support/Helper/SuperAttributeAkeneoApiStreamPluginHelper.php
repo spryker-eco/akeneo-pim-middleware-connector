@@ -106,35 +106,31 @@ class SuperAttributeAkeneoApiStreamPluginHelper extends Module
             ]),
             'getFamilyVariants' => new ConsecutiveMap([
                 new FamilyVariantsResourceCursorStub([
-                    [
-                        'code' => static::FAMILY_1_VARIANT_1,
-                        'variant_attribute_sets' => [
-                            'level' => 1,
-                            'attributes' => [],
-                            'axes' => [],
-                        ],
-                    ],
+                    $this->createFamilyVariantsResourceCursorOptions(static::FAMILY_1_VARIANT_1),
                 ]),
                 new FamilyVariantsResourceCursorStub([
-                    [
-                        'code' => static::FAMILY_2_VARIANT_1,
-                        'variant_attribute_sets' => [
-                            'level' => 1,
-                            'attributes' => [],
-                            'axes' => [],
-                        ],
-                    ],
-                    [
-                        'code' => static::FAMILY_2_VARIANT_2,
-                        'variant_attribute_sets' => [
-                            'level' => 1,
-                            'attributes' => [],
-                            'axes' => [],
-                        ],
-                    ],
+                    $this->createFamilyVariantsResourceCursorOptions(static::FAMILY_2_VARIANT_1),
+                    $this->createFamilyVariantsResourceCursorOptions(static::FAMILY_2_VARIANT_2),
                 ]),
             ]),
         ]);
+    }
+
+    /**
+     * @param string $familyVariantCode
+     *
+     * @return array
+     */
+    protected function createFamilyVariantsResourceCursorOptions(string $familyVariantCode): array
+    {
+        return [
+            'code' => $familyVariantCode,
+            'variant_attribute_sets' => [
+                'level' => 1,
+                'attributes' => [],
+                'axes' => [],
+            ],
+        ];
     }
 
     /**
