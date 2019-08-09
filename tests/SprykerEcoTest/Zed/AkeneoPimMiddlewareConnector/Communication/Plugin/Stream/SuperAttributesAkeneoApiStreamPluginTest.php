@@ -30,7 +30,7 @@ class SuperAttributesAkeneoApiStreamPluginTest extends Test
     /**
      * @return void
      */
-    public function testThatSuperAttributeAkeneoReadStreamReturnsSameCodesAsExpected(): void
+    public function testSuperAttributeAkeneoReadStreamReturnsSameCodesAsExpected(): void
     {
         $this->assertSame(
             $this->tester->getExpectedVariantCodes(),
