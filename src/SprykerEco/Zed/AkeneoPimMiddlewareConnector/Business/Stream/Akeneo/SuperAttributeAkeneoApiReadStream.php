@@ -49,10 +49,13 @@ class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
      */
     public function eof(): bool
     {
+        $isValidCursorVariants = false;
+
         if ($this->cursorVariants !== null) {
             $this->cursorVariants->next();
+            $isValidCursorVariants = $this->cursorVariants->valid();
         }
 
-        return parent::eof() && !$this->cursorVariants->valid();
+        return parent::eof() && !$isValidCursorVariants;
     }
 }
