@@ -63,6 +63,7 @@ class DefaultPriceSelector extends AbstractTranslatorFunction implements Transla
                         ];
                     }
                 }
+
                 return $result;
             }
 

@@ -67,6 +67,7 @@ class ProductImportMap extends AbstractMap
                         'value_net' => $value['price'],
                     ];
                 }
+
                 return $result;
             },
             'images' => 'values.bild_information',

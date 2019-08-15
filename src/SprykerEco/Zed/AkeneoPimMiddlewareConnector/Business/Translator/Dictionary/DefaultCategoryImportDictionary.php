@@ -65,6 +65,7 @@ class DefaultCategoryImportDictionary extends AbstractDictionary
                 if (empty($value)) {
                     return 'demoshop';
                 }
+
                 return $value;
             },
         ];

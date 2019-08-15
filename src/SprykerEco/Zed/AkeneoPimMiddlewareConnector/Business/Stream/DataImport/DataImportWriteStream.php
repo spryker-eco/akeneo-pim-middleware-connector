@@ -37,6 +37,7 @@ class DataImportWriteStream implements WriteStreamInterface
     public function open(): bool
     {
         $this->data = [];
+
         return true;
     }
 
@@ -79,6 +80,7 @@ class DataImportWriteStream implements WriteStreamInterface
     public function write(array $data): int
     {
         $this->data[] = $data;
+
         return 1;
     }
 
@@ -88,6 +90,7 @@ class DataImportWriteStream implements WriteStreamInterface
     public function flush(): bool
     {
         $this->dataImporterPlugin->import($this->data);
+
         return true;
     }
 }

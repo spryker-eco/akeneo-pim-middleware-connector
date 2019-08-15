@@ -13,6 +13,8 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\Translato
 /**
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
  */
 class AddAttributeOptionsTranslatorFunctionPlugin extends AbstractPlugin implements TranslatorFunctionPluginInterface
 {

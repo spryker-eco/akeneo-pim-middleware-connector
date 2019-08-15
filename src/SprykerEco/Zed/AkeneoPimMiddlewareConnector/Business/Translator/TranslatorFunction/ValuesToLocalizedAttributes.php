@@ -116,6 +116,7 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
         }
         if ($key === static::KEY_TITLE) {
             $localizedAttributes[$locale][static::KEY_NAME] = $value;
+
             return $localizedAttributes;
         }
         $localizedAttributes[$locale][$key] = $value;

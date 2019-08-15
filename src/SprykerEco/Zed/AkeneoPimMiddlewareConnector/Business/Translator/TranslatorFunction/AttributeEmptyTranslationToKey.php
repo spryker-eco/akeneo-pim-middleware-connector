@@ -25,6 +25,7 @@ class AttributeEmptyTranslationToKey extends AbstractTranslatorFunction implemen
         if ($value === null) {
             return $payload[static::KEY_CODE];
         }
+
         return $value;
     }
 }
