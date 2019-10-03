@@ -63,7 +63,7 @@ class DefaultCategoryImportDictionary extends AbstractDictionary
             },
             'parent_category_key' => function ($value) {
                 if (empty($value)) {
-                    return 'demoshop';
+                    return $this->config->getDefaultParentCategoryKey();
                 }
 
                 return $value;

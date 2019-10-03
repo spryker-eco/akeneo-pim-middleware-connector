@@ -75,4 +75,12 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     {
         return $this->get(AkeneoPimMiddlewareConnectorConstants::LOCALES_TO_PRICE_MAP);
     }
+
+    /**
+     * @return string
+     */
+    public function getDefaultParentCategoryKey() : string
+    {
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_PARENT_CATEGORY_KEY, 'demoshop');
+    }
 }
