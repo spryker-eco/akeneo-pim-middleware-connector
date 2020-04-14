@@ -81,6 +81,6 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
      */
     public function getDefaultParentCategoryKey() : string
     {
-        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_PARENT_CATEGORY_KEY);
+        return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_PARENT_CATEGORY_KEY, 'demoshop');
     }
 }
