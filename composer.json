@@ -2,13 +2,13 @@
   "name": "spryker-eco/akeneo-pim-middleware-connector",
   "description": "AkeneoPimMiddlewareConnector module",
   "type": "library",
-  "license": "MIT",
+  "license": "proprietary",
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.2",
     "spryker/kernel": "^3.0.0",
     "spryker/locale": "^3.0.0",
     "spryker/tax": "^5.0.0",
-    "spryker-eco/akeneo-pim": "^1.0.0",
+    "spryker-eco/akeneo-pim": "^2.0.0",
     "spryker-middleware/process": "^1.0.0",
     "spryker/data-import": "^1.0.0"
   },
@@ -19,9 +19,22 @@
     }
   },
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload-dev": {
     "psr-4": {
       "SprykerEcoTest\\": "tests/SprykerEcoTest/"
     }
+  },
+  "scripts": {
+    "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
+    "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0.x-dev"
+    }
+  },
+  "config": {
+    "sort-packages": true
   }
 }

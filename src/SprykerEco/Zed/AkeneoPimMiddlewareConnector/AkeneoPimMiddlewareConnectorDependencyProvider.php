@@ -1,8 +1,8 @@
 <?php
 
 /**
- * MIT License
- * For full license information, please view the LICENSE file that was distributed with this source code.
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector;
@@ -247,9 +247,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addAkeneoPimProcesses(Container $container): Container
     {
-        $container[static::AKENEO_PIM_MIDDLEWARE_PROCESSES] = function () {
+        $container->set(static::AKENEO_PIM_MIDDLEWARE_PROCESSES, function (Container $container) {
             return $this->getAkeneoPimProcessesPlugins();
-        };
+        });
 
         return $container;
     }
@@ -261,9 +261,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addServiceAkeneoPim(Container $container): Container
     {
-        $container[static::SERVICE_AKENEO_PIM] = function (Container $container) {
+        $container->set(static::SERVICE_AKENEO_PIM, function (Container $container) {
             return new AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge($container->getLocator()->akeneoPim()->service());
-        };
+        });
 
         return $container;
     }
@@ -275,9 +275,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addFacadeProcess(Container $container): Container
     {
-        $container[static::FACADE_PROCESS] = function (Container $container) {
+        $container->set(static::FACADE_PROCESS, function (Container $container) {
             return new AkeneoPimMiddlewareConnectorToProcessFacadeBridge($container->getLocator()->process()->facade());
-        };
+        });
 
         return $container;
     }
@@ -289,9 +289,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addFacadeProduct(Container $container): Container
     {
-        $container[static::FACADE_PRODUCT] = function (Container $container) {
+        $container->set(static::FACADE_PRODUCT, function (Container $container) {
             return new AkeneoPimMiddlewareConnectorToProductFacadeBridge($container->getLocator()->product()->facade());
-        };
+        });
 
         return $container;
     }
@@ -303,9 +303,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addServiceUtilText(Container $container): Container
     {
-        $container[static::SERVICE_UTIL_TEXT] = function (Container $container) {
+        $container->set(static::SERVICE_UTIL_TEXT, function (Container $container) {
             return new AkeneoPimMiddlewareConnectorToUtilTextBridge($container->getLocator()->utilText()->service());
-        };
+        });
 
         return $container;
     }
@@ -336,9 +336,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addDefaultAkeneoPimProcesses(Container $container): Container
     {
-        $container[static::DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES] = function () {
+        $container->set(static::DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES, function (Container $container) {
             return $this->getDefaultAkeneoPimProcessesPlugins();
-        };
+        });
 
         return $container;
     }
@@ -362,9 +362,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addDefaultLoggerConfigPlugin($container): Container
     {
-        $container[static::AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG] = function () {
+        $container->set(static::AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG, function (Container $container) {
             return $this->getDefaultLoggerConfigPlugin();
-        };
+        });
 
         return $container;
     }
@@ -384,18 +384,18 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addAttributeImportProcessPlugins(Container $container): Container
     {
-        $container[static::ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new AttributeAkeneoApiStreamPlugin();
-        };
-        $container[static::ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new AttributeWriteStreamPlugin();
-        };
+        });
 
-        $container[static::ATTRIBUTE_IMPORT_ITERATOR_PLUGIN] = function () {
+        $container->set(static::ATTRIBUTE_IMPORT_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::ATTRIBUTE_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::ATTRIBUTE_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new AttributeMapPreparationMapperStagePlugin(),
@@ -403,15 +403,15 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
                 new AttributeMapMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -423,18 +423,18 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addAttributeMapProcessPlugins(Container $container): Container
     {
-        $container[static::ATTRIBUTE_MAP_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::ATTRIBUTE_MAP_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new AttributeAkeneoApiStreamPlugin();
-        };
-        $container[static::ATTRIBUTE_MAP_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::ATTRIBUTE_MAP_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new JsonOutputStreamPlugin();
-        };
+        });
 
-        $container[static::ATTRIBUTE_MAP_ITERATOR_PLUGIN] = function () {
+        $container->set(static::ATTRIBUTE_MAP_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::ATTRIBUTE_MAP_STAGE_PLUGINS] = function () {
+        $container->set(static::ATTRIBUTE_MAP_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new AttributeMapPreparationMapperStagePlugin(),
@@ -442,15 +442,15 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
                 new AttributeMapMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::ATTRIBUTE_MAP_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::ATTRIBUTE_MAP_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::ATTRIBUTE_MAP_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::ATTRIBUTE_MAP_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -462,33 +462,33 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addCategoryImportProcessPlugins(Container $container): Container
     {
-        $container[static::CATEGORY_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::CATEGORY_IMPORT_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new CategoryAkeneoApiStreamPlugin();
-        };
-        $container[static::CATEGORY_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::CATEGORY_IMPORT_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new CategoryWriteStreamPlugin();
-        };
+        });
 
-        $container[static::CATEGORY_IMPORT_ITERATOR_PLUGIN] = function () {
+        $container->set(static::CATEGORY_IMPORT_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::CATEGORY_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::CATEGORY_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new CategoryMapperStagePlugin(),
                 new CategoryImportTranslationStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::CATEGORY_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::CATEGORY_IMPORT_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::CATEGORY_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::CATEGORY_IMPORT_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -500,32 +500,32 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addLocaleMapImportProcessPlugins(Container $container): Container
     {
-        $container[static::LOCALE_MAP_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::LOCALE_MAP_IMPORT_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new LocaleStreamPlugin();
-        };
-        $container[static::LOCALE_MAP_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::LOCALE_MAP_IMPORT_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new JsonObjectWriteStreamPlugin();
-        };
+        });
 
-        $container[static::LOCALE_MAP_IMPORT_ITERATOR_PLUGIN] = function () {
+        $container->set(static::LOCALE_MAP_IMPORT_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::LOCALE_MAP_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::LOCALE_MAP_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new LocaleMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::LOCALE_MAP_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::LOCALE_MAP_IMPORT_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::LOCALE_MAP_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::LOCALE_MAP_IMPORT_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -537,18 +537,18 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addProductImportProcessPlugins(Container $container): Container
     {
-        $container[static::PRODUCT_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::PRODUCT_IMPORT_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new JsonRowInputStreamPlugin();
-        };
-        $container[static::PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new ProductConcreteWriteStreamPlugin();
-        };
+        });
 
-        $container[static::PRODUCT_IMPORT_ITERATOR_PLUGIN] = function () {
+        $container->set(static::PRODUCT_IMPORT_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::PRODUCT_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::PRODUCT_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new DefaultProductImportValidatorStagePlugin(),
@@ -556,15 +556,15 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
                 new ProductMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -576,18 +576,18 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addProductModelImportProcessPlugins(Container $container): Container
     {
-        $container[static::PRODUCT_MODEL_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::PRODUCT_MODEL_IMPORT_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new JsonInputStreamPlugin();
-        };
-        $container[static::PRODUCT_MODEL_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::PRODUCT_MODEL_IMPORT_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new ProductAbstractWriteStreamPlugin();
-        };
+        });
 
-        $container[static::PRODUCT_MODEL_IMPORT_ITERATOR_PLUGIN] = function () {
+        $container->set(static::PRODUCT_MODEL_IMPORT_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::PRODUCT_MODEL_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::PRODUCT_MODEL_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new DefaultProductModelImportValidatorStagePlugin(),
@@ -595,15 +595,15 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
                 new ProductModelImportMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::PRODUCT_MODEL_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::PRODUCT_MODEL_IMPORT_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::PRODUCT_MODEL_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::PRODUCT_MODEL_IMPORT_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -615,31 +615,31 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addProductPreparationProcessPlugins(Container $container): Container
     {
-        $container[static::PRODUCT_PREPARATION_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::PRODUCT_PREPARATION_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new ProductAkeneoApiStreamPlugin();
-        };
-        $container[static::PRODUCT_PREPARATION_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::PRODUCT_PREPARATION_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new JsonRowOutputStreamPlugin();
-        };
+        });
 
-        $container[static::PRODUCT_PREPARATION_ITERATOR_PLUGIN] = function () {
+        $container->set(static::PRODUCT_PREPARATION_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::PRODUCT_PREPARATION_STAGE_PLUGINS] = function () {
+        $container->set(static::PRODUCT_PREPARATION_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::PRODUCT_PREPARATION_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::PRODUCT_PREPARATION_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::PRODUCT_PREPARATION_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::PRODUCT_PREPARATION_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -651,31 +651,31 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addProductModelPreparationProcessPlugins(Container $container): Container
     {
-        $container[static::PRODUCT_MODEL_PREPARATION_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::PRODUCT_MODEL_PREPARATION_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new ProductModelAkeneoApiStreamPlugin();
-        };
-        $container[static::PRODUCT_MODEL_PREPARATION_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::PRODUCT_MODEL_PREPARATION_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new JsonOutputStreamPlugin();
-        };
+        });
 
-        $container[static::PRODUCT_MODEL_PREPARATION_ITERATOR_PLUGIN] = function () {
+        $container->set(static::PRODUCT_MODEL_PREPARATION_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::PRODUCT_MODEL_PREPARATION_STAGE_PLUGINS] = function () {
+        $container->set(static::PRODUCT_MODEL_PREPARATION_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::PRODUCT_MODEL_PREPARATION_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::PRODUCT_MODEL_PREPARATION_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::PRODUCT_MODEL_PREPARATION_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::PRODUCT_MODEL_PREPARATION_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -687,32 +687,32 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addTaxSetMapImportProcessPlugins(Container $container): Container
     {
-        $container[static::TAX_SET_MAP_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::TAX_SET_MAP_IMPORT_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new TaxSetStreamPlugin();
-        };
-        $container[static::TAX_SET_MAP_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+        });
+        $container->set(static::TAX_SET_MAP_IMPORT_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new JsonObjectWriteStreamPlugin();
-        };
+        });
 
-        $container[static::TAX_SET_MAP_IMPORT_ITERATOR_PLUGIN] = function () {
+        $container->set(static::TAX_SET_MAP_IMPORT_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::TAX_SET_MAP_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::TAX_SET_MAP_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new TaxSetMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::TAX_SET_MAP_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::TAX_SET_MAP_IMPORT_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::TAX_SET_MAP_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::TAX_SET_MAP_IMPORT_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -724,32 +724,32 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addSuperAttributeImportProcessPlugins(Container $container): Container
     {
-        $container[static::SUPER_ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::SUPER_ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN, function (Container $container) {
             return new SuperAttributesAkeneoApiStreamPlugin();
-        };
+        });
 
-        $container[static::SUPER_ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+        $container->set(static::SUPER_ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN, function (Container $container) {
             return new JsonSuperAttributeWriteStreamPlugin();
-        };
+        });
 
-        $container[static::SUPER_ATTRIBUTE_IMPORT_ITERATOR_PLUGIN] = function () {
+        $container->set(static::SUPER_ATTRIBUTE_IMPORT_ITERATOR_PLUGIN, function (Container $container) {
             return new NullIteratorPlugin();
-        };
+        });
 
-        $container[static::SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
-        $container[static::SUPER_ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::SUPER_ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
-        $container[static::SUPER_ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+        $container->set(static::SUPER_ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS, function (Container $container) {
             return [];
-        };
+        });
 
         return $container;
     }
@@ -761,9 +761,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addAkeneoPimTranslatorFunctions($container): Container
     {
-        $container[static::AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS] = function () {
+        $container->set(static::AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS, function (Container $container) {
             return $this->getAkeneoPimTranslatorFunctionPlugins();
-        };
+        });
 
         return $container;
     }
@@ -775,9 +775,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addAkeneoPimValidators($container): Container
     {
-        $container[static::AKENEO_PIM_MIDDLEWARE_VALIDATORS] = function () {
+        $container->set(static::AKENEO_PIM_MIDDLEWARE_VALIDATORS, function (Container $container) {
             return $this->getAkeneoPimValidatorPlugins();
-        };
+        });
 
         return $container;
     }
@@ -828,9 +828,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addDefaultAkeneoPimTranslatorFunctions($container): Container
     {
-        $container[static::DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS] = function () {
+        $container->set(static::DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS, function (Container $container) {
             return $this->getDefaultAkeneoPimTranslatorFunctionPlugins();
-        };
+        });
 
         return $container;
     }
@@ -914,14 +914,14 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addDefaultCategoryImportStagePlugins($container): Container
     {
-        $container[static::DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new DefaultCategoryMapperStagePlugin(),
                 new DefaultCategoryImportTranslationStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
         return $container;
     }
@@ -933,7 +933,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addDefaultProductImportStagePlugins($container): Container
     {
-        $container[static::DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new DefaultProductImportValidatorStagePlugin(),
@@ -941,7 +941,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
                 new ProductMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
         return $container;
     }
@@ -953,7 +953,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addDefaultProductModelImportStagePlugins($container): Container
     {
-        $container[static::DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS] = function () {
+        $container->set(static::DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS, function (Container $container) {
             return [
                 new StreamReaderStagePlugin(),
                 new DefaultProductModelImportValidatorStagePlugin(),
@@ -961,7 +961,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
                 new ProductModelImportMapperStagePlugin(),
                 new StreamWriterStagePlugin(),
             ];
-        };
+        });
 
         return $container;
     }
@@ -973,9 +973,9 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
      */
     protected function addProductAbstractQuery($container): Container
     {
-        $container[static::PRODUCT_ABSTRACT_QUERY] = function () {
+        $container->set(static::PRODUCT_ABSTRACT_QUERY, function (Container $container) {
             return SpyProductAbstractQuery::create();
-        };
+        });
 
         return $container;
     }
