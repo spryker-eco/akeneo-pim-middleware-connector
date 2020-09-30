@@ -2,13 +2,13 @@
   "name": "spryker-eco/akeneo-pim-middleware-connector",
   "description": "AkeneoPimMiddlewareConnector module",
   "type": "library",
-  "license": "MIT",
+  "license": "proprietary",
   "require": {
     "php": ">=7.1",
     "spryker/kernel": "^3.0.0",
     "spryker/locale": "^3.0.0",
     "spryker/tax": "^5.0.0",
-    "spryker-eco/akeneo-pim": "^1.0.0",
+    "spryker-eco/akeneo-pim": "^1.0.0 || ^2.0.0",
     "spryker-middleware/process": "^1.0.0",
     "spryker/data-import": "^1.0.0"
   },
