@@ -9,3 +9,6 @@
 *.AppleDB
 *.AppleDesktop
 /tests/SprykerEcoTest/Zed/AkeneoPimMiddlewareConnector/_support/_generated/*
+
+vendor/
+composer.lock
