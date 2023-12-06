@@ -8,7 +8,7 @@
         "spryker/kernel": "^3.0.0",
         "spryker/locale": "^3.0.0 || ^4.0.0",
         "spryker/tax": "^5.0.0",
-        "spryker-eco/akeneo-pim": "^dev-bugfix/cc-32047-fix-guzzle-library-dependency as 2.1.0",
+        "spryker-eco/akeneo-pim": "dev-bugfix/cc-32047-fix-guzzle-library-dependency as 2.1.0",
         "spryker-middleware/process": "^1.0.0",
         "spryker/data-import": "^1.0.0"
     },
