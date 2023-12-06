@@ -15,4 +15,4 @@ composer require spryker-eco/akeneo-pim-middleware-connector
 
 ## Documentation
 
-[Module Documentation](https://documentation.spryker.com/industry_partners/performance/akeneo/akeneo.htm)
+[Spryker Documentation](https://docs.spryker.com)
