@@ -27,8 +27,4 @@ use Codeception\Actor;
 class AkeneoPimMiddlewareConnectorZedTester extends Actor
 {
     use _generated\AkeneoPimMiddlewareConnectorZedTesterActions;
-
-   /**
-    * Define custom actions here
-    */
 }

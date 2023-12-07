@@ -7,10 +7,11 @@
 
 namespace SprykerEcoTest\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream;
 
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerEcoTest
  * @group Zed
  * @group AkeneoPimMiddlewareConnector
@@ -20,7 +21,7 @@ use Codeception\TestCase\Test;
  * @group SuperAttributesAkeneoApiStreamPluginTest
  * Add your own group annotations below this line
  */
-class SuperAttributesAkeneoApiStreamPluginTest extends Test
+class SuperAttributesAkeneoApiStreamPluginTest extends Unit
 {
     /**
      * @var \SprykerEcoTest\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorZedTester
@@ -34,7 +35,7 @@ class SuperAttributesAkeneoApiStreamPluginTest extends Test
     {
         $this->assertSame(
             $this->tester->getExpectedVariantCodes(),
-            $this->tester->processSuperAttributesAkeneoReadPlugin()
+            $this->tester->processSuperAttributesAkeneoReadPlugin(),
         );
     }
 }

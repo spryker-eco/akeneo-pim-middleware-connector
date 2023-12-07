@@ -8,8 +8,8 @@
 namespace SprykerEcoTest\Zed\AkeneoPimMiddlewareConnector\Helper;
 
 use Codeception\Module;
+use Codeception\Stub;
 use Codeception\Stub\ConsecutiveMap;
-use Codeception\Util\Stub;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactoryInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory;

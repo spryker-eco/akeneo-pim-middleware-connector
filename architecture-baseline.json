@@ -5,5 +5,61 @@
         "rule": "BridgeFacadeMethodsRule",
         "ruleset": "Spryker",
         "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Dependency/Service/AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge.php",
+        "description": "Bridges: Type should be defined for param `pageSize` in method `SprykerEco\\Zed\\AkeneoPimMiddlewareConnector\\Dependency\\Service\\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge::getAllProducts()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Dependency/Service/AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge.php",
+        "description": "Bridges: Type should be defined for param `pageSize` in method `SprykerEco\\Zed\\AkeneoPimMiddlewareConnector\\Dependency\\Service\\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge::getAllCategories()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Dependency/Service/AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge.php",
+        "description": "Bridges: Type should be defined for param `pageSize` in method `SprykerEco\\Zed\\AkeneoPimMiddlewareConnector\\Dependency\\Service\\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge::getAllAttributes()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Dependency/Service/AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge.php",
+        "description": "Bridges: Type should be defined for param `pageSize` in method `SprykerEco\\Zed\\AkeneoPimMiddlewareConnector\\Dependency\\Service\\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge::getAllFamilies()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Dependency/Service/AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge.php",
+        "description": "Bridges: Type should be defined for param `attributeCode` in method `SprykerEco\\Zed\\AkeneoPimMiddlewareConnector\\Dependency\\Service\\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge::getAllAttributeOptions()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Dependency/Service/AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge.php",
+        "description": "Bridges: Type should be defined for param `pageSize` in method `SprykerEco\\Zed\\AkeneoPimMiddlewareConnector\\Dependency\\Service\\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge::getAllAttributeOptions()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Dependency/Service/AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge.php",
+        "description": "Bridges: Type should be defined for param `pageSize` in method `SprykerEco\\Zed\\AkeneoPimMiddlewareConnector\\Dependency\\Service\\AkeneoPimMiddlewareConnectorToAkeneoPimServiceBridge::getAllProductModels()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Dependency/Service/AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface.php",
+        "description": "Bridges: The bridge interface has incorrect method signature for `getFamilyVariants()`. Method does not exist in parent. That violates the rule \"All bridge interface methods must have exactly the same or more strict signature as their parent\"",
+        "rule": "BridgeMethodsInterfaceRule",
+        "ruleset": "Spryker",
+        "priority": "2"
     }
 ]
