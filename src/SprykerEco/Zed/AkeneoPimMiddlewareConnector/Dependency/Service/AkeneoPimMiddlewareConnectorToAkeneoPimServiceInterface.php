@@ -17,7 +17,7 @@ interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      *
      * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllProducts($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+    public function getAllProducts(int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
 
     /**
      * @param int $pageSize
@@ -25,7 +25,7 @@ interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      *
      * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllCategories($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+    public function getAllCategories(int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
 
     /**
      * @param int $pageSize
@@ -33,7 +33,7 @@ interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      *
      * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllAttributes($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+    public function getAllAttributes(int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
 
     /**
      * @param int $pageSize
@@ -41,7 +41,7 @@ interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      *
      * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllFamilies($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+    public function getAllFamilies(int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
 
     /**
      * @param string $code
@@ -50,7 +50,7 @@ interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      *
      * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getFamilyVariants(string $code, int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+    public function getAllFamilyVariants(string $code, int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
 
     /**
      * @param string $attributeCode
@@ -59,7 +59,7 @@ interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      *
      * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllAttributeOptions($attributeCode, $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+    public function getAllAttributeOptions(string $attributeCode, int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
 
     /**
      * @param int $pageSize
@@ -67,5 +67,5 @@ interface AkeneoPimMiddlewareConnectorToAkeneoPimServiceInterface
      *
      * @return \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
-    public function getAllProductModels($pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
+    public function getAllProductModels(int $pageSize = 10, array $queryParameters = []): AkeneoResourceCursorInterface;
 }

@@ -39,7 +39,7 @@ class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
         $family = $this->cursor->current();
         $this->cursor->next();
 
-        $this->cursorVariants = $this->akeneoPimService->getFamilyVariants($family[static::KEY_CODE]);
+        $this->cursorVariants = $this->akeneoPimService->getAllFamilyVariants($family[static::KEY_CODE]);
 
         return $this->cursorVariants->valid() ? $this->cursorVariants->current() : [];
     }

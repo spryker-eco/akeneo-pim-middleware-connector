@@ -19,7 +19,7 @@ abstract class AbstractAkeneoApiReadStream implements StreamInterface, ReadStrea
     protected $akeneoPimService;
 
     /**
-     * @var \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursor
+     * @var \SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourceCursorInterface
      */
     protected $cursor;
 
