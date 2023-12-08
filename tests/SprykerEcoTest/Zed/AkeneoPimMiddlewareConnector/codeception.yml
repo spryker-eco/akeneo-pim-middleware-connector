@@ -4,7 +4,6 @@ paths:
     tests: .
     data: ../../../_data
     support: _support
-    log: ../../../_output
     output: ../../../_output
 
 coverage:
@@ -13,9 +12,9 @@ coverage:
     whitelist: { include: ['../../../../src/*'] }
 
 suites:
-    Service:
+    Zed:
         path: .
-        class_name: AkeneoPimMiddlewareConnectorZedTester
+        actor: AkeneoPimMiddlewareConnectorZedTester
         modules:
             enabled:
                 - Asserts

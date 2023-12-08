@@ -6,6 +6,10 @@ build:
         override:
             - true # disable test execution on scrutinizer
 
+    dependencies:
+        override:
+            - composer self-update
+
     nodes:
         analysis:
             tests:
