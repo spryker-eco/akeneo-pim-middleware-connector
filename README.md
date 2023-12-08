@@ -1,6 +1,6 @@
 # AkeneoPimMiddlewareConnector Module
 
-[![Build Status](https://travis-ci.org/spryker-eco/akeneo-pim-middleware-connector.svg?branch=master)](https://travis-ci.org/spryker-eco/akeneo-pim-middleware-connector)
+[![CI](https://github.com/spryker-eco/akeneo-pim-middleware-connector/actions/workflows/ci.yml/badge.svg)](https://github.com/spryker-eco/akeneo-pim-middleware-connector/actions/workflows/ci.yml)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-eco/akeneo-pim-middleware-connector/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/akeneo-pim-middleware-connector/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/spryker-eco/akeneo-pim-middleware-connector/badges/build.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/akeneo-pim-middleware-connector/build-status/master)
 [![Latest Stable Version](https://poser.pugx.org/spryker-eco/akeneo-pim-middleware-connector/v/stable.svg)](https://packagist.org/packages/spryker-eco/akeneo-pim-middleware-connector)

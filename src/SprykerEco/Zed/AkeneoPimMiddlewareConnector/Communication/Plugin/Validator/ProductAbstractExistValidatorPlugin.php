@@ -57,8 +57,6 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
             ->createProductAbstractExistValidator()
             ->setKey($key)
             ->setOptions($options);
-        $validator->setKey($key);
-        $validator->setOptions($options);
 
         return $validator->validate($value, $payload);
     }
