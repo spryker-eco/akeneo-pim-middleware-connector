@@ -12,7 +12,14 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class MoveLocalizedAttributesToAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_ATTRIBUTES = 'attributes';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_BLACKLIST = 'blacklist';
 
     /**
@@ -30,7 +37,6 @@ class MoveLocalizedAttributesToAttributes extends AbstractTranslatorFunction imp
      */
     public function translate($value, array $payload): array
     {
-
         foreach ($value as $localeId => $scopedAttributes) {
             if (!isset($value[$localeId][static::KEY_ATTRIBUTES])) {
                 $value[$localeId][static::KEY_ATTRIBUTES] = [];

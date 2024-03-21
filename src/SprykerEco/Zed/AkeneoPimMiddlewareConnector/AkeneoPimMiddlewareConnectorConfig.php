@@ -13,6 +13,8 @@ use SprykerEco\Shared\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorC
 class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @return string
      */
     public function getLocaleMapFilePath(): string
@@ -21,6 +23,8 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getAttributeMapFilePath(): string
@@ -29,6 +33,8 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getSuperAttributeMapFilePath(): string
@@ -37,6 +43,8 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return int
      */
     public function getFkCategoryTemplate(): int
@@ -45,6 +53,8 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getTaxSet(): string
@@ -53,6 +63,8 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return array
      */
     public function getLocalesForImport(): array
@@ -61,6 +73,8 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return array
      */
     public function getActiveStoresForProducts(): array
@@ -69,6 +83,8 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return array
      */
     public function getLocaleToPriceMap(): array
@@ -77,9 +93,11 @@ class AkeneoPimMiddlewareConnectorConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
-    public function getDefaultParentCategoryKey() : string
+    public function getDefaultParentCategoryKey(): string
     {
         return $this->get(AkeneoPimMiddlewareConnectorConstants::DEFAULT_PARENT_CATEGORY_KEY, 'demoshop');
     }

@@ -19,9 +19,14 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class LocaleMapperStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'LocaleMapperStagePlugin';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $payload
@@ -37,6 +42,8 @@ class LocaleMapperStagePlugin extends AbstractPlugin implements StagePluginInter
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

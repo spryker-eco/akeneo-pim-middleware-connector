@@ -22,9 +22,14 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
  */
 class ProductPreparationConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PROCESS_NAME = 'PRODUCT_PREPARATION_PROCESS';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -35,6 +40,8 @@ class ProductPreparationConfigurationPlugin extends AbstractPlugin implements Pr
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface
@@ -46,6 +53,8 @@ class ProductPreparationConfigurationPlugin extends AbstractPlugin implements Pr
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
@@ -57,6 +66,8 @@ class ProductPreparationConfigurationPlugin extends AbstractPlugin implements Pr
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
@@ -68,9 +79,11 @@ class ProductPreparationConfigurationPlugin extends AbstractPlugin implements Pr
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
      */
     public function getStagePlugins(): array
     {
@@ -79,6 +92,8 @@ class ProductPreparationConfigurationPlugin extends AbstractPlugin implements Pr
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface
@@ -89,9 +104,11 @@ class ProductPreparationConfigurationPlugin extends AbstractPlugin implements Pr
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>
      */
     public function getPreProcessorHookPlugins(): array
     {
@@ -100,9 +117,11 @@ class ProductPreparationConfigurationPlugin extends AbstractPlugin implements Pr
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>
      */
     public function getPostProcessorHookPlugins(): array
     {

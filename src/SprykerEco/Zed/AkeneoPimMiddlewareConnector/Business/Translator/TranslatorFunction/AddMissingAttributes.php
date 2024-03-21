@@ -12,6 +12,9 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class AddMissingAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_ATTRIBUTES = 'attributes';
 
     /**

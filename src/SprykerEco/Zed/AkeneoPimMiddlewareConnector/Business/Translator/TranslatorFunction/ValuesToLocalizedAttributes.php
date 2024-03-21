@@ -12,13 +12,34 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
+    /**
+     * @var string
+     */
     protected const KEY_LOCALE = 'locale';
+
+    /**
+     * @var string
+     */
     protected const KEY_DATA = 'data';
 
+    /**
+     * @var string
+     */
     protected const KEY_TITLE = 'title';
+
+    /**
+     * @var string
+     */
     protected const KEY_NAME = 'name';
+
+    /**
+     * @var string
+     */
     protected const KEY_DESCRIPTION = 'description';
 
     /**
@@ -43,7 +64,7 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
                         $key,
                         $attribute[static::KEY_DATA],
                         $attribute[static::KEY_LOCALE],
-                        $localizedAttributes
+                        $localizedAttributes,
                     );
                 }
 
@@ -53,7 +74,7 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
                             $key,
                             $localizedValue,
                             $locale,
-                            $localizedAttributes
+                            $localizedAttributes,
                         );
                     }
                 }

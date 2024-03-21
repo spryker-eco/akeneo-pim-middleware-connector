@@ -1,16 +1,23 @@
 {
     "name": "spryker-eco/akeneo-pim-middleware-connector",
-    "description": "AkeneoPimMiddlewareConnector module",
     "type": "library",
+    "description": "AkeneoPimMiddlewareConnector module",
     "license": "proprietary",
     "require": {
         "php": ">=7.2",
+        "spryker-eco/akeneo-pim": "^2.2.0",
+        "spryker-middleware/process": "^1.0.0",
         "spryker/kernel": "^3.30.0",
         "spryker/locale": "^3.0.0 || ^4.0.0",
+        "spryker/product": "^5.0.0 || ^6.0.0",
+        "spryker/propel-orm": "^1.0.0",
         "spryker/tax": "^5.0.0",
-        "spryker-eco/akeneo-pim": "^2.0.0",
-        "spryker-middleware/process": "^1.0.0",
-        "spryker/data-import": "^1.0.0"
+        "spryker/url": "^3.0.0",
+        "spryker/util-text": "^1.0.0"
+    },
+    "require-dev": {
+        "spryker/code-sniffer": "*",
+        "spryker/testify": "*"
     },
     "autoload": {
         "psr-4": {
@@ -18,13 +25,13 @@
             "SprykerEcoTest\\Zed\\AkeneoPimMiddlewareConnector\\Helper\\": "tests/SprykerEcoTest/Zed/AkeneoPimMiddlewareConnector/_support/Helper/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "autoload-dev": {
         "psr-4": {
             "SprykerEcoTest\\": "tests/SprykerEcoTest/"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
         "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/"
@@ -35,6 +42,9 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }
