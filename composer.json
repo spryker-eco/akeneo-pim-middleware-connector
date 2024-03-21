@@ -16,6 +16,7 @@
         "spryker/util-text": "^1.0.0"
     },
     "require-dev": {
+        "phpstan/phpstan": "^1.0.0",
         "spryker/code-sniffer": "*",
         "spryker/testify": "*"
     },
