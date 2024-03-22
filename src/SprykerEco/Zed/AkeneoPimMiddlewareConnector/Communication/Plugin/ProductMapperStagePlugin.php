@@ -20,6 +20,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class ProductMapperStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'ProductMapperStagePlugin';
 
     /**
@@ -32,6 +35,8 @@ class ProductMapperStagePlugin extends AbstractPlugin implements StagePluginInte
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $payload
@@ -48,6 +53,8 @@ class ProductMapperStagePlugin extends AbstractPlugin implements StagePluginInte
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

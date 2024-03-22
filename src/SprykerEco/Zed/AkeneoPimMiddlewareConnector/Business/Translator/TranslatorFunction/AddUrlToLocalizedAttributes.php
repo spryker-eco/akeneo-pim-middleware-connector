@@ -13,7 +13,14 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class AddUrlToLocalizedAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_NAME = 'name';
+
+    /**
+     * @var string
+     */
     protected const KEY_URL = 'url';
 
     /**

@@ -62,7 +62,7 @@ class DefaultCategoryImportDictionary extends AbstractDictionary
                 return $this->config->getFkCategoryTemplate();
             },
             'parent_category_key' => function ($value) {
-                if (empty($value)) {
+                if (!$value) {
                     return $this->config->getDefaultParentCategoryKey();
                 }
 

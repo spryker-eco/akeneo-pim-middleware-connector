@@ -18,12 +18,24 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\Translato
  */
 class AddUrlToLocalizedAttributesTranslatorFunctionPlugin extends AbstractPlugin implements TranslatorFunctionPluginInterface
 {
+    /**
+     * @var string
+     */
     public const NAME = 'AddUrlToLocalizedAttributes';
 
+    /**
+     * @var string
+     */
     public const KEY_NAME = 'name';
+
+    /**
+     * @var string
+     */
     public const KEY_URL = 'url';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -34,6 +46,8 @@ class AddUrlToLocalizedAttributesTranslatorFunctionPlugin extends AbstractPlugin
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $value

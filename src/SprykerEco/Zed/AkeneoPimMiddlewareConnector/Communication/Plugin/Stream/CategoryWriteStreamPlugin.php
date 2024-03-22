@@ -19,9 +19,14 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
  */
 class CategoryWriteStreamPlugin extends AbstractPlugin implements OutputStreamPluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'CategoryWriteStreamPlugin';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param string $path
@@ -36,6 +41,8 @@ class CategoryWriteStreamPlugin extends AbstractPlugin implements OutputStreamPl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

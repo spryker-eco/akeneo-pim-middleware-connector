@@ -14,6 +14,9 @@ class SuperAttributeAkeneoApiReadStream extends AbstractAkeneoApiReadStream
      */
     protected $cursorVariants;
 
+    /**
+     * @var string
+     */
     protected const KEY_CODE = 'code';
 
     /**

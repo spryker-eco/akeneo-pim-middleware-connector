@@ -10,11 +10,22 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Trans
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\SkipItemsWithoutParent;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\AbstractGenericTranslatorFunctionPlugin;
 
+/**
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
+ */
 class SkipItemsWithoutParentTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
+    /**
+     * @var string
+     */
     protected const NAME = 'SkipItemsWithoutParent';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -25,6 +36,8 @@ class SkipItemsWithoutParentTranslatorFunctionPlugin extends AbstractGenericTran
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

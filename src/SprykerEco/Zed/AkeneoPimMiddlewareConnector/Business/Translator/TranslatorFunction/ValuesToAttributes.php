@@ -12,9 +12,19 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class ValuesToAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_ATTRIBUTES = 'attributes';
 
+    /**
+     * @var string
+     */
     protected const KEY_LOCALE = 'locale';
+
+    /**
+     * @var string
+     */
     protected const KEY_DATA = 'data';
 
     /**
@@ -35,7 +45,7 @@ class ValuesToAttributes extends AbstractTranslatorFunction implements Translato
         foreach ($value as $key => $scopedAttributes) {
             foreach ($scopedAttributes as $attribute) {
                 if (!$this->isLocalizedAttribute($attribute)) {
-                    $value[static::KEY_ATTRIBUTES][$key] = $attribute[static::KEY_DATA];
+                    $value[static::KEY_ATTRIBUTES][$key] = $attribute[static::KEY_DATA] ?? null;
                 }
             }
         }

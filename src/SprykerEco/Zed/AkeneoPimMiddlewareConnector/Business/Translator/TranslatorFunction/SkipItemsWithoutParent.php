@@ -22,7 +22,7 @@ class SkipItemsWithoutParent extends AbstractTranslatorFunction
      */
     public function translate($value, array $payload)
     {
-        if (empty($value)) {
+        if (!$value) {
             throw new MissingParentForProductException();
         }
 

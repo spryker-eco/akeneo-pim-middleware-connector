@@ -18,9 +18,14 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\Translato
  */
 class AddAttributeOptionsTranslatorFunctionPlugin extends AbstractPlugin implements TranslatorFunctionPluginInterface
 {
+    /**
+     * @var string
+     */
     protected const NAME = 'AddAttributeOptions';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -31,6 +36,8 @@ class AddAttributeOptionsTranslatorFunctionPlugin extends AbstractPlugin impleme
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $value

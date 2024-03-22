@@ -19,9 +19,11 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ConfigurationP
 class DefaultAkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements ConfigurationProfilePluginInterface
 {
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface>
      */
     public function getProcessConfigurationPlugins(): array
     {
@@ -30,9 +32,11 @@ class DefaultAkeneoPimConfigurationProfilePlugin extends AbstractPlugin implemen
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface>
      */
     public function getTranslatorFunctionPlugins(): array
     {
@@ -41,9 +45,11 @@ class DefaultAkeneoPimConfigurationProfilePlugin extends AbstractPlugin implemen
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\ValidatorPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\ValidatorPluginInterface>
      */
     public function getValidatorPlugins(): array
     {

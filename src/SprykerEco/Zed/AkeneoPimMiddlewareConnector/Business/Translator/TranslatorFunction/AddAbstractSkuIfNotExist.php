@@ -12,10 +12,29 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class AddAbstractSkuIfNotExist extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_PARENT = 'parent';
+
+    /**
+     * @var string
+     */
     protected const KEY_CODE = 'code';
+
+    /**
+     * @var string
+     */
     protected const KEY_IDENTIFIER = 'identifier';
+
+    /**
+     * @var string
+     */
     protected const KEY_ABSTRACT_SKU = 'abstract_sku';
+
+    /**
+     * @var string
+     */
     protected const ABSTRACT_IDENTIFIER = 'abstract_product_creation';
 
     /**

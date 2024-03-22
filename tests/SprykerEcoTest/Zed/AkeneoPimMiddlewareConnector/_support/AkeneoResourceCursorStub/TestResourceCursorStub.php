@@ -11,6 +11,9 @@ use SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourc
 
 class TestResourceCursorStub implements AkeneoResourceCursorInterface
 {
+    /**
+     * @var int
+     */
     protected const PAGE_SIZE = 10;
 
     /**
@@ -51,7 +54,7 @@ class TestResourceCursorStub implements AkeneoResourceCursorInterface
     }
 
     /**
-     * @return int|string
+     * @return string|int
      */
     public function key()
     {

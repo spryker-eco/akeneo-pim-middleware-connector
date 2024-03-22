@@ -14,7 +14,7 @@ use SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\Validatio
 class ProductImportValidationRuleSet extends AbstractValidationRuleSet implements ValidationRuleSetInterface
 {
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected static $skuValues;
 

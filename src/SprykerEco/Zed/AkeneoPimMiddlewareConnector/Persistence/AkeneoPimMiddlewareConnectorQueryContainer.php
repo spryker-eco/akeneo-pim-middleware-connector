@@ -18,6 +18,8 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer implements AkeneoPimMiddlewareConnectorQueryContainerInterface
 {
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
@@ -33,6 +35,8 @@ class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer 
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria

@@ -20,6 +20,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class DefaultCategoryMapperStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'DefaultCategoryMapperStagePlugin';
 
     /**
@@ -32,6 +35,8 @@ class DefaultCategoryMapperStagePlugin extends AbstractPlugin implements StagePl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $payload
@@ -48,6 +53,8 @@ class DefaultCategoryMapperStagePlugin extends AbstractPlugin implements StagePl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

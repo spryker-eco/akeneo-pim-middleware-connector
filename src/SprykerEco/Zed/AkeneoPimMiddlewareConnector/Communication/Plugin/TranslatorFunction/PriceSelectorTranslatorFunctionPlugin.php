@@ -10,11 +10,22 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Trans
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\PriceSelector;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\AbstractGenericTranslatorFunctionPlugin;
 
+/**
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
+ */
 class PriceSelectorTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
+    /**
+     * @var string
+     */
     protected const NAME = 'PriceSelectorTranslatorFunctionPlugin';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -25,6 +36,8 @@ class PriceSelectorTranslatorFunctionPlugin extends AbstractGenericTranslatorFun
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

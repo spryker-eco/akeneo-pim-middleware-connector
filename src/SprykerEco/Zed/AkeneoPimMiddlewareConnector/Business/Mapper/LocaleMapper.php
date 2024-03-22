@@ -9,7 +9,14 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper;
 
 class LocaleMapper implements LocaleMapperInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_COLUMN_LOCALE_NAME = 'spy_locale.locale_name';
+
+    /**
+     * @var string
+     */
     protected const KEY_COLUMN_LOCALE_ID = 'spy_locale.id_locale';
 
     /**

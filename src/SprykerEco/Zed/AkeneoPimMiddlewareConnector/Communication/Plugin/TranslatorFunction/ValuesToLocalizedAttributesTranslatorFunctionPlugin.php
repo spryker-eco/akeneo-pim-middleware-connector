@@ -10,11 +10,22 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Trans
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\ValuesToLocalizedAttributes;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\AbstractGenericTranslatorFunctionPlugin;
 
+/**
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
+ */
 class ValuesToLocalizedAttributesTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
+    /**
+     * @var string
+     */
     protected const NAME = 'ValuesToLocalizedAttributes';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -25,6 +36,8 @@ class ValuesToLocalizedAttributesTranslatorFunctionPlugin extends AbstractGeneri
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

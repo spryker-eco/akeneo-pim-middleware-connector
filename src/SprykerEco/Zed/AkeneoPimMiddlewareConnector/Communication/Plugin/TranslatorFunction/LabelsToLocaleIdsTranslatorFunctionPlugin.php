@@ -10,11 +10,22 @@ namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Trans
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction\LabelsToLocaleIds;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\AbstractGenericTranslatorFunctionPlugin;
 
+/**
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
+ */
 class LabelsToLocaleIdsTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
+    /**
+     * @var string
+     */
     protected const NAME = 'LabelsToLocaleIds';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -25,6 +36,8 @@ class LabelsToLocaleIdsTranslatorFunctionPlugin extends AbstractGenericTranslato
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

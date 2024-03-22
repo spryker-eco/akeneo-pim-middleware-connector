@@ -89,103 +89,414 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\StreamReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\StreamWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
 
+/**
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ */
 class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const SERVICE_AKENEO_PIM = 'SERVICE_AKENEO_PIM';
+
+    /**
+     * @var string
+     */
     public const SERVICE_UTIL_TEXT = 'SERVICE_UTIL_TEXT';
+
+    /**
+     * @var string
+     */
     public const FACADE_PROCESS = 'FACADE_PROCESS';
+
+    /**
+     * @var string
+     */
     public const FACADE_PRODUCT = 'FACADE_PRODUCT';
 
+    /**
+     * @var string
+     */
     public const DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_PROCESSES';
+
+    /**
+     * @var string
+     */
     public const DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS = 'DEFAULT_AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS';
 
+    /**
+     * @var string
+     */
     public const PRODUCT_ABSTRACT_QUERY = 'PRODUCT_ABSTRACT_QUERY';
 
+    /**
+     * @var string
+     */
     public const URL_GENERATOR_STRATEGY = 'URL_GENERATOR_STRATEGY';
 
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_PROCESSES = 'AKENEO_PIM_MIDDLEWARE_PROCESSES';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG = 'AKENEO_PIM_MIDDLEWARE_LOGGER_CONFIG';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS = 'AKENEO_PIM_MIDDLEWARE_TRANSLATOR_FUNCTIONS';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_VALIDATORS = 'AKENEO_PIM_MIDDLEWARE_VALIDATORS';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_CATEGORY_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_CATEGORY_IMPORTER_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_ATTRIBUTE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_ATTRIBUTE_IMPORTER_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_IMPORTER_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_CONCRETE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_CONCRETE_IMPORTER_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_PRICE_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_PRICE_IMPORTER_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_STORES_IMPORTER_PLUGIN = 'AKENEO_PIM_MIDDLEWARE_PRODUCT_ABSTRACT_STORES_IMPORTER_PLUGIN';
 
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN = 'ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN = 'ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_IMPORT_ITERATOR_PLUGIN = 'ATTRIBUTE_IMPORT_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_IMPORT_STAGE_PLUGINS = 'ATTRIBUTE_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS = 'ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS = 'ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_MAP_INPUT_STREAM_PLUGIN = 'ATTRIBUTE_MAP_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_MAP_OUTPUT_STREAM_PLUGIN = 'ATTRIBUTE_MAP_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_MAP_ITERATOR_PLUGIN = 'ATTRIBUTE_MAP_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_MAP_STAGE_PLUGINS = 'ATTRIBUTE_MAP_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_MAP_PRE_PROCESSOR_PLUGINS = 'ATTRIBUTE_MAP_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const ATTRIBUTE_MAP_POST_PROCESSOR_PLUGINS = 'ATTRIBUTE_MAP_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const CATEGORY_IMPORT_INPUT_STREAM_PLUGIN = 'CATEGORY_IMPORT_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const CATEGORY_IMPORT_OUTPUT_STREAM_PLUGIN = 'CATEGORY_IMPORT_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const CATEGORY_IMPORT_ITERATOR_PLUGIN = 'CATEGORY_IMPORT_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const CATEGORY_IMPORT_STAGE_PLUGINS = 'CATEGORY_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const CATEGORY_IMPORT_PRE_PROCESSOR_PLUGINS = 'CATEGORY_IMPORT_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const CATEGORY_IMPORT_POST_PROCESSOR_PLUGINS = 'CATEGORY_IMPORT_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const LOCALE_MAP_IMPORT_INPUT_STREAM_PLUGIN = 'LOCALE_MAP_IMPORT_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const LOCALE_MAP_IMPORT_OUTPUT_STREAM_PLUGIN = 'LOCALE_MAP_IMPORT_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const LOCALE_MAP_IMPORT_ITERATOR_PLUGIN = 'LOCALE_MAP_IMPORT_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const LOCALE_MAP_IMPORT_STAGE_PLUGINS = 'LOCALE_MAP_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const LOCALE_MAP_IMPORT_PRE_PROCESSOR_PLUGINS = 'LOCALE_MAP_IMPORT_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const LOCALE_MAP_IMPORT_POST_PROCESSOR_PLUGINS = 'LOCALE_MAP_IMPORT_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const PRODUCT_IMPORT_INPUT_STREAM_PLUGIN = 'PRODUCT_IMPORT_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN = 'PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_IMPORT_ITERATOR_PLUGIN = 'PRODUCT_IMPORT_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_IMPORT_STAGE_PLUGINS = 'PRODUCT_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS = 'PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS = 'PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_IMPORT_INPUT_STREAM_PLUGIN = 'PRODUCT_MODEL_IMPORT_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_IMPORT_OUTPUT_STREAM_PLUGIN = 'PRODUCT_MODEL_IMPORT_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_IMPORT_ITERATOR_PLUGIN = 'PRODUCT_MODEL_IMPORT_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_IMPORT_STAGE_PLUGINS = 'PRODUCT_MODEL_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_IMPORT_PRE_PROCESSOR_PLUGINS = 'PRODUCT_MODEL_IMPORT_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_IMPORT_POST_PROCESSOR_PLUGINS = 'PRODUCT_MODEL_IMPORT_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const PRODUCT_PREPARATION_INPUT_STREAM_PLUGIN = 'PRODUCT_PREPARATION_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_PREPARATION_OUTPUT_STREAM_PLUGIN = 'PRODUCT_PREPARATION_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_PREPARATION_ITERATOR_PLUGIN = 'PRODUCT_PREPARATION_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_PREPARATION_STAGE_PLUGINS = 'PRODUCT_PREPARATION_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_PREPARATION_PRE_PROCESSOR_PLUGINS = 'PRODUCT_PREPARATION_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_PREPARATION_POST_PROCESSOR_PLUGINS = 'PRODUCT_PREPARATION_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_PREPARATION_INPUT_STREAM_PLUGIN = 'PRODUCT_MODEL_PREPARATION_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_PREPARATION_OUTPUT_STREAM_PLUGIN = 'PRODUCT_MODEL_PREPARATION_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_PREPARATION_ITERATOR_PLUGIN = 'PRODUCT_MODEL_PREPARATION_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_PREPARATION_STAGE_PLUGINS = 'PRODUCT_MODEL_PREPARATION_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_PREPARATION_PRE_PROCESSOR_PLUGINS = 'PRODUCT_MODEL_PREPARATION_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const PRODUCT_MODEL_PREPARATION_POST_PROCESSOR_PLUGINS = 'PRODUCT_MODEL_PREPARATION_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const SUPER_ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN = 'SUPER_ATTRIBUTE_IMPORT_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const SUPER_ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN = 'SUPER_ATTRIBUTE_IMPORT_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const SUPER_ATTRIBUTE_IMPORT_ITERATOR_PLUGIN = 'SUPER_ATTRIBUTE_IMPORT_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS = 'SUPER_ATTRIBUTE_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const SUPER_ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS = 'SUPER_ATTRIBUTE_IMPORT_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const SUPER_ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS = 'SUPER_ATTRIBUTE_IMPORT_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const TAX_SET_MAP_IMPORT_INPUT_STREAM_PLUGIN = 'TAX_SET_MAP_IMPORT_INPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const TAX_SET_MAP_IMPORT_OUTPUT_STREAM_PLUGIN = 'TAX_SET_MAP_IMPORT_OUTPUT_STREAM_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const TAX_SET_MAP_IMPORT_ITERATOR_PLUGIN = 'TAX_SET_MAP_IMPORT_ITERATOR_PLUGIN';
+
+    /**
+     * @var string
+     */
     public const TAX_SET_MAP_IMPORT_STAGE_PLUGINS = 'TAX_SET_MAP_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const TAX_SET_MAP_IMPORT_PRE_PROCESSOR_PLUGINS = 'TAX_SET_MAP_IMPORT_PRE_PROCESSOR_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const TAX_SET_MAP_IMPORT_POST_PROCESSOR_PLUGINS = 'TAX_SET_MAP_IMPORT_POST_PROCESSOR_PLUGINS';
 
+    /**
+     * @var string
+     */
     public const DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS = 'DEFAULT_CATEGORY_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS = 'DEFAULT_PRODUCT_MODEL_IMPORT_STAGE_PLUGINS';
+
+    /**
+     * @var string
+     */
     public const DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS = 'DEFAULT_PRODUCT_IMPORT_STAGE_PLUGINS';
 
     /**
@@ -311,7 +622,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     }
 
     /**
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface>
      */
     protected function getAkeneoPimProcessesPlugins(): array
     {
@@ -344,7 +655,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     }
 
     /**
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface>
      */
     protected function getDefaultAkeneoPimProcessesPlugins(): array
     {
@@ -783,7 +1094,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     }
 
     /**
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface>
      */
     protected function getAkeneoPimTranslatorFunctionPlugins(): array
     {
@@ -812,7 +1123,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     }
 
     /**
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\GenericValidatorPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\GenericValidatorPluginInterface>
      */
     protected function getAkeneoPimValidatorPlugins(): array
     {
@@ -836,7 +1147,7 @@ class AkeneoPimMiddlewareConnectorDependencyProvider extends AbstractBundleDepen
     }
 
     /**
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface>
      */
     protected function getDefaultAkeneoPimTranslatorFunctionPlugins(): array
     {
