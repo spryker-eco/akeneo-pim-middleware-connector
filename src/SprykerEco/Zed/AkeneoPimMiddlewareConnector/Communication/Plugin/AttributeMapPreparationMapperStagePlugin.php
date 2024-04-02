@@ -20,6 +20,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class AttributeMapPreparationMapperStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'AttributeMapPreparationMapperStagePlugin';
 
     /**
@@ -32,6 +35,8 @@ class AttributeMapPreparationMapperStagePlugin extends AbstractPlugin implements
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $payload
@@ -48,6 +53,8 @@ class AttributeMapPreparationMapperStagePlugin extends AbstractPlugin implements
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

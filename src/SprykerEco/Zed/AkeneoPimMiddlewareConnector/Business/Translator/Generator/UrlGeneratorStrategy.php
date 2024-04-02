@@ -15,7 +15,7 @@ use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Dependency\Facade\AkeneoPimMiddl
 class UrlGeneratorStrategy implements UrlGeneratorStrategyInterface
 {
     /**
-     * @var int[] Keys are locale ids, values are locale names.
+     * @var array<int> Keys are locale ids, values are locale names.
      */
     protected static $idLocaleBuffer;
 

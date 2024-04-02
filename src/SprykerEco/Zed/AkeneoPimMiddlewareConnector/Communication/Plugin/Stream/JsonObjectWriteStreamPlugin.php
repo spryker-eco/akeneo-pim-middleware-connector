@@ -19,9 +19,14 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
  */
 class JsonObjectWriteStreamPlugin extends AbstractPlugin implements OutputStreamPluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'JsonObjectWriteStreamPlugin';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param string $path
@@ -36,6 +41,8 @@ class JsonObjectWriteStreamPlugin extends AbstractPlugin implements OutputStream
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

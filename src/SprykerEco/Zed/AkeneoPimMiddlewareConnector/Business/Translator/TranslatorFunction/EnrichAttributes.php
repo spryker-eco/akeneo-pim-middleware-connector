@@ -12,20 +12,52 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_OPTIONS = 'options';
+
+    /**
+     * @var string
+     */
     protected const KEY_DATA = 'data';
+
+    /**
+     * @var string
+     */
     protected const KEY_LOCALE = 'locale';
+
+    /**
+     * @var string
+     */
     protected const KEY_TYPE = 'type';
+
+    /**
+     * @var string
+     */
     protected const KEY_LOCALIZABLE = 'localizable';
+
+    /**
+     * @var string
+     */
     protected const KEY_KEY = 'key';
 
+    /**
+     * @var string
+     */
     protected const ATTRIBUTE_PRICE = 'price';
 
+    /**
+     * @var array
+     */
     protected const ATTRIBUTE_TYPES_WITH_OPTIONS = [
         'pim_catalog_simpleselect',
         'pim_catalog_multiselect',
     ];
 
+    /**
+     * @var array
+     */
     protected const ATTRIBUTES_TYPES_FOR_SKIPPING = [
         'pim_assets_collection',
         'pim_reference_data_multiselect',
@@ -68,6 +100,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
         foreach ($value as $attributeKey => $attributeValues) {
             if ($this->isKeySkipped($attributeKey)) {
                 unset($value[$attributeKey]);
+
                 continue;
             }
 
@@ -83,6 +116,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
 
                 if ($attributeData === null) {
                     unset($value[$attributeKey]);
+
                     continue 2;
                 }
 
@@ -90,10 +124,12 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
                     $options = is_array($attributeData) ? $this->getArrayOptions($attributeKey, $attributeData) : $this->getOptions($attributeKey, $attributeData);
                     if (!array_key_exists($locale, $options)) {
                         unset($value[$attributeKey]);
+
                         continue;
                     }
 
                     $value[$attributeKey][$index][static::KEY_DATA] = $options[$locale];
+
                     continue;
                 }
 
@@ -128,7 +164,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
             array_filter($this->getMap(), function ($element) {
                 return count($element[static::KEY_OPTIONS] ?? []) > 0 &&
                     in_array($element[static::KEY_TYPE], static::ATTRIBUTE_TYPES_WITH_OPTIONS);
-            })
+            }),
         );
 
         static::$attributeLocalizableMap = array_map(
@@ -137,7 +173,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
             },
             array_filter($this->getMap(), function ($element) {
                 return in_array($element[static::KEY_TYPE], static::ATTRIBUTE_TYPES_WITH_OPTIONS);
-            })
+            }),
         );
 
         static::$attributesForSkippingMap = array_map(
@@ -146,7 +182,7 @@ class EnrichAttributes extends AbstractTranslatorFunction implements TranslatorF
             },
             array_filter($this->getMap(), function ($element) {
                 return in_array($element[static::KEY_TYPE], static::ATTRIBUTES_TYPES_FOR_SKIPPING) && $element[static::KEY_KEY] != static::ATTRIBUTE_PRICE;
-            })
+            }),
         );
     }
 

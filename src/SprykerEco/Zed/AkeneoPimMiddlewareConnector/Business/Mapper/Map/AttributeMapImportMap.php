@@ -12,6 +12,9 @@ use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
 class AttributeMapImportMap extends AbstractMap
 {
+    /**
+     * @var array
+     */
     protected const ATTRIBUTE_MAP = [
         'pim_catalog_boolean' => 'number',
         'pim_catalog_textarea' => 'textarea',
@@ -27,6 +30,8 @@ class AttributeMapImportMap extends AbstractMap
         'pim_catalog_file' => 'text',
         'pim_catalog_date' => 'date',
         'pim_assets_collection' => 'text',
+        'pim_catalog_asset_collection' => 'text',
+        'akeneo_reference_entity' => 'text',
     ];
 
     /**

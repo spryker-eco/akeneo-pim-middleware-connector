@@ -13,15 +13,44 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class PriceSelector extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_LOCALE = 'locale';
+
+    /**
+     * @var string
+     */
     protected const KEY_DATA = 'data';
+
+    /**
+     * @var string
+     */
     protected const KEY_AMOUNT = 'amount';
 
+    /**
+     * @var string
+     */
     protected const KEY_PRICE = 'price';
+
+    /**
+     * @var string
+     */
     protected const KEY_CURRENCY = 'currency';
+
+    /**
+     * @var string
+     */
     protected const KEY_PRICE_TYPE = 'type';
+
+    /**
+     * @var string
+     */
     protected const KEY_STORE = 'store';
 
+    /**
+     * @var string
+     */
     public const OPTION_LOCALE_TO_PRICE_MAP = 'LOCALE_TO_PRICE_MAP_OPTION';
 
     /**
@@ -56,8 +85,8 @@ class PriceSelector extends AbstractTranslatorFunction implements TranslatorFunc
             }
 
             $currency = $localeToPriceTypeMap[$locale][static::KEY_CURRENCY] ?? null;
-            $type = $localeToPriceTypeMap[$locale][self::KEY_PRICE_TYPE] ?? null;
-            $store = $localeToPriceTypeMap[$locale][self::KEY_STORE] ?? null;
+            $type = $localeToPriceTypeMap[$locale][static::KEY_PRICE_TYPE] ?? null;
+            $store = $localeToPriceTypeMap[$locale][static::KEY_STORE] ?? null;
 
             foreach ($priceInfo[static::KEY_DATA] as $price) {
                 if ($price[static::KEY_CURRENCY] === $currency) {

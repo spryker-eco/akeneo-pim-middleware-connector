@@ -27,12 +27,23 @@ use SprykerMiddleware\Zed\Process\Business\Iterator\NullIterator;
 
 class SuperAttributeAkeneoApiStreamPluginHelper extends Module
 {
+    /**
+     * @var string
+     */
     protected const FAMILY_1_VARIANT_1 = 'family_1_variant_1';
+
+    /**
+     * @var string
+     */
     protected const FAMILY_2_VARIANT_1 = 'family_2_variant_1';
+
+    /**
+     * @var string
+     */
     protected const FAMILY_2_VARIANT_2 = 'family_2_variant_2';
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getExpectedVariantCodes(): array
     {
@@ -150,7 +161,7 @@ class SuperAttributeAkeneoApiStreamPluginHelper extends Module
             $importerPluginMock,
             $importerPluginMock,
             $importerPluginMock,
-            $importerPluginMock
+            $importerPluginMock,
         );
 
         return $streamFactory;

@@ -12,15 +12,30 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\Validator\AbstractGeneric
 
 /**
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
+ * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
  */
 class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
 {
+    /**
+     * @var string
+     */
     public const NAME = 'ProductAbstractExist';
 
+    /**
+     * @var string
+     */
     public const KEY_NAME = 'name';
+
+    /**
+     * @var string
+     */
     public const KEY_URL = 'url';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -31,6 +46,8 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -41,6 +58,8 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $value

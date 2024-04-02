@@ -18,7 +18,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements AkeneoPimMiddlewareConnectorFacadeInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -32,7 +32,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -46,7 +46,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -60,7 +60,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -74,7 +74,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -88,7 +88,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -102,7 +102,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -116,7 +116,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -130,7 +130,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -144,7 +144,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -160,7 +160,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -176,7 +176,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -190,7 +190,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -204,7 +204,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -218,7 +218,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -232,7 +232,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -246,7 +246,7 @@ class AkeneoPimMiddlewareConnectorFacade extends AbstractFacade implements Akene
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *

@@ -20,6 +20,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class ProductModelImportTranslationStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'ProductModelImportTranslationStagePlugin';
 
     /**
@@ -32,6 +35,8 @@ class ProductModelImportTranslationStagePlugin extends AbstractPlugin implements
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $payload
@@ -48,6 +53,8 @@ class ProductModelImportTranslationStagePlugin extends AbstractPlugin implements
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

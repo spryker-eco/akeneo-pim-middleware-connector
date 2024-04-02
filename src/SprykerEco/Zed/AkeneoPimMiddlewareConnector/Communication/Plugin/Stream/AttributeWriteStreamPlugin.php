@@ -19,9 +19,14 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
  */
 class AttributeWriteStreamPlugin extends AbstractPlugin implements OutputStreamPluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'AttributeWriteStreamPlugin';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param string $path
@@ -36,6 +41,8 @@ class AttributeWriteStreamPlugin extends AbstractPlugin implements OutputStreamP
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string

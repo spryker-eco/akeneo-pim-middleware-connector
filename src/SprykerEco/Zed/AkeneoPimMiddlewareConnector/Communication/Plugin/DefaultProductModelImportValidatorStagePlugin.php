@@ -20,9 +20,14 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class DefaultProductModelImportValidatorStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
+    /**
+     * @var string
+     */
     protected const PLUGIN_NAME = 'DefaultProductModelImportValidatorStagePlugin';
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @return string
@@ -33,13 +38,15 @@ class DefaultProductModelImportValidatorStagePlugin extends AbstractPlugin imple
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param mixed $payload
      * @param \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface $outStream
      * @param mixed $originalPayload
      *
-     * @return array|mixed
+     * @return mixed|array
      */
     public function process($payload, WriteStreamInterface $outStream, $originalPayload)
     {

@@ -12,7 +12,14 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class AddMissingLocales extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const OPTION_LOCALES = 'locales';
+
+    /**
+     * @var string
+     */
     protected const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
     /**

@@ -13,10 +13,29 @@ use SprykerMiddleware\Zed\Process\Business\Exception\MethodNotSupportedException
 
 class DataImportProductConcreteWriteStream implements WriteStreamInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_ABSTRACT_SKU = 'abstract_sku';
+
+    /**
+     * @var string
+     */
     protected const KEY_CONCRETE_SKU = 'concrete_sku';
+
+    /**
+     * @var string
+     */
     protected const KEY_PRICES = 'prices';
+
+    /**
+     * @var string
+     */
     protected const KEY_STORES = 'stores';
+
+    /**
+     * @var string
+     */
     protected const ABSTRACT_PRODUCT_CREATION_IDENTIFIER = 'abstract_product_creation';
 
     /**

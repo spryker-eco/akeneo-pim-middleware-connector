@@ -12,7 +12,14 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class MeasureUnitToInt extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_DATA = 'data';
+
+    /**
+     * @var string
+     */
     protected const KEY_AMOUNT = 'amount';
 
     /**

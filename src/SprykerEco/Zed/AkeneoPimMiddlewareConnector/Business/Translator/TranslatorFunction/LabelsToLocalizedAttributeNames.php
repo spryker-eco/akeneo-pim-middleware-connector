@@ -12,6 +12,9 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
+    /**
+     * @var string
+     */
     protected const KEY_NAME = 'name';
 
     /**
@@ -24,9 +27,9 @@ class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction impleme
     {
         $defaultLocales = $this->getLocales();
 
-        $key = isset($this->options['key']) ? $this->options['key'] : static::KEY_NAME;
+        $key = $this->options['key'] ?? static::KEY_NAME;
 
-        if (empty($value) && $defaultLocales) {
+        if (!$value && $defaultLocales) {
             $code = $payload['category_key'];
             foreach ($defaultLocales as $locale) {
                 $value[$locale] = [
