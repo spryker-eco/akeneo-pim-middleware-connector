@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEcoTest\Zed\AkeneoPimMiddlewareConnector\AkeneoResourceCursorStub;
@@ -11,9 +11,6 @@ use SprykerEco\Service\AkeneoPim\Dependencies\External\Api\Wrapper\AkeneoResourc
 
 class TestResourceCursorStub implements AkeneoResourceCursorInterface
 {
-    /**
-     * @var int
-     */
     protected const PAGE_SIZE = 10;
 
     /**
@@ -54,7 +51,7 @@ class TestResourceCursorStub implements AkeneoResourceCursorInterface
     }
 
     /**
-     * @return string|int
+     * @return int|string
      */
     public function key()
     {

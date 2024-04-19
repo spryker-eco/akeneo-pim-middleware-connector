@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin;
@@ -20,9 +20,6 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class DefaultCategoryImportTranslationStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
-    /**
-     * @var string
-     */
     protected const PLUGIN_NAME = 'DefaultCategoryImportTranslationStagePlugin';
 
     /**
@@ -35,8 +32,6 @@ class DefaultCategoryImportTranslationStagePlugin extends AbstractPlugin impleme
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @param mixed $payload
@@ -53,8 +48,6 @@ class DefaultCategoryImportTranslationStagePlugin extends AbstractPlugin impleme
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return string

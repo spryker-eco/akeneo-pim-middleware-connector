@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Mapper\Map;
@@ -12,9 +12,6 @@ use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
 class AttributeMapImportMap extends AbstractMap
 {
-    /**
-     * @var array
-     */
     protected const ATTRIBUTE_MAP = [
         'pim_catalog_boolean' => 'number',
         'pim_catalog_textarea' => 'textarea',
@@ -30,8 +27,6 @@ class AttributeMapImportMap extends AbstractMap
         'pim_catalog_file' => 'text',
         'pim_catalog_date' => 'date',
         'pim_assets_collection' => 'text',
-        'pim_catalog_asset_collection' => 'text',
-        'akeneo_reference_entity' => 'text',
     ];
 
     /**

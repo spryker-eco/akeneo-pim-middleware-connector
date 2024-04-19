@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication;
@@ -62,12 +62,12 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
             $this->getProductAbstractImporterPlugin(),
             $this->getProductConcreteImporterPlugin(),
             $this->getProductPriceImporterPlugin(),
-            $this->getProductAbstractStoresImporterPlugin(),
+            $this->getProductAbstractStoresImporterPlugin()
         );
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
      */
     public function getAkeneoPimProcesses(): array
     {
@@ -75,7 +75,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
      */
     public function getAkeneoPimTranslatorFunctions(): array
     {
@@ -83,7 +83,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\GenericValidatorPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\GenericValidatorPluginInterface[]
      */
     public function getAkeneoPimValidators(): array
     {
@@ -139,7 +139,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getProductImportPreProcessorPluginsStack(): array
     {
@@ -147,7 +147,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getProductImportStagePluginsStack(): array
     {
@@ -155,7 +155,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getProductImportPostProcessorPluginsStack(): array
     {
@@ -187,7 +187,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getAttributeImportPreProcessorPluginsStack(): array
     {
@@ -195,7 +195,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getAttributeImportStagePluginsStack(): array
     {
@@ -203,7 +203,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getAttributeImportPostProcessorPluginsStack(): array
     {
@@ -235,7 +235,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getAttributeMapPreProcessorPluginsStack(): array
     {
@@ -243,7 +243,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getAttributeMapStagePluginsStack(): array
     {
@@ -251,7 +251,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getAttributeMapPostProcessorPluginsStack(): array
     {
@@ -283,7 +283,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getCategoryImportPreProcessorPluginsStack(): array
     {
@@ -291,7 +291,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getCategoryImportStagePluginsStack(): array
     {
@@ -299,7 +299,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getCategoryImportPostProcessorPluginsStack(): array
     {
@@ -331,7 +331,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getLocaleMapPreProcessorPluginsStack(): array
     {
@@ -339,7 +339,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getLocaleMapStagePluginsStack(): array
     {
@@ -347,7 +347,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getLocaleMapPostProcessorPluginsStack(): array
     {
@@ -379,7 +379,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getProductModelImportPreProcessorPluginsStack(): array
     {
@@ -387,7 +387,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getProductModelImportStagePluginsStack(): array
     {
@@ -395,7 +395,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getProductModelImportPostProcessorPluginsStack(): array
     {
@@ -427,7 +427,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getProductModelPreparationPreProcessorPluginsStack(): array
     {
@@ -435,7 +435,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getProductModelPreparationStagePluginsStack(): array
     {
@@ -443,7 +443,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getProductModelPreparationPostProcessorPluginsStack(): array
     {
@@ -499,7 +499,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getProductPreparationPreProcessorPluginsStack(): array
     {
@@ -507,7 +507,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getSuperAttributesImportPreProcessorPluginsStack(): array
     {
@@ -515,7 +515,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getProductPreparationStagePluginsStack(): array
     {
@@ -523,7 +523,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getSuperAttributesImportStagePluginsStack(): array
     {
@@ -531,7 +531,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getProductPreparationPostProcessorPluginsStack(): array
     {
@@ -539,7 +539,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getSuperAttributesImportPostProcessorPluginsStack(): array
     {
@@ -571,7 +571,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
     public function getTaxSetMapImportPreProcessorPluginsStack(): array
     {
@@ -579,7 +579,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getTaxSetMapImportStagePluginsStack(): array
     {
@@ -587,7 +587,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
     public function getTaxSetMapImportPostProcessorPluginsStack(): array
     {
@@ -635,7 +635,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
      */
     public function getDefaultAkeneoPimProcesses()
     {
@@ -643,7 +643,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
      */
     public function getDefaultAkeneoPimTranslatorFunctions()
     {
@@ -651,7 +651,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getDefaultCategoryImportStagePluginsStack(): array
     {
@@ -659,7 +659,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getDefaultProductImportStagePluginsStack(): array
     {
@@ -667,7 +667,7 @@ class AkeneoPimMiddlewareConnectorCommunicationFactory extends AbstractCommunica
     }
 
     /**
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getDefaultProductModelImportStagePluginsStack(): array
     {

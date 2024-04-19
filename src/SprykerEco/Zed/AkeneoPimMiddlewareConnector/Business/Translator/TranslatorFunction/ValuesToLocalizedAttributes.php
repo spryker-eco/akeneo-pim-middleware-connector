@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
@@ -12,34 +12,13 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    /**
-     * @var string
-     */
     protected const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
-    /**
-     * @var string
-     */
     protected const KEY_LOCALE = 'locale';
-
-    /**
-     * @var string
-     */
     protected const KEY_DATA = 'data';
 
-    /**
-     * @var string
-     */
     protected const KEY_TITLE = 'title';
-
-    /**
-     * @var string
-     */
     protected const KEY_NAME = 'name';
-
-    /**
-     * @var string
-     */
     protected const KEY_DESCRIPTION = 'description';
 
     /**
@@ -64,7 +43,7 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
                         $key,
                         $attribute[static::KEY_DATA],
                         $attribute[static::KEY_LOCALE],
-                        $localizedAttributes,
+                        $localizedAttributes
                     );
                 }
 
@@ -74,7 +53,7 @@ class ValuesToLocalizedAttributes extends AbstractTranslatorFunction implements 
                             $key,
                             $localizedValue,
                             $locale,
-                            $localizedAttributes,
+                            $localizedAttributes
                         );
                     }
                 }

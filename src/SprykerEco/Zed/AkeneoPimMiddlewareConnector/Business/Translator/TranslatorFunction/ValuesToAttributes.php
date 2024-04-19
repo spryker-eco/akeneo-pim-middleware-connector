@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
@@ -12,19 +12,9 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class ValuesToAttributes extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    /**
-     * @var string
-     */
     protected const KEY_ATTRIBUTES = 'attributes';
 
-    /**
-     * @var string
-     */
     protected const KEY_LOCALE = 'locale';
-
-    /**
-     * @var string
-     */
     protected const KEY_DATA = 'data';
 
     /**
@@ -45,7 +35,7 @@ class ValuesToAttributes extends AbstractTranslatorFunction implements Translato
         foreach ($value as $key => $scopedAttributes) {
             foreach ($scopedAttributes as $attribute) {
                 if (!$this->isLocalizedAttribute($attribute)) {
-                    $value[static::KEY_ATTRIBUTES][$key] = $attribute[static::KEY_DATA] ?? null;
+                    $value[static::KEY_ATTRIBUTES][$key] = $attribute[static::KEY_DATA];
                 }
             }
         }

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration;
@@ -22,14 +22,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInt
  */
 class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
 {
-    /**
-     * @var string
-     */
     protected const PROCESS_NAME = 'TAX_SET_MAP_IMPORT_PROCESS';
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return string
@@ -40,8 +35,6 @@ class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements Proce
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface
@@ -53,8 +46,6 @@ class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements Proce
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
@@ -66,8 +57,6 @@ class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements Proce
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
@@ -79,11 +68,9 @@ class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements Proce
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
     public function getStagePlugins(): array
     {
@@ -92,8 +79,6 @@ class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements Proce
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface
@@ -105,11 +90,9 @@ class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements Proce
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[]
      */
     public function getPreProcessorHookPlugins(): array
     {
@@ -118,11 +101,9 @@ class TaxSetMapImportConfigurationPlugin extends AbstractPlugin implements Proce
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[]
      */
     public function getPostProcessorHookPlugins(): array
     {

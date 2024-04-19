@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence;
@@ -18,8 +18,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer implements AkeneoPimMiddlewareConnectorQueryContainerInterface
 {
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
@@ -35,8 +33,6 @@ class AkeneoPimMiddlewareConnectorQueryContainer extends AbstractQueryContainer 
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria

@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEcoTest\Zed\AkeneoPimMiddlewareConnector\Helper;
 
 use Codeception\Module;
-use Codeception\Stub;
 use Codeception\Stub\ConsecutiveMap;
+use Codeception\Util\Stub;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactory;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Stream\StreamFactoryInterface;
 use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory;
@@ -27,23 +27,12 @@ use SprykerMiddleware\Zed\Process\Business\Iterator\NullIterator;
 
 class SuperAttributeAkeneoApiStreamPluginHelper extends Module
 {
-    /**
-     * @var string
-     */
     protected const FAMILY_1_VARIANT_1 = 'family_1_variant_1';
-
-    /**
-     * @var string
-     */
     protected const FAMILY_2_VARIANT_1 = 'family_2_variant_1';
-
-    /**
-     * @var string
-     */
     protected const FAMILY_2_VARIANT_2 = 'family_2_variant_2';
 
     /**
-     * @return array<string>
+     * @return string[]
      */
     public function getExpectedVariantCodes(): array
     {
@@ -161,7 +150,7 @@ class SuperAttributeAkeneoApiStreamPluginHelper extends Module
             $importerPluginMock,
             $importerPluginMock,
             $importerPluginMock,
-            $importerPluginMock,
+            $importerPluginMock
         );
 
         return $streamFactory;

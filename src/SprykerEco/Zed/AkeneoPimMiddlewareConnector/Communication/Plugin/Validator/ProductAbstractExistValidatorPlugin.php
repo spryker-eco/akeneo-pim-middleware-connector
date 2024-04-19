@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Validator;
@@ -12,30 +12,15 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\Validator\AbstractGeneric
 
 /**
  * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\AkeneoPimMiddlewareConnectorCommunicationFactory getFactory()
- * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorConfig getConfig()
- * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Persistence\AkeneoPimMiddlewareConnectorQueryContainerInterface getQueryContainer()
- * @method \SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\AkeneoPimMiddlewareConnectorFacadeInterface getFacade()
  */
 class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
 {
-    /**
-     * @var string
-     */
     public const NAME = 'ProductAbstractExist';
 
-    /**
-     * @var string
-     */
     public const KEY_NAME = 'name';
-
-    /**
-     * @var string
-     */
     public const KEY_URL = 'url';
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return string
@@ -46,8 +31,6 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return string
@@ -58,8 +41,6 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @param mixed $value
@@ -76,6 +57,8 @@ class ProductAbstractExistValidatorPlugin extends AbstractGenericValidatorPlugin
             ->createProductAbstractExistValidator()
             ->setKey($key)
             ->setOptions($options);
+        $validator->setKey($key);
+        $validator->setOptions($options);
 
         return $validator->validate($value, $payload);
     }

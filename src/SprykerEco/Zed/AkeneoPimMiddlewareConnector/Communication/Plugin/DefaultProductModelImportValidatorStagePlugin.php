@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin;
@@ -20,14 +20,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
  */
 class DefaultProductModelImportValidatorStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
-    /**
-     * @var string
-     */
     protected const PLUGIN_NAME = 'DefaultProductModelImportValidatorStagePlugin';
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @return string
@@ -38,15 +33,13 @@ class DefaultProductModelImportValidatorStagePlugin extends AbstractPlugin imple
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
      * @param mixed $payload
      * @param \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface $outStream
      * @param mixed $originalPayload
      *
-     * @return mixed|array
+     * @return array|mixed
      */
     public function process($payload, WriteStreamInterface $outStream, $originalPayload)
     {

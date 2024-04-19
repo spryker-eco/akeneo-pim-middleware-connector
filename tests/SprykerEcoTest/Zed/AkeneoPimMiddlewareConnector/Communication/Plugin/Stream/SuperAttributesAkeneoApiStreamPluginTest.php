@@ -1,17 +1,16 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEcoTest\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Stream;
 
-use Codeception\Test\Unit;
+use Codeception\TestCase\Test;
 
 /**
  * Auto-generated group annotations
- *
  * @group SprykerEcoTest
  * @group Zed
  * @group AkeneoPimMiddlewareConnector
@@ -21,7 +20,7 @@ use Codeception\Test\Unit;
  * @group SuperAttributesAkeneoApiStreamPluginTest
  * Add your own group annotations below this line
  */
-class SuperAttributesAkeneoApiStreamPluginTest extends Unit
+class SuperAttributesAkeneoApiStreamPluginTest extends Test
 {
     /**
      * @var \SprykerEcoTest\Zed\AkeneoPimMiddlewareConnector\AkeneoPimMiddlewareConnectorZedTester
@@ -35,7 +34,7 @@ class SuperAttributesAkeneoApiStreamPluginTest extends Unit
     {
         $this->assertSame(
             $this->tester->getExpectedVariantCodes(),
-            $this->tester->processSuperAttributesAkeneoReadPlugin(),
+            $this->tester->processSuperAttributesAkeneoReadPlugin()
         );
     }
 }

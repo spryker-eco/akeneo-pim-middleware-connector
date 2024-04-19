@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration;
@@ -19,11 +19,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ConfigurationP
 class DefaultAkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements ConfigurationProfilePluginInterface
 {
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
      */
     public function getProcessConfigurationPlugins(): array
     {
@@ -32,11 +30,9 @@ class DefaultAkeneoPimConfigurationProfilePlugin extends AbstractPlugin implemen
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
      */
     public function getTranslatorFunctionPlugins(): array
     {
@@ -45,11 +41,9 @@ class DefaultAkeneoPimConfigurationProfilePlugin extends AbstractPlugin implemen
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @api
      *
-     * @return array<\SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\ValidatorPluginInterface>
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\ValidatorPluginInterface[]
      */
     public function getValidatorPlugins(): array
     {

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * MIT License
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace SprykerEco\Zed\AkeneoPimMiddlewareConnector\Business\Translator\TranslatorFunction;
@@ -12,9 +12,6 @@ use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\Transla
 
 class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction implements TranslatorFunctionInterface
 {
-    /**
-     * @var string
-     */
     protected const KEY_NAME = 'name';
 
     /**
@@ -27,9 +24,9 @@ class LabelsToLocalizedAttributeNames extends AbstractTranslatorFunction impleme
     {
         $defaultLocales = $this->getLocales();
 
-        $key = $this->options['key'] ?? static::KEY_NAME;
+        $key = isset($this->options['key']) ? $this->options['key'] : static::KEY_NAME;
 
-        if (!$value && $defaultLocales) {
+        if (empty($value) && $defaultLocales) {
             $code = $payload['category_key'];
             foreach ($defaultLocales as $locale) {
                 $value[$locale] = [
